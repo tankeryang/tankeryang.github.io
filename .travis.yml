@@ -5,6 +5,9 @@ node_js: stable
 install:
   - npm install
   - npm install hexo-generator-searchdb --save
+  - npm install mermaid --save
+  - npm install --save hexo-tag-mermaid
+  - npm install hexo-tag-plantuml --save
 
 #before_script:
  # - npm install -g gulp

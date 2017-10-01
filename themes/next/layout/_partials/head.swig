@@ -142,3 +142,8 @@
 {% endif %}
 
 {% include 'head/custom-head.swig' %}
+
+{% if theme.mermaid.enable %}
+  <link rel="stylesheet" href="mermaid.min.css">
+  <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+{% endif %}

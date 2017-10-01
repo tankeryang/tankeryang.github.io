@@ -113,3 +113,6 @@ search:
   field: post
   format: html
   limit: 10000
+
+tag_plantuml:
+  type: static

@@ -300,6 +300,9 @@ mathjax:
   per_page: true
   cdn: //cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML
 
+mermaid:
+  enable: true
+
 # Han Support docs: https://hanzi.pro/
 han: false
 
@@ -360,7 +363,7 @@ valine:
 # Warning: JiaThis does not support https.
 #jiathis:
   ##uid: Get this uid from http://www.jiathis.com/
-add_this_id: ra-59b14058bcac3b78
+# add_this_id: ra-59b14058bcac3b78
 
 # Share
 #duoshuo_share: true
