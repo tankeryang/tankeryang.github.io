@@ -74,5 +74,5 @@ graph LR;
 关于神经网络的发展请阅读课程资料，这里不在赘述。
 {% note info %}
 <center><strong>课程资料</strong></center>
-[week1课程笔记](https://github.com/tankeryang/Coursera-deeplearning.ai-lecture-note/tree/master/week1/PDF)
+[week1课程讲义](https://github.com/tankeryang/Coursera-deeplearning.ai-lecture-note/tree/master/week1/PDF)
 {% endnote %}
