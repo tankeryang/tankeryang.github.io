@@ -209,15 +209,14 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 </center>
 当我们的$\theta$能令$J(\theta)$取到最小值时，我们就认为这是最优的$\theta$。
-
 是不是很直观？
 
 有了代价函数之后，我们要做的就是找出令它取得最小值的$\theta$，下图就是我们的任务：
-
 {% asset_image pic11.jpg %}
 
-其中 __Goal__ 就是我们的优化目标
-
+---
+# Parameter Learning - 参数学习
+## Gradient Descent - 梯度下降
 这是典型的极值问题，在数学方法中，我们可以求导解决，可是在计算机程序中，我们要用一种__通用的数值方法__，去逼近。
 
 我们看只有一个学习参数的情况，假设{% math %}h_{\theta}(x)=\theta x{% endmath %}
@@ -233,12 +232,8 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 当{% math %}\theta{% endmath %}比取到能使{% math %}h_{\theta}(x)=\theta x{% endmath %}很好地拟合数据时：
 {% asset_img pic14.png %}
 这时的{% math %}theta{% endmath %}就是{% math %}J(\theta){% endmath %}的极小值点。也就是最优的{% math %}\theta{% endmath %}。
+接下来我们就来讲，如何让计算机自动训练出最优的$\theta$
 
-接下来我们就来讲，如何让计算机自动训练出最优的{% math %}\theta{% endmath %}
-
----
-# Parameter Learning - 参数学习
-## Gradient Descent - 梯度下降
 我们继续用上面的例子，
 当{% math %}\theta{% endmath %}比较小时：
 {% asset_img pic15.png %}
@@ -251,28 +246,28 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 这就是__梯度下降__算法。通过多次的迭代，更新{% math %}\theta{% endmath %}，我们就能无限逼近最优值。
 
 将{% math %}\theta{% endmath %}拓展到__二维向量__（即有两个参数）的情形，我们可能会得到如下的{% math %}J(\theta){% endmath %}：
-{% asset_img pic17.png %}
+{% asset_img pic17.jpg %}
 这是一个二维曲面，这种情况我们就要分别对{% math %}\theta_{0},\theta_{1}{% endmath %}求偏导来进行梯度下降。
 
 对于梯度下降，还有一些要注意的地方：
-* 关于__学习速率__{% math %}\alpha{% endmath %}，怎样设置学习速率也是很关键的问题，如果{% math %}\alpha{% endmath %}设置的__过小__，则梯度下降就会收敛得很慢，训练时间会过长。如果{% math %}\alpha{% endmath %}设置的过大，则梯度下降有可能会发散，就是越过了极值点：
+关于__学习速率__{% math %}\alpha{% endmath %}，怎样设置学习速率也是很关键的问题，如果{% math %}\alpha{% endmath %}设置的__过小__，则梯度下降就会收敛得很慢，训练时间会过长。如果{% math %}\alpha{% endmath %}设置的过大，则梯度下降有可能会发散，就是越过了极值点：
 {% asset_img pic18.png %}
 所以我们在做迭代时一定要关注着{% math %}J(\theta){% endmath %}，确保它是在下降的。
 
-* 在实际问题中，我们的{% math %}J(\theta){% endmath %}一般不会是__凸函数__，也就是说我们做梯度下降得到的只是__局部最优值__，而不是__全局最优值__：
+在实际问题中，我们的{% math %}J(\theta){% endmath %}一般不会是__凸函数__，也就是说我们做梯度下降得到的只是__局部最优值__，而不是__全局最优值__：
 {% asset_img pic19.png %}
 {% asset_img pic20.png %}
 
 ## Gradient Descent for Liner Regression - 线性回归中的梯度下降
 对于线性回归，我们有如下定义：
+
 * {% math %}X_{m\times (n+1)} = \begin{bmatrix}1 & x_{1}^{(1)} & \cdots &x_{n}^{(1)} \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_{1}^{(m)} & \cdots & x_{n}^{(m)} \\ \end{bmatrix}{% endmath %}
 
 * {% math %}Y_{m\times 1} = \begin{bmatrix} y^{(1)} & \cdots & y^{(m)}\end{bmatrix}^{T}{% endmath %}
 
 * {% math %}\theta = \begin{bmatrix} \theta_{0} & \theta_{1} & \cdots & \theta_{n} \end{bmatrix}^{T}{% endmath %}
-* {% math %}
-h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta}\left(x^{(2)}\right)&\cdots&h_{\theta}\left(x^{(m)}\right)\end{bmatrix}^{T}=\begin{bmatrix}\theta^{T}x^{(1)}&\theta^{T}x^{(2)}&\cdots&\theta^{T}x^{(m)}\end{bmatrix}^{T} = X \theta
-{% endmath %}
+
+* {% math %}h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta}\left(x^{(2)}\right)&\cdots&h_{\theta}\left(x^{(m)}\right)\end{bmatrix}^{T}=\begin{bmatrix}\theta^{T}x^{(1)}&\theta^{T}x^{(2)}&\cdots&\theta^{T}x^{(m)}\end{bmatrix}^{T} = X \theta{% endmath %}
 
 * {% math %}h_{\theta}\left(x^{(i)}\right) = \theta_{0} + \theta_{1}x_{1}^{i} + \cdots + \theta_{n}x_{n}^{i}{% endmath %}
 
@@ -370,7 +365,4 @@ PS:其实上面的__多变量线性回归梯度下降__ 是 __week2__的内容�
 * [week1课程讲义](https://github.com/tankeryang/Coursera-machine-learning-lecture-note/tree/master/week1)
 * [week1编程作业](https://github.com/tankeryang/Coursera-machine-learning-assignment/tree/master/machine-learning-ex1)
 {% endnote %}
-
-
-\begin{bmatrix}1\\1\\ \vdots\\1\end{bmatrix}
 
