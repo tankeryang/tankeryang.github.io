@@ -4,6 +4,7 @@ node_js: stable
 # S: Build Lifecycle
 install:
   - npm install
+  - npm install hexo-math --save
   - npm install hexo-generator-searchdb --save
   - npm install mermaid --save
   - npm install --save hexo-tag-mermaid

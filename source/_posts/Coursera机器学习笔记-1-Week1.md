@@ -208,9 +208,9 @@ J(\theta)=\frac{1}{6}\sum_{i=1}^{3}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 </center>
+
 当我们的$\theta$能令$J(\theta)$取到最小值时，我们就认为这是最优的$\theta$。
 是不是很直观？
-
 有了代价函数之后，我们要做的就是找出令它取得最小值的$\theta$，下图就是我们的任务：
 {% asset_image pic11.jpg %}
 
@@ -250,55 +250,57 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 这是一个二维曲面，这种情况我们就要分别对{% math %}\theta_{0},\theta_{1}{% endmath %}求偏导来进行梯度下降。
 
 对于梯度下降，还有一些要注意的地方：
-关于__学习速率__{% math %}\alpha{% endmath %}，怎样设置学习速率也是很关键的问题，如果{% math %}\alpha{% endmath %}设置的__过小__，则梯度下降就会收敛得很慢，训练时间会过长。如果{% math %}\alpha{% endmath %}设置的过大，则梯度下降有可能会发散，就是越过了极值点：
+* 关于__学习速率__{% math %}\alpha{% endmath %}，怎样设置学习速率也是很关键的问题，如果{% math %}\alpha{% endmath %}设置的__过小__，则梯度下降就会收敛得很慢，训练时间会过长。如果{% math %}\alpha{% endmath %}设置的过大，则梯度下降有可能会发散，就是越过了极值点：
+{% note info %}
 {% asset_img pic18.png %}
-所以我们在做迭代时一定要关注着{% math %}J(\theta){% endmath %}，确保它是在下降的。
+所以我们在做迭代时一定要关注着$J(\theta)$，确保它是在下降的。
+{% endnote %}
 
-在实际问题中，我们的{% math %}J(\theta){% endmath %}一般不会是__凸函数__，也就是说我们做梯度下降得到的只是__局部最优值__，而不是__全局最优值__：
+* 在实际问题中，我们的{% math %}J(\theta){% endmath %}一般不会是__凸函数__，也就是说我们做梯度下降得到的只是__局部最优值__，而不是__全局最优值__：
+{% note info%}
 {% asset_img pic19.png %}
 {% asset_img pic20.png %}
+{% endnote %}
 
 ## Gradient Descent for Liner Regression - 线性回归中的梯度下降
 对于线性回归，我们有如下定义：
-
 * {% math %}X_{m\times (n+1)} = \begin{bmatrix}1 & x_{1}^{(1)} & \cdots &x_{n}^{(1)} \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_{1}^{(m)} & \cdots & x_{n}^{(m)} \\ \end{bmatrix}{% endmath %}
 
 * {% math %}Y_{m\times 1} = \begin{bmatrix} y^{(1)} & \cdots & y^{(m)}\end{bmatrix}^{T}{% endmath %}
-
-* {% math %}\theta = \begin{bmatrix} \theta_{0} & \theta_{1} & \cdots & \theta_{n} \end{bmatrix}^{T}{% endmath %}
+{% math %}\theta = \begin{bmatrix} \theta_{0} & \theta_{1} & \cdots & \theta_{n} \end{bmatrix}^{T}{% endmath %}
 
 * {% math %}h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta}\left(x^{(2)}\right)&\cdots&h_{\theta}\left(x^{(m)}\right)\end{bmatrix}^{T}=\begin{bmatrix}\theta^{T}x^{(1)}&\theta^{T}x^{(2)}&\cdots&\theta^{T}x^{(m)}\end{bmatrix}^{T} = X \theta{% endmath %}
 
-* {% math %}h_{\theta}\left(x^{(i)}\right) = \theta_{0} + \theta_{1}x_{1}^{i} + \cdots + \theta_{n}x_{n}^{i}{% endmath %}
+* {% math %}h_{\theta}\left(x^{(i)}\right) = \theta_{0} + \theta_{1}x_{1}^{(i)} + \cdots + \theta_{n}x_{n}^{(i)}{% endmath %}
 
 * {% math %}J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}{% endmath %}
 
 我们对{% math %}J(\theta){% endmath %}求所有{% math %}\theta{% endmath %}的偏导：
 <center>
 {% math %}
-\frac{\partial J}{\partial \theta_{j}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{theta}(x^{(i)})-y^{i} \right) \frac{\partial h_{theta}(x^{(i)})}{\partial \theta_{j}} \right]
+\frac{\partial J}{\partial \theta_{j}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) \frac{\partial h_{\theta}(x^{(i)})}{\partial \theta_{j}} \right]
 {% endmath %}
 </center>
-当{% math %}j=0{% endmath %}时
+当{% math %}j=0{% endmath %}时：
 <center>
 {% math %}
-\frac{\partial h_{theta}(x^{(i)})}{\partial \theta_{0}} = 1
+\frac{\partial h_{\theta}(x^{(i)})}{\partial \theta_{0}} = 1
 {% endmath %}
 </center>
-当{% math %}j=1 \cdots n{% endmath %}时
+当{% math %}j=1 \cdots n{% endmath %}时：
 <center>
 {% math %}
-\frac{\partial h_{theta}(x^{(i)})}{\partial \theta_{j}} = x_{j}^{i}
+\frac{\partial h_{\theta}(x^{(i)})}{\partial \theta_{j}} = x_{j}^{i}
 {% endmath %}
 </center>
-综上
+综上：
 <center>
 {% math %}
-\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{theta}(x^{(i)})-y^{i} \right)\right]
+\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right)\right]
 {% endmath %}
 
 {% math %}
-\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
+\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
 {% endmath %}
 
 {% math %}
@@ -306,17 +308,17 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 
 {% math %}
-\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
+\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
 {% endmath %}
 </center>
-更新{% math %}\theta{% endmath %}
+更新{% math %}\theta{% endmath %}：
 <center>
 {% math %}
-\theta_{0}:=\theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{theta}(x^{(i)})-y^{i} \right)\right]
+\theta_{0}:=\theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right)\right]
 {% endmath %}
 
 {% math %}
-\theta_{1}:=\theta_{1} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
+\theta_{1}:=\theta_{1} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
 {% endmath %}
 
 {% math %}
@@ -324,35 +326,32 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 
 {% math %}
-\theta_{n}:=\theta_{n} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
+\theta_{n}:=\theta_{n} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
 {% endmath %}
 </center>
 
 我们将上述过程向量化：
-* 首先将偏导数向量化
+* 首先将偏导数向量化：
 <center>
 {% math %} 
 \frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}1\\1\\ \vdots\\1\end{bmatrix}
 {% endmath %}  
-
 {% math %} 
 \frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{1}^{(1)}\\x_{1}^{(2)}\\ \vdots\\ x_{1}^{(m)}\end{bmatrix}
 {% endmath %}
-
 {% math %} 
 \vdots
 {% endmath %}  
-
 {% math %} 
 \frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{n}^{(1)}\\x_{n}^{(2)}\\ \vdots\\ x_{n}^{(m)}\end{bmatrix}
 {% endmath %}
 
-可得
+可得：
 {% math %} 
 \frac{\partial J}{\partial \theta} = grad_{(n+1)\times 1} = \frac{1}{m} X^{T}(X\theta - Y)
 {% endmath %}  
 
-* 接着将梯度下降的过程向量化
+* 接着将梯度下降的过程向量化：
 {% math %} 
 \theta := \theta - \alpha \frac{1}{m} X^{T}(X\theta - Y)
 {% endmath %}
