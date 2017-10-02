@@ -237,30 +237,29 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 接下来我们就来讲，如何让计算机自动训练出最优的{% math %}\theta{% endmath %}
 
 ---
-
 # Parameter Learning - 参数学习
 ## Gradient Descent - 梯度下降
 我们继续用上面的例子，
 当{% math %}\theta{% endmath %}比较小时：
 {% asset_img pic15.png %}
-我们求得{% math %}J(\theta){% endmath %}在当前{% math %}\theta{% endmath %}的导数，__小于__{% math %}0{% endmath %}。此时我们把{% math %}\theta{% endmath %}更新为{% math %}\theta - \alpha\frac{dJ(\theta)}{d\theta}{% endmath %}，{% math %}\theta{% endmath %}就会 __变大__，往极值点靠近。其中{% math %}\alpha{% endmath %}为 __学习速率__。
+我们求得{% math %}J(\theta){% endmath %}在当前{% math %}\theta{% endmath %}的导数，__小于__{% math %}0{% endmath %}。此时我们把{% math %}\theta{% endmath %}更新为{% math %}\theta - \alpha\frac{dJ(\theta)}{d\theta}{% endmath %}，{% math %}\theta{% endmath %}就会__变大__，往极值点靠近。其中{% math %}\alpha{% endmath %}为__学习速率__。
 
 当{% math %}\theta{% endmath %}比较大时：
 {% asset_img pic16.png %}
-我们求得{% math %}J(\theta){% endmath %}在当前{% math %}\theta{% endmath %}的导数，__大于__{% math %}0{% endmath %}。此时我们把{% math %}\theta{% endmath %}更新为{% math %}\theta - \alpha\frac{dJ(\theta)}{d\theta}{% endmath %}，{% math %}\theta{% endmath %}就会 __减小__，往极值点靠近。其中{% math %}\alpha{% endmath %}为 __学习速率__。
+我们求得{% math %}J(\theta){% endmath %}在当前{% math %}\theta{% endmath %}的导数，__大于__{% math %}0{% endmath %}。此时我们把{% math %}\theta{% endmath %}更新为{% math %}\theta - \alpha\frac{dJ(\theta)}{d\theta}{% endmath %}，{% math %}\theta{% endmath %}就会 __减小__，往极值点靠近。其中{% math %}\alpha{% endmath %}为__学习速率__。
 
 这就是__梯度下降__算法。通过多次的迭代，更新{% math %}\theta{% endmath %}，我们就能无限逼近最优值。
 
-将{% math %}\theta{% endmath %}拓展到__二维向量__（即有两个参数）的情形，我们可能会得到如下的{% math %}\J(\theta){% endmath %}：
+将{% math %}\theta{% endmath %}拓展到__二维向量__（即有两个参数）的情形，我们可能会得到如下的{% math %}J(\theta){% endmath %}：
 {% asset_img pic17.png %}
 这是一个二维曲面，这种情况我们就要分别对{% math %}\theta_{0},\theta_{1}{% endmath %}求偏导来进行梯度下降。
 
 对于梯度下降，还有一些要注意的地方：
-* 关于___学习速率__{% math %}\alpha{% endmath %}，怎样设置学习速率也是很关键的问题，如果{% math %}\alpha{% endmath %}设置的__过小__，则梯度下降就会收敛得很慢，训练时间会过长。如果{% math %}\alpha{% endmath %}设置的过大，则梯度下降有可能会发散，就是越过了极值点：
+* 关于__学习速率__{% math %}\alpha{% endmath %}，怎样设置学习速率也是很关键的问题，如果{% math %}\alpha{% endmath %}设置的__过小__，则梯度下降就会收敛得很慢，训练时间会过长。如果{% math %}\alpha{% endmath %}设置的过大，则梯度下降有可能会发散，就是越过了极值点：
 {% asset_img pic18.png %}
-所以我们在做迭代时一定要关注着{% math %}\J(\theta){% endmath %}，确保它是在下降的。
+所以我们在做迭代时一定要关注着{% math %}J(\theta){% endmath %}，确保它是在下降的。
 
-* 在实际问题中，我们的{% math %}\J(\theta){% endmath %}一般不会是__凸函数__，也就是说我们做梯度下降得到的只是 __局部最优值__ ，而不是 __全局最优值__：
+* 在实际问题中，我们的{% math %}J(\theta){% endmath %}一般不会是__凸函数__，也就是说我们做梯度下降得到的只是__局部最优值__，而不是__全局最优值__：
 {% asset_img pic19.png %}
 {% asset_img pic20.png %}
 
@@ -271,7 +270,6 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 * {% math %}Y_{m\times 1} = \begin{bmatrix} y^{(1)} & \cdots & y^{(m)}\end{bmatrix}^{T}{% endmath %}
 
 * {% math %}\theta = \begin{bmatrix} \theta_{0} & \theta_{1} & \cdots & \theta_{n} \end{bmatrix}^{T}{% endmath %}
-
 * {% math %}
 h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta}\left(x^{(2)}\right)&\cdots&h_{\theta}\left(x^{(m)}\right)\end{bmatrix}^{T}=\begin{bmatrix}\theta^{T}x^{(1)}&\theta^{T}x^{(2)}&\cdots&\theta^{T}x^{(m)}\end{bmatrix}^{T} = X \theta
 {% endmath %}
@@ -339,11 +337,11 @@ h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta
 * 首先将偏导数向量化
 <center>
 {% math %} 
-\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} begin{bmatrix}h_{\theta}\left(x^{(1)}\right)-y^{(1)}&h_{\theta}\left(x^{(2)}\right)-y^{(2)}&\cdots&h_{\theta}\left(x^{(m)}\right)-y^{(m)}\end{bmatrix} \begin{bmatrix}1\\1\\ \vdots\\1\end{bmatrix}
+\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}1\\1\\ \vdots\\1\end{bmatrix}
 {% endmath %}  
 
 {% math %} 
-\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} begin{bmatrix}h_{\theta}\left(x^{(1)}\right)-y^{(1)}&h_{\theta}\left(x^{(2)}\right)-y^{(2)}&\cdots&h_{\theta}\left(x^{(m)}\right)-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{1}^{(1)}\\x_{1}^{(2)}\\ \vdots\\ x_{1}^{(m)}\end{bmatrix}
+\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{1}^{(1)}\\x_{1}^{(2)}\\ \vdots\\ x_{1}^{(m)}\end{bmatrix}
 {% endmath %}
 
 {% math %} 
@@ -351,7 +349,7 @@ h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta
 {% endmath %}  
 
 {% math %} 
-\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} begin{bmatrix}h_{\theta}\left(x^{(1)}\right)-y^{(1)}&h_{\theta}\left(x^{(2)}\right)-y^{(2)}&\cdots&h_{\theta}\left(x^{(m)}\right)-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{n}^{(1)}\\x_{n}^{(2)}\\ \vdots\\ x_{n}^{(m)}\end{bmatrix}
+\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{n}^{(1)}\\x_{n}^{(2)}\\ \vdots\\ x_{n}^{(m)}\end{bmatrix}
 {% endmath %}
 
 可得
@@ -366,7 +364,7 @@ h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta
 </center>
 
 ---
-PS:其实上面的 __多变量线性回归梯度下降__ 是__week2__的内容，因为不算太复杂我就搬到这里讲了，那么__week2__的笔记里就会跳过这部分内容，请大家注意。
+PS:其实上面的__多变量线性回归梯度下降__ 是 __week2__的内容，因为不算太复杂我就搬到这里讲了，那么__week2__的笔记里就会跳过这部分内容，请大家注意。
 {% note info %}
 <center><strong>课程资料</strong></center>
 * [week1课程讲义](https://github.com/tankeryang/Coursera-machine-learning-lecture-note/tree/master/week1)
@@ -374,5 +372,5 @@ PS:其实上面的 __多变量线性回归梯度下降__ 是__week2__的内容�
 {% endnote %}
 
 
-
+\begin{bmatrix}1\\1\\ \vdots\\1\end{bmatrix}
 
