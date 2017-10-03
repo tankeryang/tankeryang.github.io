@@ -231,7 +231,7 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 
 当{% math %}\theta{% endmath %}比取到能使{% math %}h_{\theta}(x)=\theta x{% endmath %}很好地拟合数据时：
 {% asset_img pic14.png %}
-这时的{% math %}theta{% endmath %}就是{% math %}J(\theta){% endmath %}的极小值点。也就是最优的{% math %}\theta{% endmath %}。
+这时的{% math %}\theta{% endmath %}就是{% math %}J(\theta){% endmath %}的极小值点。也就是最优的{% math %}\theta{% endmath %}。
 接下来我们就来讲，如何让计算机自动训练出最优的$\theta$
 
 我们继续用上面的例子，
@@ -267,7 +267,8 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 * {% math %}X_{m\times (n+1)} = \begin{bmatrix}1 & x_{1}^{(1)} & \cdots &x_{n}^{(1)} \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_{1}^{(m)} & \cdots & x_{n}^{(m)} \\ \end{bmatrix}{% endmath %}
 
 * {% math %}Y_{m\times 1} = \begin{bmatrix} y^{(1)} & \cdots & y^{(m)}\end{bmatrix}^{T}{% endmath %}
-{% math %}\theta = \begin{bmatrix} \theta_{0} & \theta_{1} & \cdots & \theta_{n} \end{bmatrix}^{T}{% endmath %}
+
+* {% math %}\theta = \begin{bmatrix} \theta_{0} & \theta_{1} & \cdots & \theta_{n} \end{bmatrix}^{T}{% endmath %}
 
 * {% math %}h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta}\left(x^{(2)}\right)&\cdots&h_{\theta}\left(x^{(m)}\right)\end{bmatrix}^{T}=\begin{bmatrix}\theta^{T}x^{(1)}&\theta^{T}x^{(2)}&\cdots&\theta^{T}x^{(m)}\end{bmatrix}^{T} = X \theta{% endmath %}
 
@@ -314,11 +315,11 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 更新{% math %}\theta{% endmath %}：
 <center>
 {% math %}
-\theta_{0}:=\theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right)\right]
+\theta_{0}:=\theta_{0} - \alpha \frac{\partial J}{\partial \theta_{0}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right)\right]
 {% endmath %}
 
 {% math %}
-\theta_{1}:=\theta_{1} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
+\theta_{1}:=\theta_{1} - \alpha \frac{\partial J}{\partial \theta_{1}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
 {% endmath %}
 
 {% math %}
@@ -326,7 +327,7 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 
 {% math %}
-\theta_{n}:=\theta_{n} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
+\theta_{n}:=\theta_{n} - \alpha \frac{\partial J}{\partial \theta_{n}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
 {% endmath %}
 </center>
 
@@ -345,7 +346,6 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% math %} 
 \frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{n}^{(1)}\\x_{n}^{(2)}\\ \vdots\\ x_{n}^{(m)}\end{bmatrix}
 {% endmath %}
-
 可得：
 {% math %} 
 \frac{\partial J}{\partial \theta} = grad_{(n+1)\times 1} = \frac{1}{m} X^{T}(X\theta - Y)
