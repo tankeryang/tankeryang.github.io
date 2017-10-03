@@ -291,17 +291,17 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 当{% math %}j=1 \cdots n{% endmath %}时：
 <center>
 {% math %}
-\frac{\partial h_{\theta}(x^{(i)})}{\partial \theta_{j}} = x_{j}^{i}
+\frac{\partial h_{\theta}(x^{(i)})}{\partial \theta_{j}} = x_{j}^{(i)}
 {% endmath %}
 </center>
 综上：
 <center>
 {% math %}
-\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right)\right]
+\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right)\right]
 {% endmath %}
 
 {% math %}
-\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
+\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{1}^{(i)} \right]
 {% endmath %}
 
 {% math %}
@@ -309,17 +309,17 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 
 {% math %}
-\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
+\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{n}^{(i)} \right]
 {% endmath %}
 </center>
 更新{% math %}\theta{% endmath %}：
 <center>
 {% math %}
-\theta_{0}:=\theta_{0} - \alpha \frac{\partial J}{\partial \theta_{0}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right)\right]
+\theta_{0}:=\theta_{0} - \alpha \frac{\partial J}{\partial \theta_{0}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right)\right]
 {% endmath %}
 
 {% math %}
-\theta_{1}:=\theta_{1} - \alpha \frac{\partial J}{\partial \theta_{1}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{1}^{i} \right]
+\theta_{1}:=\theta_{1} - \alpha \frac{\partial J}{\partial \theta_{1}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{1}^{(i)} \right]
 {% endmath %}
 
 {% math %}
@@ -327,7 +327,7 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 
 {% math %}
-\theta_{n}:=\theta_{n} - \alpha \frac{\partial J}{\partial \theta_{n}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) x_{n}^{i} \right]
+\theta_{n}:=\theta_{n} - \alpha \frac{\partial J}{\partial \theta_{n}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{n}^{v} \right]
 {% endmath %}
 </center>
 
