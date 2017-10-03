@@ -68,6 +68,7 @@ comments:
 {% endmath %} 
 </center>
 令其为$0$，可得：
+<center>
 {% math %} 
 X^{T}X\theta - X^{T}Y = 0
 {% endmath %}
@@ -82,6 +83,7 @@ X^{T}X\theta = X^{T}Y
 {% endmath %}
 </center>
 
+<br>
 其中要注意的是，$X^{T}X$不一定是可逆的。比如__特征数过多__$(m<<n)$，此时$r(X)\leq m$，$r(X^{T}X)\leq min(r(X),r(X^{T}))\leq m < n$。而$X^{T}X\in n\times n$，因此$X^{T}X$是不可逆的。
 因此在__样本数量远大于特征数量__时才能用正规方程。
 
