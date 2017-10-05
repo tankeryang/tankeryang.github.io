@@ -315,11 +315,11 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 更新{% math %}\theta{% endmath %}：
 <center>
 {% math %}
-\theta_{0}:=\theta_{0} - \alpha \frac{\partial J}{\partial \theta_{0}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right)\right]
+\theta_{0}:=\theta_{0} - \alpha \frac{\partial J}{\partial \theta_{0}} = \theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right)\right]
 {% endmath %}
 
 {% math %}
-\theta_{1}:=\theta_{1} - \alpha \frac{\partial J}{\partial \theta_{1}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{1}^{(i)} \right]
+\theta_{1}:=\theta_{1} - \alpha \frac{\partial J}{\partial \theta_{1}} = \theta_{1} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{1}^{(i)} \right]
 {% endmath %}
 
 {% math %}
@@ -327,7 +327,7 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 {% endmath %}
 
 {% math %}
-\theta_{n}:=\theta_{n} - \alpha \frac{\partial J}{\partial \theta_{n}} = \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{n}^{v} \right]
+\theta_{n}:=\theta_{n} - \alpha \frac{\partial J}{\partial \theta_{n}} = \theta_{n} - \alpha \frac{1}{m} \sum_{i=1}^{m} \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{n}^{(i)} \right]
 {% endmath %}
 </center>
 
@@ -335,20 +335,20 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 * 首先将偏导数向量化：
 <center>
 {% math %} 
-\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}1\\1\\ \vdots\\1\end{bmatrix}
+\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \begin{bmatrix}1&1&\cdots&1\end{bmatrix} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}\\h_{\theta}(x^{(2)})-y^{(2)}\\ \vdots\\h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix}
 {% endmath %}  
 {% math %} 
-\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{1}^{(1)}\\x_{1}^{(2)}\\ \vdots\\ x_{1}^{(m)}\end{bmatrix}
+\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \begin{bmatrix}x_{1}^{(1)}&x_{1}^{(2)}&\cdots&x_{1}^{(m)}\end{bmatrix} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}\\h_{\theta}(x^{(2)})-y^{(2)}\\ \vdots\\h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix}
 {% endmath %}
 {% math %} 
 \vdots
 {% endmath %}  
 {% math %} 
-\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}&h_{\theta}(x^{(2)})-y^{(2)}&\cdots&h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} \begin{bmatrix}x_{n}^{(1)}\\x_{n}^{(2)}\\ \vdots\\ x_{n}^{(m)}\end{bmatrix}
+\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \begin{bmatrix}x_{n}^{(1)}&x_{n}^{(2)}&\cdots&x_{n}^{(m)}\end{bmatrix} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}\\h_{\theta}(x^{(2)})-y^{(2)}\\ \vdots\\h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix}
 {% endmath %}
 可得：
 {% math %} 
-\frac{\partial J}{\partial \theta} = grad_{(n+1)\times 1} = \frac{1}{m} X^{T}(X\theta - Y)
+\frac{\partial J}{\partial \theta} = grad_{(n+1)\times 1} = \begin{bmatrix}\frac{\partial J}{\partial \theta_{0}}\\\frac{\partial J}{\partial \theta_{1}}\\ \vdots\\\frac{\partial J}{\partial \theta_{n}}\end{bmatrix} = \frac{1}{m} X^{T}(X\theta - Y)
 {% endmath %}  
 
 * 接着将梯度下降的过程向量化：
