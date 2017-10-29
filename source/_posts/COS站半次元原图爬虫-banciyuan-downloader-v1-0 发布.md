@@ -67,7 +67,7 @@ cos粉毛那位
 {% asset_img coser_folder.png %}
 {% asset_img post_folder.png %}
 
-## F&Q
+## FAQ
 有何疑问可在[github](https://github.com/tankeryang/banciyuan-downloader)发布[issue](https://github.com/tankeryang/banciyuan-downloader/issues) ，本人会尽量及时查看
 
 ## 疯狂打call
