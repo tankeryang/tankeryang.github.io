@@ -7,6 +7,10 @@
 <meta name="baidu-site-verification" content="N0szVNzJx3" />
 {% endif %}
 
+{% if theme.google_site_verification %}
+<meta name="google-site-verification" content="9HGZTTkPA9_LxJmEs730dO-F50WMc9zaadoULPhGdxA" />
+{% endif %}
+
 {% if theme.pace %}
   {% set pace_css_uri = url_for(theme.vendors._internal + '/pace/'+ theme.pace_theme +'.min.css?v=1.0.2') %}
   {% set pace_js_uri = url_for(theme.vendors._internal + '/pace/pace.min.js?v=1.0.2') %}
