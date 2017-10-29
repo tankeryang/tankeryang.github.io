@@ -4,11 +4,11 @@
 <meta name="theme-color" content="{{ theme.android_chrome_color }}">
 
 {% if theme.baidu_site_verification %}
-<meta name="baidu-site-verification" content="N0szVNzJx3" />
+  <meta name="baidu-site-verification" content="N0szVNzJx3" />
 {% endif %}
 
 {% if theme.google_site_verification %}
-<meta name="google-site-verification" content="9HGZTTkPA9_LxJmEs730dO-F50WMc9zaadoULPhGdxA" />
+  <meta name="google-site-verification" content="9HGZTTkPA9_LxJmEs730dO-F50WMc9zaadoULPhGdxA" />
 {% endif %}
 
 {% if theme.pace %}
