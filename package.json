@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.3.8"
+    "version": "3.4.4"
   },
   "dependencies": {
     "hexo": "^3.2.0",
@@ -18,7 +18,7 @@
     "hexo-generator-searchdb": "^1.0.8",
     "hexo-generator-tag": "^0.2.0",
     "hexo-inject": "^1.0.0",
-    "hexo-math": "^3.0.3",
+    "hexo-math": "^3.0.4",
     "hexo-renderer-ejs": "^0.3.0",
     "hexo-renderer-marked": "^0.3.0",
     "hexo-renderer-stylus": "^0.3.1",
@@ -26,6 +26,6 @@
     "hexo-tag-gantt": "https://github.com/threeq/hexo-tag-mermaid.git",
     "hexo-tag-mermaid": "^1.0.0",
     "hexo-tag-plantuml": "^1.0.0",
-    "mermaid": "^7.1.0"
+    "mermaid": "^7.1.2"
   }
 }
