@@ -39,4 +39,4 @@ git checkout -b dev origin/dev
 ```
 
 ## 安装npm包
-按照 __.travis.yml__ 的安装列表进行安装
+按照```.travis.yml```的安装列表进行安装
