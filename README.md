@@ -1,5 +1,7 @@
 # Blog source file
 
+[![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://tankeryang.github.io)
+
 ## 如何克隆?
 * 设置 git http代理[点我](https://www.zhihu.com/question/27159393)
 ```
