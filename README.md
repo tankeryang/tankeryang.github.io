@@ -19,8 +19,13 @@ git clone https://github.com/tankeryang/tankeryang.github.io.git
 ```
 
 * 更改```~/.git```下的```config```
-将```https://github.com/tankeryang/tankeryang.github.io.git```
-换成```ssh://github.com/tankeryang/tankeryang.github.io.git```
+
+```
+将
+    https://github.com/tankeryang/tankeryang.github.io.git
+换成
+    git@github.com:tankeryang/tankeryang.github.io.git
+```
 
 ## 关联分支
 * 查看所有分支
