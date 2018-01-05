@@ -1,5 +1,5 @@
 ---
-title: Coursera机器学习笔记(1)_Week1
+title: Machine Learning (Week1)
 date: 2017-09-06 15:38:01
 categories: 机器学习笔记
 tags: [机器学习, ML, 数学]

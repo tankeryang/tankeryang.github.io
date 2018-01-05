@@ -1,5 +1,5 @@
 ---
-title: Coursera机器学习笔记(3)_Week3
+title: Machine Learning (Week3)
 date: 2017-10-03 22:26:22
 categories: 机器学习笔记
 tags: [机器学习, ML, 数学]

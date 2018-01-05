@@ -1,5 +1,5 @@
 ---
-title: Coursera deeplearning.ai 系列课程笔记 专项课程1--Neural Networks and Deep Learning_week1
+title: deeplearning.ai 1 - Neural Networks and Deep Learning (week1)
 date: 2017-09-30 19:03:30
 categories: deeplearning.ai笔记
 tags: [机器学习, 深度学习, ML, DL,  数学]

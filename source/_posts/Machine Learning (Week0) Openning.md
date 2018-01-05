@@ -1,5 +1,5 @@
 ---
-title: Coursera机器学习笔记(0)_开篇
+title: Machine Learning (Week0) Openning
 date: 2017-09-06 14:07:42
 categories: 机器学习笔记
 tags: [机器学习, ML, 数学]

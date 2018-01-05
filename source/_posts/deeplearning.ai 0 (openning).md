@@ -1,5 +1,5 @@
 ---
-title: Coursera deeplearning.ai 系列课程笔记_开篇
+title: deeplearning.ai 0 (openning)
 date: 2017-09-30 18:06:39
 categories: deeplearning.ai笔记
 tags: [机器学习, 深度学习, ML, DL,  数学]
