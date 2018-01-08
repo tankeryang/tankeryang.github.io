@@ -275,3 +275,7 @@ h_{\theta}(x^{(i)})x^{(i)} \left[y^{(i)}(1+e^{-\theta^{T}x^{(i)}}) - 1\right]
 {% asset_img pic10.png %}
 
 训练完所有的{% math %}h_{\theta}^{(i)}(x){% endmath %}后，当我们给一组输入特征{% math %}x{% endmath %}时，取__最大的__{% math %}h_{\theta}^{(i)}(x){% endmath %}作为我们的预测结果。
+
+
+# Regularization - 正则化
+## The problem of overfitting - 过拟合问题
