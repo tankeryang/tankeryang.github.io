@@ -394,7 +394,7 @@ X^{T}(X\theta - Y) + \lambda \begin{bmatrix}0 &  &  & \\ & 1 &  & \\ &  & \ddots
 与线性回归一样，我们在原来的代价函数{% math %}J(\theta){% endmath %}后面加上一个惩罚项，则{% math %}J(\theta){% endmath %}变成
 <center>
 {% math %}
-J(\theta) = - \left\{ \frac{1}{m} \sum_{i=1}^{m} \left[ y^{\left( i \right)}log\left( h_{\theta}\left( x^{\left( i \right)} \right) \right) + \left( 1-y^{\left( i \right)} \right)log\left( 1-h_{\theta}\left( x^{\left( i \right)} \right) \right) \right] \right\} + \frac{\lambda}{2m} \sum_{j=1}^{2} \theta_{j}^{n}
+J(\theta) = - \left\{ \frac{1}{m} \sum_{i=1}^{m} \left[ y^{\left( i \right)}log\left( h_{\theta}\left( x^{\left( i \right)} \right) \right) + \left( 1-y^{\left( i \right)} \right)log\left( 1-h_{\theta}\left( x^{\left( i \right)} \right) \right) \right] \right\} + \frac{\lambda}{2m} \sum_{j=1}^{2} \theta_{j}^{2}
 {% endmath %}
 </center>
 
