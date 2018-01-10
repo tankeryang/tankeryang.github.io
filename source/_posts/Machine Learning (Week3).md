@@ -174,19 +174,11 @@ J(\theta) = - \frac{1}{m} \sum_{i=1}^{m} \left[ y^{\left( i \right)}log\left( h_
 
 * {% math %}X_{m \times (n+1)}\begin{bmatrix}x_{0}^{(1)} & x_{1}^{(1)} & \cdots & x_{n}^{(1)}\\ \vdots & \vdots & \ddots & \vdots\\ x_{0}^{(m)} & x_{1}^{(m)} & \cdots & x_{n}^{(m)}\end{bmatrix} = \begin{bmatrix}1 & x_{1}^{(1)} & \cdots & x_{n}^{(1)}\\ \vdots & \vdots & \ddots & \vdots\\ 1 & x_{1}^{(m)} & \cdots & x_{n}^{(m)}\end{bmatrix}{% endmath %}
 
-<br>
-
 * {% math %}Y_{m\times 1} = \begin{bmatrix} y^{(1)} & \cdots & y^{(m)}\end{bmatrix}^{T}{% endmath %}
-
-<br>
 
 * {% math %}\theta = \begin{bmatrix}\theta_{0} & \theta_{1} & \cdots  & \theta_{n} \end{bmatrix}^{T}{% endmath %}
 
-<br>
-
 * {% math %}\frac{\partial J}{\partial \theta} = - \frac{1}{m} \sum_{i=1}^{m} \left[ y^{(i)}\frac{\partial log(h_{\theta}(x^{(i)}))}{\partial \theta} + ( 1-y^{(i)})\frac{\partial log(1-h_{\theta}( x^{(i)} ))}{\partial \theta} \right]{% endmath %}
-
-<br>
 
 * {% math %}h_{\theta}(x^{(i)}) = g(\theta^{T}x^{(i)}) = \frac{1}{1+e^{-\theta^{T}x^{(i)}}}{% endmath %}
 
@@ -279,3 +271,139 @@ h_{\theta}(x^{(i)})x^{(i)} \left[y^{(i)}(1+e^{-\theta^{T}x^{(i)}}) - 1\right]
 
 # Regularization - 正则化
 ## The problem of overfitting - 过拟合问题
+假如我们样本有非常多的特征，我们也许能训练出一个在样本集上表现得很好的假设函数{% math %}h_{\theta}(x){% endmath %}，但是对于新的输入，我们可能不能很好地进行拟合（预测）。这类问题，我们称之为__过拟合__。
+{% asset_img pic11.png %}
+{% asset_img pic12.png %}
+
+对于过拟合问题我们一般有下面一些解决方法
+
+* 减少特征数量
+
+> 手动剔除一些不必要的特征，或者用一些降维算法（PCA）来自动减少特征数
+
+* 正则化
+
+> 保留所有的特征，同时减小参数{% math %}\theta{% endmath %}的大小
+
+## Cost function - 代价函数
+首先看下面这两种预测函数在样本集上的结果
+{% asset_img pic13.png %}
+
+我们能看到，左边是比较合适的预测函数，而右边则明显过拟合了。
+
+这时我们用一个小小的技巧，在我们的误差函数{% math %}J(\theta){% endmath %}后面对{% math %}\theta_{3}{% endmath %}和{% math %}\theta_{4}{% endmath %}加一个__惩罚系数（或者说补偿反馈）__，使之变为
+<center>
+{% math %}J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2} + 1000\theta_{3} + 1000\theta_{4}{% endmath %}
+</center>
+
+<br>
+由上可知，我们要求最优的{% math %}\theta{% endmath %}，使得{% math %}J(\theta){% endmath %}取得最小值，那么我们在优化过程中（比如梯度下降）{% math %}\theta_{3}{% endmath %}和{% math %}\theta_{4}{% endmath %}一定{% math %}\rightarrow 0{% endmath %}，因为他们占比很大。这样{% math %}\theta_{3}{% endmath %}和{% math %}\theta_{4}{% endmath %}对{% math %}h_{\theta}(x){% endmath %}的贡献就非常小，{% math %}x^{3}{% endmath %}和{% math %}x^{4}{% endmath %}这些高次项在{% math %}h_{\theta}(x){% endmath %}所占的权重就小很多，有效地防止了__过拟合__。
+
+假如我们有非常多的特征，不知道要对哪些对应的参数{% math %}\theta{% endmath %}作惩罚，那么最好的办法就是对所有的{% math %}\theta{% endmath %}作惩罚，然后让程序自己迭代优化。所以我们的代价函数{% math %}J(\theta){% endmath %}就变成下面这种形式
+<center>
+{% math %}
+J(\theta) = \frac{1}{2m} \left[ \sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2} + \lambda \sum_{j=1}^{n} \theta_{j}^{2} \right]
+{% endmath %}
+</center>
+
+<br>
+其中{% math %}\lambda{% endmath %}称为__正则化参数__。一般我们不对{% math %}\theta_{0}{% endmath %}进行惩罚。
+
+正则化后的假设函数如下图所示
+{% asset_img pic14.png %}
+
+其中<font color="#538fca">蓝色</font>曲线是过拟合的情况，<font color="#ee34e1">紫色</font>曲线是正则化后的假设函数曲线，而<font color="#ef9a3d">橙色</font>直线则是 __正则化参数过大__ 导致的 __欠拟合__。为什么会这样呢？因为正则化参数过大，会对{% math %}(\theta_{1} \cdots \theta_{n}){% endmath %}惩罚过重，以至于{% math %}(\theta_{1} \cdots \theta_{n}) \rightarrow 0{% endmath %}，使得{% math %}h_{\theta}(x) \approx \theta_{0}{% endmath %}。
+
+因此对于正则化，我们要选一个合适的值，才有好的效果。
+
+## Regularized linear regression - 正则化后的线性回归
+正则化后我们的代价函数变成
+<center>
+{% math %}
+J(\theta) = \frac{1}{2m} \left\{ \left[\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2} \right] + \lambda \sum_{j=1}^{n} \theta_{j}^{2} \right\}
+{% endmath %}
+</center>
+
+<br>
+如果我们用梯度下降来求最优{% math %}\theta{% endmath %}，我们更新{% math %}\theta{% endmath %}就要分别更新{% math %}\theta_{0}{% endmath %}和{% math %}\theta_{1} \cdots \theta_{n}{% endmath %}
+<center>
+{% math %}
+\begin{cases}
+\theta_{0} := \theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m}( h_{\theta}(x^{(i)})-y^{(i)} )x_{0}^{(i)} \\ 
+\theta_{j} := \theta_{j} - \alpha \left\{ \frac{1}{m} \left[\sum_{i=1}^{m}( h_{\theta}(x^{(i)})-y^{(i)} )x_{j}^{(i)} \right]+\frac{\lambda}{m}\theta_{j}\right\} & j=1,2, \cdots ,n
+\end{cases}
+{% endmath %}
+</center>
+
+<br>
+其中{% math %}\theta_{j}{% endmath %}可以化简成
+<center>
+{% math %}
+\theta_{j}(1-\alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})x_{j}^{(i)}
+{% endmath %}
+</center>
+
+<br>
+我们看到，{% math %}(1-\alpha\frac{\lambda}{m}) < 1{% endmath %}，所以正则化后的梯度下降实际上就是让{% math %}\theta_{j}{% endmath %}减少一定的比例后再进行原来的梯度下降。
+
+我们知道，梯度{% math %}\frac{\partial J}{\partial \theta}{% endmath %}为{% math %}0{% endmath %}时，{% math %}J(\theta){% endmath %}取得极小值，所以我们令
+<center>
+{% math %}
+\begin{cases}
+\sum_{i=1}^{m}( h_{\theta}(x^{(i)})-y^{(i)} )x_{0}^{(i)} = 0\\ 
+\sum_{i=1}^{m}( h_{\theta}(x^{(i)})-y^{(i)} )x_{j}^{(i)} + \lambda\theta_{j} = 0 & j=1,2, \cdots ,n
+\end{cases}
+{% endmath %}
+</center>
+
+即
+<center>
+{% math %}
+\frac{\partial J}{\partial \theta} =\begin{bmatrix}x_{0}^{(1)} & x_{0}^{(2)} &\cdots & x_{0}^{(m)}\\ x_{1}^{(1)} & x_{1}^{(2)} & \cdots & x_{1}^{(m)}\\ \vdots & \vdots & \ddots & \vdots \\ x_{n}^{(1)} & x_{n}^{(2)} & \cdots  & x_{n}^{(m)}\end{bmatrix} \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}\\h_{\theta}(x^{(2)})-y^{(2)}\\ \vdots\\h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix} + \lambda \begin{bmatrix}0\\ \theta_{1}\\ \vdots \\ \theta_{n}\end{bmatrix} = 0
+{% endmath %}
+</center>
+
+<br>
+也即
+<center>
+{% math %}
+X^{T}(X\theta - Y) + \lambda \begin{bmatrix}0 &  &  & \\ & 1 &  & \\ &  & \ddots & \\  &  &  & 1\end{bmatrix}_{(n+1)^{2}} \theta = 0
+{% endmath %}
+</center>
+
+<br>
+去掉括号，并提出{% math %}\theta{% endmath %}，整理等式
+<center>
+{% math %}
+(X^{T}X + \lambda\begin{bmatrix}0 &  &  & \\ & 1 &  & \\ &  & \ddots & \\  &  &  & 1\end{bmatrix}_{(n+1)^{2}}) \theta = X^{T}Y
+{% endmath %}
+</center>
+
+<br>
+最后我们可得
+<center>
+{% math %}
+\theta = (X^{T}X + \lambda\begin{bmatrix}0 &  &  & \\ & 1 &  & \\ &  & \ddots & \\  &  &  & 1\end{bmatrix}_{(n+1)^{2}})^{-1} X^{T}Y
+{% endmath %} 
+</center>
+
+<br>
+上式就是正则化后的 __Normal equation - 正规方程__，其中{% math %}(X^{T}X + \lambda\begin{bmatrix}0 &  &  & \\ & 1 &  & \\ &  & \ddots & \\  &  &  & 1\end{bmatrix}_{(n+1)^{2}}){% endmath %}一定是可逆的。这个就不在此作证明了。
+
+## Regularized logistic regression - 正则化后的逻辑斯谛回归
+与线性回归一样，我们在原来的代价函数{% math %}J(\theta){% endmath %}后面加上一个惩罚项，则{% math %}J(\theta){% endmath %}变成
+<center>
+{% math %}
+J(\theta) = - \left\{ \frac{1}{m} \sum_{i=1}^{m} \left[ y^{\left( i \right)}log\left( h_{\theta}\left( x^{\left( i \right)} \right) \right) + \left( 1-y^{\left( i \right)} \right)log\left( 1-h_{\theta}\left( x^{\left( i \right)} \right) \right) \right] \right\} + \frac{\lambda}{2m} \sum_{j=1}^{2} \theta_{j}^{n}
+{% endmath %}
+</center>
+
+<br>
+因为其{% math %}\frac{\partial J(\theta)}{\partial \theta}{% endmath %}的形式与上面线性回归一样，所以梯度下降的过程同上。
+
+<br>
+{% note info %}
+<center><strong>课程资料</strong></center>
+* [week3课程讲义](https://github.com/tankeryang/Coursera-machine-learning-lecture-note/tree/master/week3)
+* [编程作业ex2](https://github.com/tankeryang/Coursera-machine-learning-assignment/tree/master/machine-learning-ex2)
+{% endnote %}

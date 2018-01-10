@@ -90,6 +90,7 @@ X^{T}X\theta = X^{T}Y
 # 小结
 具体问题具体分析，梯度下降虽然基础，但在许多问题上仍然是很有效的。正规方程用在合适的问题上则能非常快的得出结果。各司其职。
 
+<br>
 {% note info %}
 <center><strong>课程资料</strong></center>
 * [week2课程讲义](https://github.com/tankeryang/Coursera-machine-learning-lecture-note/tree/master/week2)

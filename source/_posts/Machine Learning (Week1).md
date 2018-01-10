@@ -359,6 +359,8 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 
 ---
 PS:其实上面的__多变量线性回归梯度下降__ 是 __week2__的内容，因为不算太复杂我就搬到这里讲了，那么__week2__的笔记里就会跳过这部分内容，请大家注意。
+
+<br>
 {% note info %}
 <center><strong>课程资料</strong></center>
 * [week1课程讲义](https://github.com/tankeryang/Coursera-machine-learning-lecture-note/tree/master/week1)
