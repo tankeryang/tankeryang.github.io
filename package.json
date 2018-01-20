@@ -27,6 +27,7 @@
     "hexo-tag-gantt": "https://github.com/threeq/hexo-tag-mermaid.git",
     "hexo-tag-mermaid": "^1.0.0",
     "hexo-tag-plantuml": "^1.0.0",
+    "hexo-wordcount": "^3.0.2",
     "mermaid": "^7.1.2"
   }
 }
