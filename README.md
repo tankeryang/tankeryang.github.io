@@ -2,7 +2,7 @@
 
 [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://tankeryang.github.io)
 
-## 如何克隆?
+## 如何克隆
 * 设置 git http代理[(点我)](https://www.zhihu.com/question/27159393)
 ```
 git config --global http.https://github.com.proxy https://127.0.0.1:1080
