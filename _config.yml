@@ -75,6 +75,7 @@ pagination_dir: page
 ## Themes: https://hexo.io/themes/
 theme: next
 #plugins: hexo-math
+#plugins: hexo-generate-feed
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -93,10 +94,10 @@ math:
     src: custom_mathjax_source
     config:
       # MathJax config
-  katex:
-    css: custom_css_source
-    js: custom_js_source # not used
-    config:
+#  katex:
+#    css: custom_css_source
+#    js: custom_js_source # not used
+#    config:
       # KaTeX config
 
 #algolia:
