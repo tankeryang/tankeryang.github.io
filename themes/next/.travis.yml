@@ -1,41 +1,17 @@
 language: node_js
 node_js: node
-branches:
-  only:
-    - source  # 设置自动化部署的源码分支
 
 cache:
   directories:
     - node_modules
 
-env:
-  global:
-    - REPO_REF: github.com/tankeryang/tankeryang.github.io.git
-    - secure: "NnXxXQsXGrrDpY9XN71JEMVwSBbqh/mpoeHb1u3Dj0YnpzUPlqpxM5lmkhsTO1JVKcp20QxAznV+5D8yR5SQTtKoAm0gPBMU/8+1+K813uQlPUt2UJnd3BP+27tO0HT/a5n6XXATw0dB7u+34DaE4id87U8mlnvA1uLHxUpg8fVwHTxDCAoMMRSiLE5mtSvAEhVtVYoVCZjbyxsguswbY4qj4x8QmozzmNG0HjBwHXaHBnmySiDN1XVoPmeC81fHFtLZWX75HjyCuoR+3/IPsPPY6eB68K3yh44M/Gh4S5XUd2e0f+n0Bybeu+gLuaCloTuENzxKenWO5M9lQRGlW2M24I5TarX+QkMD8M7tR+kAbSAvZUtISWPXK38M67hll3ROpqw6KwWnlgWWo0TTpv0Sv0AInZB7uSee/hSQuqxYsoZGFN97BZU8oinUcKR2lKdP4kAQPwV9ABu2KVhv2hdcI3cogZhkj2/HB1ZDV5HBYkuYiWP8ifkwuv7ozfDbxNj2Viun+pT6WkZNj6fkAB+eouXC2fYvyTSObCwr+OGTs+z8l7uFGl1Fj93PULkTypL1xCrYq3Spj1rDAW3K8OiCNvDPieb0SXygeaUMOdfsA+9iOAsGsw8PeWnxefMtcfcNEbGbRnQmaP7kucDCFqq7dBavSvI+wjZBaWgbYIk="
-
-before_install:
-- export TZ='Asia/Shanghai'  
-- npm install -g hexo
-- npm install -g hexo-cli 
+install: npm install
 
 before_script:
   - npm install -g gulp
-  - git config --global user.name "tankeryang"
-  - git config --global user.email youngzyang@outlook.com
 
-- sed -i'' "s~git@github.com:tankeryang/tankeryang.github.io.git~https://${REPO_TOKEN}:x-oauth-basic@github.com/tankeryang/tankeryang.github.io.git~" _config.yml
-
-install: npm install
-
-script:
-  - hexo clean
-  - hexo generate
-
-after_success: hexo deploy
-
-#addons:
-#  browserstack:
-#    username: "ivannginx1"
-#    access_key:
-#      secure: "NutOhdgtUdBUXMPZhy8X1F1Jq+tan1LeNOV0FArBt15SNlxtNArqhiyTi4XnG9MPruX4306aGF2RBrKso+OiGNRdGtRGngH613Q0GWNtlC/boMqnI7fHqLIyCs6S12y2uA8PK4Ifxg9bZ0VtCTYYbMy+p1KvBM//L12vmtfdnby8z5Qvex3tB3dLoPOR50CKkINHJVDLm+iVRFrdz4/83oDsulZSRRGIaxu5taDWPIcp3fYZtre2Nc+RXcsyFDyjN7U0Hvr5tKBbloJxXEQEBv2xLkMOtp85nmCPD06s1Il8Wus1ux3raVsfUyaW5FpNX37Jeb5e00RQUM1wgU5m75H6qiGwDvQswbugJG0i/a2nNfsgVmbrSZdMnkHcx2Uxmrw4ejyEP5NSrJSBi05Ck1fQ4UsZ4Qkdf1fd04SI0LpLWt43eoNO/7rHKsQoP4LCX9gxKUuC075NEBLODyJ529RYfA6dKKwwH6o0ZbOgASmCoAWaM65g4+FHRnJcKL/Kj9ZWklQtRa7/ynlHaA65jefFS2lB8Ut6d3rXDDBih9mIrwV1uUaEH96xgAN42bgU/vY6FGzNkDOYZqj4YfsepDM0wbOsslFie7JZq7iFjsYvrXqLvYUMk37AZwQ2Sb6uH4tIT4Qw/4oZfDzA1En3/8HdZJ28nKW/lzjwMSqheIY="
-
+addons:
+  browserstack:
+    username: "ivannginx1"
+    access_key:
+      secure: "NutOhdgtUdBUXMPZhy8X1F1Jq+tan1LeNOV0FArBt15SNlxtNArqhiyTi4XnG9MPruX4306aGF2RBrKso+OiGNRdGtRGngH613Q0GWNtlC/boMqnI7fHqLIyCs6S12y2uA8PK4Ifxg9bZ0VtCTYYbMy+p1KvBM//L12vmtfdnby8z5Qvex3tB3dLoPOR50CKkINHJVDLm+iVRFrdz4/83oDsulZSRRGIaxu5taDWPIcp3fYZtre2Nc+RXcsyFDyjN7U0Hvr5tKBbloJxXEQEBv2xLkMOtp85nmCPD06s1Il8Wus1ux3raVsfUyaW5FpNX37Jeb5e00RQUM1wgU5m75H6qiGwDvQswbugJG0i/a2nNfsgVmbrSZdMnkHcx2Uxmrw4ejyEP5NSrJSBi05Ck1fQ4UsZ4Qkdf1fd04SI0LpLWt43eoNO/7rHKsQoP4LCX9gxKUuC075NEBLODyJ529RYfA6dKKwwH6o0ZbOgASmCoAWaM65g4+FHRnJcKL/Kj9ZWklQtRa7/ynlHaA65jefFS2lB8Ut6d3rXDDBih9mIrwV1uUaEH96xgAN42bgU/vY6FGzNkDOYZqj4YfsepDM0wbOsslFie7JZq7iFjsYvrXqLvYUMk37AZwQ2Sb6uH4tIT4Qw/4oZfDzA1En3/8HdZJ28nKW/lzjwMSqheIY="

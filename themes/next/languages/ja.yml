@@ -29,6 +29,7 @@ post:
   wordcount: Words count in article
   min2read: Reading time
   totalcount: Site words total count
+  totaltime: Site reading time
   copyright:
     author: Post author
     link: Post link
@@ -80,3 +81,9 @@ symbol:
   comma: ', '
   period: '. '
   colon: ':'
+
+reward:
+  donate: Donate
+  wechatpay: WeChat Pay
+  alipay: Alipay
+  bitcoin: Bitcoin

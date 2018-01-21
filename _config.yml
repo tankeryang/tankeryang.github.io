@@ -74,7 +74,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
-plugins: hexo-math
+#plugins: hexo-math
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
@@ -118,8 +119,8 @@ search:
 tag_plantuml:
   type: static
 
-#symbols_count_time:
-#  symbols: true
-#  time: true
-#  total_symbols: true
-#  total_time: true
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true

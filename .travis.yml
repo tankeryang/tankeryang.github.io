@@ -6,8 +6,9 @@ install:
   - npm install
   - npm install hexo-math --save
   - npm install hexo-generator-searchdb --save
+  - npm install hexo-symbols-count-time --save
   - npm install hexo-generator-feed --save
-  - npm i --save hexo-wordcount
+  #- npm i --save hexo-wordcount
   - npm install mermaid --save
   - npm install --save hexo-tag-mermaid
   - npm install hexo-tag-plantuml --save
