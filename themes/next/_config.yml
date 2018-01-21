@@ -11,7 +11,7 @@ keywords: "Hexo, NexT"
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
 # Set rss to specific value if you have burned your feed already.
-rss:
+rss: false
 
 # Specify the date when the site was setup
 since: 2017
@@ -198,6 +198,15 @@ post_wordcount:
   min2read: true
   totalcount: true
   separated_meta: true
+
+# Post wordcount display settings
+# Dependencies: https://github.com/theme-next/hexo-symbols-count-time
+#symbols_count_time:
+#  separated_meta: true
+#  item_text_post: true
+#  item_text_total: true
+#  awl: 5
+#  wpm: 200
 
 # Wechat Subscriber
 #wechat_subscriber:

@@ -117,3 +117,9 @@ search:
 
 tag_plantuml:
   type: static
+
+#symbols_count_time:
+#  symbols: true
+#  time: true
+#  total_symbols: true
+#  total_time: true
