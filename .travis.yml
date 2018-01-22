@@ -8,14 +8,14 @@ install:
   - npm install hexo-generator-searchdb --save
   - npm install hexo-symbols-count-time --save
   - npm install hexo-generator-feed --save
-  - npm i --save hexo-wordcount
+  - npm install hexo-wordcount --save
   - npm install mermaid --save
-  - npm install --save hexo-tag-mermaid
+  - npm install hexo-tag-mermaid --save
   - npm install hexo-tag-plantuml --save
 
 before_script:
   - cd ./themes/next
-  #- git clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox
+  - git clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox
   - git clone https://github.com/theme-next/theme-next-jquery-lazyload source/lib/jquery_lazyload
   - git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton
   - git clone https://github.com/theme-next/theme-next-pace source/lib/pace
