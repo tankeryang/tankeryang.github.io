@@ -127,9 +127,9 @@ menu_settings:
 
 # Schemes
 #scheme: Muse
-#scheme: Mist
+scheme: Mist
 #scheme: Pisces
-scheme: Gemini
+#scheme: Gemini
 
 
 # ---------------------------------------------------------------
@@ -221,7 +221,7 @@ sidebar:
   scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
-  onmobile: false
+  onmobile: true
 
 
 # ---------------------------------------------------------------
@@ -607,10 +607,10 @@ busuanzi_count:
 
 
 # Tencent analytics ID
-# tencent_analytics:
+# tencent_analytics: 65055205
 
 # Tencent MTA ID
-# tencent_mta:
+# tencent_mta: 65055205
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
