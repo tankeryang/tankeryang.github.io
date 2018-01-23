@@ -4,7 +4,7 @@ date: 2017-10-03 22:26:22
 categories: 机器学习笔记
 tags: [机器学习, ML, 数学]
 mathjax: true
-comments:
+comments: true
 ---
 在第三周的课程里，介绍了__Logistic Regression - 逻辑斯谛回归__问题，主要应用在__Classification - 分类__上。还有__Regularization - 正则化__，如何用来解决__Overfitting - 过拟合__问题。
 

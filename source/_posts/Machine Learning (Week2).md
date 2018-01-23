@@ -4,7 +4,7 @@ date: 2017-10-03 14:43:21
 categories: 机器学习笔记
 tags: [机器学习, ML, 数学]
 mathjax: true
-comments:
+comments: true
 ---
 在第二周的课程里，主要讲了__多变量线性回归__以及相应的__梯度下降实践__，一些梯度下降的技巧如__学习速率的选择__，__Feature Scaling - 特征缩放__等，最后介绍了__Polynomial Regression - 多项式回归__和__Normal Equation - 正规方程__。
 

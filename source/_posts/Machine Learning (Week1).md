@@ -4,7 +4,7 @@ date: 2017-09-06 15:38:01
 categories: 机器学习笔记
 tags: [机器学习, ML, 数学]
 mathjax: true
-comments: 
+comments: true
 ---
 在第一周的课程里简要介绍了__什么是机器学习__，__Model - 模型__和__Cost Function - 代价函数__的概念，以及一些必要的__线性代数__的知识。
 

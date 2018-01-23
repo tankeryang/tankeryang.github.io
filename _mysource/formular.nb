@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     57463,       1229]
-NotebookOptionsPosition[     56165,       1179]
-NotebookOutlinePosition[     56522,       1195]
-CellTagsIndexPosition[     56479,       1192]
+NotebookDataLength[     58408,       1268]
+NotebookOptionsPosition[     56893,       1210]
+NotebookOutlinePosition[     57250,       1226]
+CellTagsIndexPosition[     57207,       1223]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1175,6 +1175,37 @@ EdW/C/0CU2+3WQr6Zxos7EKsUOV992e9rxQszRY/BAcbIlGD9WlxkcJq19qO
      Scaled[0.05]}},
   Ticks->{Automatic, Automatic}]], "Output",
  CellChangeTimes->{3.72432626020891*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Log", "[", 
+  RowBox[{
+   RowBox[{"5", "/", "6"}], ",", " ", 
+   RowBox[{"1", "/", "15"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.725614508227706*^9, 3.7256145314358215`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{"Log", "[", "15", "]"}], 
+  RowBox[{"Log", "[", 
+   FractionBox["6", "5"], "]"}]]], "Output",
+ CellChangeTimes->{3.7256145324797063`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  FractionBox[
+   RowBox[{"Log", "[", "15", "]"}], 
+   RowBox[{"Log", "[", 
+    FractionBox["6", "5"], "]"}]], "]"}]], "Input",
+ NumberMarks->False],
+
+Cell[BoxData["14.853154222254883`"], "Output",
+ CellChangeTimes->{3.7256145437153025`*^9}]
 }, Open  ]]
 },
 WindowSize->{759, 833},
@@ -1216,9 +1247,9 @@ Cell[34226, 689, 4061, 84, 251, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[38324, 778, 232, 7, 47, "Input"],
-Cell[38559, 787, 4164, 87, 421, "Output"]
+Cell[38559, 787, 4164, 87, 273, "Output"]
 }, Open  ]],
-Cell[42738, 877, 94, 1, 30, InheritFromParent],
+Cell[42738, 877, 94, 1, 30, "Input"],
 Cell[CellGroupData[{
 Cell[42857, 882, 275, 7, 47, "Input"],
 Cell[43135, 891, 3925, 78, 242, "Output"]
@@ -1229,11 +1260,17 @@ Cell[47573, 989, 4102, 85, 251, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[51712, 1079, 232, 7, 47, "Input"],
-Cell[51947, 1088, 4202, 88, 305, "Output"]
+Cell[51947, 1088, 4202, 88, 273, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56186, 1181, 201, 5, 47, "Input"],
+Cell[56390, 1188, 175, 5, 69, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56602, 1198, 182, 6, 84, "Input"],
+Cell[56787, 1206, 90, 1, 62, "Output"]
 }, Open  ]]
 }
 ]
 *)
-
-(* End of internal cache information *)
 

@@ -3,8 +3,8 @@ title: deeplearning.ai 0 (openning)
 date: 2017-09-30 18:06:39
 categories: deeplearning.ai笔记
 tags: [机器学习, 深度学习, ML, DL,  数学]
-mathjax:
-comments:
+mathjax: false
+comments: true
 ---
 <center><h1>开篇的话</h1></center>
 大约上个月，在__Coursera__上申请__Andrew Ng__的__deeplearning.ai__系列课程助学金通过了。想着偏偏在我复习考研的时间段里开课，又不想转换班次，于是“狠下心来”开始上课，这下负担又重了，不仅要复习，还要兼顾Coursera上两门重量级课程，虽然有做笔记和推导，但是实在没有时间再去做整理发布了。

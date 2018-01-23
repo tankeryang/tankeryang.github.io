@@ -8,7 +8,7 @@ subtitle: n*m*lg(b)
 description: 汝亦知射乎？吾射不亦精乎？
 author: tankeryang
 language: zh-Hans
-timezone: UTC
+timezone: 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -84,6 +84,7 @@ deploy:
   repo: 
     #- git@github.com:tankeryang/tankeryang.github.io.git
     - git@git.coding.net:tankeryang/tankeryang.git
+    - git@gitee.com:tankeryang/tankeryang.git
     #- https://git.oschina.net/tankeryang/tankeryang.git
     #- https://git.coding.net/tankeryang/tankeryang.git
   branch: master
