@@ -2,7 +2,7 @@
 title: Hexo + NexT + Github Pages + Coding Pages + Gitee Pages + Travis 全攻略
 date: 2018-01-22 15:34:54
 categories: 技术杂项
-tags: [Hexo, NexT, Github Pages, Coding Pages, Travis]
+tags: [Hexo, NexT, Github Pages, Coding Pages, Gitee Pages, Travis]
 mathjax: false
 comments: true
 ---
@@ -127,6 +127,10 @@ hexo g && hexo s
 * `hexo g`：新建`public`文件夹，并在其中生成网站静态文件（html，css，等文件）
 * `hexo s`：启动hexo服务器，默认情况下，访问网址为：`http://localhost:4000/`
 
+{% note info %}
+更多有关hexo的命令，请参考[hexo官方文档](https://hexo.io/zh-cn/docs/)的[命令](https://hexo.io/zh-cn/docs/commands.html)部分。
+{% endnote %}
+
 你会看到控制台有如下输出：
 ```bash
 INFO  Start processing
@@ -195,7 +199,7 @@ __恭喜你！你已经完成了博客搭建的主要工作！接下来就是细
 
 ---
 
-# 博客配置文件的配置
+# 配置博客配置文件
 
 整个`myblog/_config.yml`的内容如下：
 ```yaml
@@ -357,6 +361,30 @@ root: /child/
 
 ---
 
-{% note danger %}
-<center><strong>未完待续...明天继续...</strong></center>
-{% endnote %}
+> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;以下内容更新于2018/1/24，承接上文
+
+## 配置资源文件夹
+资源（Asset）代表source文件夹中除了文章以外的所有文件，例如图片、CSS、JS 文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于`![](/images/image.jpg)`的方法访问它们。
+
+如果你想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将`config.yml`文件中的`post_asset_folder`选项设为`true`来打开：
+```yaml
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link: true # Open external links in new tab
+filename_case: 0
+render_drafts: false
+post_asset_folder: true # 设置为true
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: false
+  tab_replace:
+```
+
+设置为`true`后，当你新建一篇文章时，hexo同时会新建一个 __和文章标题一样名字__ 的文件夹，你的文章所引用的图片等资源就可以放在这里面了。
+
+将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过 __标签插件__ 来引用它们，这样你就得到了一个更简单而且方便得多的工作流。关于什么是标签插件，接下来的内容会说明。请耐心阅读。
