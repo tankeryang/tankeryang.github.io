@@ -83,8 +83,8 @@ deploy:
   type: git
   repo: 
     #- git@github.com:tankeryang/tankeryang.github.io.git
-    - git@git.coding.net:tankeryang/tankeryang.git
-    - git@gitee.com:tankeryang/tankeryang.git
+    #- git@git.coding.net:tankeryang/tankeryang.git
+    #- git@gitee.com:tankeryang/tankeryang.git
     #- https://git.oschina.net/tankeryang/tankeryang.git
     #- https://git.coding.net/tankeryang/tankeryang.git
   branch: master

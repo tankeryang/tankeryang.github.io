@@ -68,13 +68,13 @@ footer:
   copyright:
   # -------------------------------------------------------------
   # Hexo link (Powered by Hexo).
-  powered: false
+  powered: true
 
   theme:
     # Theme & scheme info link (Theme - NexT.scheme).
-    enable: false
+    enable: true
     # Version info of NexT after scheme info (vX.X.X).
-    version: false
+    version: true
   # -------------------------------------------------------------
   # Any custom text can be defined here.
   #custom_text: Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a>
@@ -165,15 +165,18 @@ social_icons:
 # Usage: `permalink || title`
 # Value before `||` delimeter is the target permalink.
 # Value after `||` delimeter is the title and aria-label name.
-#github_banner: https://github.com/yourname || Follow me on GitHub
+github_banner: https://github.com/tankeryang || Follow me on GitHub
 
 # Blog rolls
 links_icon: link
-links_title: Links
+links_title: 博客镜像 & 友情链接
 links_layout: block
 #links_layout: inline
-#links:
-  #Title: http://example.com/
+links:
+  淦 - github: https://tankeryang.github.io
+  淦 - coding: https://tankeryang.coding.me
+  淦 - gitee: http://tankeryang.gitee.io
+  简单可依赖: https://www.tiexo.cn/
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -206,8 +209,8 @@ sidebar:
   #  - always  expand for all pages automatically
   #  - hide    expand only when click on the sidebar toggle icon.
   #  - remove  Totally remove sidebar including sidebar toggle.
-  display: post
-  #display: always
+  #display: post
+  display: always
   #display: hide
   #display: remove
 
@@ -410,9 +413,10 @@ pangu: true
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
-
-# Disqus
+#baidu_analytics: 4cd474f896156b5ab25eefefb87744b1 # github
+#baidu_analytics: 1872fbe022cf827a5e164a6779e62a4e # coding
+baidu_analytics: bf9b61de0f8a1a8a57d8840705446084 # gitee
+# D1isqus
 disqus:
   enable: false
   shortname:

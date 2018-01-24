@@ -10,6 +10,7 @@ html, body { height: 100%; }
 .container {
   position: relative;
   min-height: 100%;
+  background-color: #f5f5f5;
 }
 
 
@@ -27,11 +28,10 @@ html, body { height: 100%; }
 
 // Main Section
 // --------------------------------------------------
-.main { padding-bottom: $footer-height + $gap-between-main-and-footer; }
+.main { padding-bottom: $footer-height + $gap-between-main-and-footer;}
 .main-inner {
   margin: 0 auto;
   width: $content-desktop;
-
   +desktop-large() {
     .container & { width: $content-desktop-large; }
   }
@@ -51,7 +51,6 @@ html, body { height: 100%; }
   box-sizing: border-box;
   margin: 20px auto;
   width: $content-desktop;
-
   +desktop-large() {
     .container & { width: $content-desktop-large; }
   }

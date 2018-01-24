@@ -15,7 +15,7 @@ menu:
   search: search
   schedule: schedule
   sitemap: sitemap
-  commonweal: 公益404
+  commonweal: 404
 
 sidebar:
   overview: 站点概览
@@ -23,11 +23,11 @@ sidebar:
 
 post:
   created: 创建于
-  modified: 更新于
+  modified: updated on
   sticky: 置顶
   posted: posted on
   in: in
-  read_more: 阅读全文
+  read_more: read more
   untitled: untitled
   toc_empty: 此文章未包含目录
   visitors: read times
@@ -47,8 +47,8 @@ page:
   tags: 标签
 
 footer:
-  powered: "由 %s 强力驱动"
-  theme: 主题
+  powered: "Powered by — %s"
+  theme: theme
 
 counter:
   tag_cloud:
@@ -73,7 +73,7 @@ state:
   categories: 分类
 
 search:
-  placeholder: 搜索...
+  placeholder: searching...
 
 cheers:
   um: 嗯..
@@ -92,8 +92,8 @@ symbol:
 
 reward:
   donate: 献爱心
-  wechatpay: 微信支付
-  alipay: 支付宝
+  wechatpay: WechatPay
+  alipay: AliPay
   bitcoin: 比特币
 
 gitmentbutton: 显示 Gitment 评论
