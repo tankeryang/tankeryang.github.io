@@ -15,6 +15,7 @@ comments: true
 ---
 
 今天突然看到一组 [《小魔女学院》的cos图](https://bcy.net/coser/detail/99095/1511757)，小姐姐美炸了。
+> <i class="fa fa-wheelchair-alt" aria-hidden="true"></i>&nbsp;因为加载速度太慢，我只能调低了图片的分辨率，各位将就一下，想看原图的到上面的链接慢慢欣赏。
 
 {% asset_img 1.jpg %}
 {% asset_img 3.jpg %}

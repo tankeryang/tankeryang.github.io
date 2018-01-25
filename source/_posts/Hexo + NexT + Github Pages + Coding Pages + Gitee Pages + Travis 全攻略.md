@@ -34,7 +34,7 @@ comments: true
 {% endnote %}
 
 ## 安装Hexo
-* __国内的朋友__，因为众所周知的原因，从npm直接安装hexo会非常慢，所以你需要用到 [__镜像源__](https://npm.taobao.org/)，参考上面的步骤，使用cnpm命令行工具代替默认的npm: 在windows控制台（cmd）里输入并执行`npm install -g cnpm --registry=https://registry.npm.taobao.org`，然后安装hexo: `cnpm install -g hexo-cli`
+* __国内的朋友__，因为众所周知的原因，从npm直接安装hexo会非常慢，所以你需要用到[__镜像源__](https://npm.taobao.org/)，参考上面的步骤，使用cnpm命令行工具代替默认的npm: 在windows控制台（cmd）里输入并执行`npm install -g cnpm --registry=https://registry.npm.taobao.org`，然后安装hexo: `cnpm install -g hexo-cli`
 
 * __国外的朋友__，请直接打开windows控制台，输入`npm install -g hexo-cli`并执行。
 
@@ -197,7 +197,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 {% asset_img pic2.png %}
 
 {% note success %}
-__恭喜你！你已经完成了博客搭建的主要工作！接下来就是细节的配置了。请耐心阅读以下内容。__
+<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;__恭喜你！你已经完成了博客搭建的主要工作！接下来就是细节的配置了。请耐心阅读以下内容。__
 {% endnote %}
 
 ---
@@ -371,26 +371,16 @@ root: /child/
 
 如果你想要更有规律地提供图片和其他资源以及想要将他们的资源分布在各个文章上的人来说，Hexo也提供了更组织化的方式来管理资源。这个稍微有些复杂但是管理资源非常方便的功能可以通过将`config.yml`文件中的`post_asset_folder`选项设为`true`来打开：
 ```yaml
-# Writing
-new_post_name: :title.md # File name of new posts
-default_layout: post
-titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
-filename_case: 0
-render_drafts: false
 post_asset_folder: true # 设置为true
-relative_link: false
-future: true
-highlight:
-  enable: true
-  line_number: true
-  auto_detect: false
-  tab_replace:
 ```
 
 设置为`true`后，当你新建一篇文章时，hexo同时会新建一个 __和文章标题一样名字__ 的文件夹，你的文章所引用的图片等资源就可以放在这里面了。
 
-将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过 __标签插件__ 来引用它们，这样你就得到了一个更简单而且方便得多的工作流。关于什么是标签插件，接下来的内容会说明。请耐心阅读。
+将所有与你的文章有关的资源放在这个关联文件夹中之后，你可以通过[__标签插件__](#标签插件)来引用它们，这样你就得到了一个更简单而且方便得多的工作流。关于什么是标签插件，接下来的内容会说明。请耐心阅读。（你也可以点击上面的链接浏览一下标签插件的内容）
+
+---
+
+> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;以下内容更新与2018/1/25，承接上文（不好意思，本人很懒...）
 
 # 写作
 ## 新建文章
@@ -399,6 +389,265 @@ highlight:
 hexo new [layout] <title>
 ```
 
+其中`[layout]`字段是文章的 __布局__，默认为`post`，可以通过修改`_config.yml`中的`default_layout`参数来指定默认布局。`<title>`则是文章标题。
+
+### 布局
+Hexo 有三种默认布局：`post`、`page`和`draft`，它们分别对应不同的路径，而您 __自定义的其他布局__ 和`post`相同，都将储存到`source/_posts`文件夹。
+
+|布局|路径|
+|:---:|:---:|
+|`post`|`source/_posts`|
+|`page`|`source`|
+|`draft`|`source/_draft`|
+
+其实布局我到现在也不是很清楚是什么，__我是这样认为的：__
+
+{% note primary %}
+如果你执行了这条命令`hexo new post "new article"`，hexo会新建一个`new article.md`文件在`source/_post`文件夹下。同理，其他两个布局参照上面的路径新建文章。
+{% endnote %} 
+
+### 文件名称
+Hexo默认以 __标题__ 作为文件名称，你也可编辑`myblog/_config.yml`中的`new_post_name`参数来改变默认的文件名称，比如设置为：
+```yaml
+new_post_name: :year-:month-:day-:title.md # File name of new posts
+```
+
+这样在 __文章名__ 前面就会加上日期和时间共同组成 __文件名__。
+
+下面是一些可用来配置文件名的变量：
+
+|变量|描述|
+|:---:|:---:|
+|`:title`|标题（小写，空格将会被替换为短杠）|
+|`:year`|建立的年份,比如，2015|
+|`:month`|建立的月份（有前导零），比如，`04`|
+|`i_month`|建立的月份（无前导零），比如，`4`|
+|`:day`|建立的日期（有前导零），比如，`07`|
+|`i_day`|建立的日期（无前导零），比如，`7`|
+
+{% note info %}
+更多有关 __基本写作设置__ 的内容请参考[hexo官方文档](https://hexo.io/zh-cn/docs)的[写作](https://hexo.io/zh-cn/docs/writing.html)部分。
+{% endnote %}
+
+### 下面，我们就来尝试一下吧！
+首先，执行
+```bash
+hexo new post "caonima"
+```
+ 
+你会看到输出
+```
+INFO  Created: C:/hexo/myblog/source/_posts/caonima.md
+```
+
+同时，在`source/_post`文件夹下多了`caonima.md`文件和`caonima`文件夹。
+```
+.
+├── caonima.md
+├── hello-world.md
+├── caonima
+```
+
+打开`caonima.md`，你会看到这些
+```yaml
+---
+title: caonima
+date: 2018-01-25 13:06:28
+tags:
+---
+```
+
+这些是 __front-matter__，下面我会对它进行说明，请耐心阅读（~~这句话我到底讲了几次~~）。
+接下来你可以随便在里面写点内容，比如：
+```markdown
+# caonima
+## caonima
+### caonima
+__caonima__
+_caonima_
+* caonima
+
+> caonima
+
+[caonima]()
+~~caonima~~
+`caonima`
+```
+
+保存。执行下面语句生成博客文件并运行本地hexo服务端：
+```bash
+hexo g && hexo s
+```
+
+你会看到如下输出：
+```bash
+INFO  Start processing
+INFO  Files loaded in 642 ms
+INFO  Generated: 2018/01/22/hello-world/index.html
+INFO  Generated: archives/index.html
+INFO  Generated: index.html
+INFO  Generated: archives/2018/01/index.html
+INFO  Generated: archives/2018/index.html
+INFO  Generated: images/avatar.gif
+INFO  Generated: images/apple-touch-icon-next.png
+INFO  Generated: images/cc-by-nc-nd.svg
+INFO  Generated: images/algolia_logo.svg
+INFO  Generated: images/cc-by-nc-sa.svg
+INFO  Generated: images/cc-by-nd.svg
+INFO  Generated: images/cc-by-nc.svg
+INFO  Generated: images/cc-by.svg
+INFO  Generated: images/favicon-16x16-next.png
+INFO  Generated: images/cc-zero.svg
+INFO  Generated: images/favicon-32x32-next.png
+INFO  Generated: images/cc-by-sa.svg
+INFO  Generated: images/logo.svg
+INFO  Generated: images/placeholder.gif
+INFO  Generated: images/quote-l.svg
+INFO  Generated: images/loading.gif
+INFO  Generated: images/quote-r.svg
+INFO  Generated: lib/font-awesome/HELP-US-OUT.txt
+INFO  Generated: lib/font-awesome/css/font-awesome.css.map
+INFO  Generated: images/searchicon.png
+INFO  Generated: lib/font-awesome/fonts/fontawesome-webfont.woff2
+INFO  Generated: lib/font-awesome/fonts/fontawesome-webfont.woff
+INFO  Generated: js/src/algolia-search.js
+INFO  Generated: js/src/exturl.js
+INFO  Generated: js/src/affix.js
+INFO  Generated: js/src/post-details.js
+INFO  Generated: js/src/motion.js
+INFO  Generated: js/src/scroll-cookie.js
+INFO  Generated: js/src/utils.js
+INFO  Generated: js/src/scrollspy.js
+INFO  Generated: lib/font-awesome/bower.json
+INFO  Generated: js/src/js.cookie.js
+INFO  Generated: js/src/bootstrap.js
+INFO  Generated: lib/velocity/velocity.ui.min.js
+INFO  Generated: lib/ua-parser-js/dist/ua-parser.pack.js
+INFO  Generated: js/src/schemes/pisces.js
+INFO  Generated: lib/ua-parser-js/dist/ua-parser.min.js
+INFO  Generated: css/main.css
+INFO  Generated: lib/jquery/index.js
+INFO  Generated: lib/velocity/velocity.ui.js
+INFO  Generated: lib/font-awesome/css/font-awesome.css
+INFO  Generated: lib/velocity/velocity.min.js
+INFO  Generated: lib/font-awesome/css/font-awesome.min.css
+INFO  Generated: lib/velocity/velocity.js
+INFO  Generated: lib/font-awesome/fonts/fontawesome-webfont.eot
+INFO  Generated: 2018/01/25/caonima/index.html
+INFO  51 files generated in 1 s
+INFO  Start processing
+INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
+```
+
+在浏览器输入`http://localhost:4000/`并访问，你会看到这样的页面：
+{% asset_img pic4.png %}
+
+{% note success %}
+<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;__恭喜你！你已经可以进行简单的文字创作了！下面的任务就是让你的写作流程规范化的细节。请耐心阅读。__
+{% endnote %}
+
+## 标签插件
+> 从上方跳转过来的朋友，[<i class="fa fa-hand-o-up" aria-hidden="true"></i>&nbsp;点击这里](#配置资源文件夹)返回 __资源配置文件夹__ 处继续阅读。
+
+标签插件是用于在文章中快速插入特定内容的插件。
+它的在文章中用法一般是这样：
+```
+{% [某种标签] %}
+<你想插入的内容>
+{% end[某种标签] %}
+```
+或者这样：
+```
+{% [某种标签] <你想插入的内容> %}
+```
+
+用例子说明最快：
+比如像前面提到的，__用标签插件在文章引用图片__，你只需这样写
+```
+{% asset_img <图片文件名> %}
+```
+示例
+```
+{% asset_img caonima.jpg %}
+```
+
+这是我最常用的标签了，`asset_img`，顾名思义，就是图片资源。一般我都用它来插入图片。因为我们在前面配置了 __资源文件夹__，所以`<图片文件名>`这里我们不用输入绝对路径，__只需输入图片文件名__ 就ok了，__hexo会自动在资源文件夹里寻找你的图片__。
+
+你可以在`caonima`文件夹里放一张图片，然后在`caonima.md`里用上面的`asset_img`标签插件来引用它，看看效果。
+
+{% note info %}
+更多有关标签插件的内容，请参考[hexo官方文档](https://hexo.io/zh-cn/docs)中的[标签插件](https://hexo.io/zh-cn/docs/tag-plugins.html)部分。
+{% endnote %}
+
+---
+
+# 配置主题配置文件
+
+NexT主题作为hexo众多主题里最火的一款，除了简约美观的设计之外，最重要的一点就是 __可定制化的程度高__。你可以很轻松的 __开启或关闭某些功能__，甚至 __自己尝试添加一些功能__也比其他主题简单，因为它的 __源文件组织得很清晰__，主题的 __布局__，__js__，__css__，__字体__，__语言__，等文件都独立区分。
+
+下面我会参照我的配置来详细介绍如何配置NexT主题。
+
+## 网站图标
+下面就是网站图标的配置项：
+```yaml
+# For example, you put your favicons into `hexo-site/source/images` directory.
+# Then need to rename & redefine they on any other names, otherwise icons from Next will rewrite your custom icons in Hexo.
+favicon:
+  small: /images/favicon-16x16-next.png
+  medium: /images/favicon-32x32-next.png
+  apple_touch_icon: /images/apple-touch-icon-next.png
+  safari_pinned_tab: /images/logo.svg
+  #android_manifest: /images/manifest.json
+  #ms_browserconfig: /images/browserconfig.xml
+```
+
+参照注释，先在`myblog/source/`路径下新建`images`文件夹，找一张`16x16`的`ico`或者`png`图标，放进`images`文件夹（在哪里找图标请自行百度），比如`caonima.ico`。
+然后将`small`选项设置为`/images/caonima.ico`：
+```yaml
+favicon:
+  small: /images/caonima.ico
+```
+
+再将其他的选项注释掉（因为基本用不到）：
+```yaml
+favicon:
+  small: /images/caonima.ico
+  #medium: /images/favicon-32x32-next.png
+  #apple_touch_icon: /images/apple-touch-icon-next.png
+  #safari_pinned_tab: /images/logo.svg
+  #android_manifest: /images/manifest.json
+  #ms_browserconfig: /images/browserconfig.xml
+```
+
+网站图标配置就完成了。关于其他选项你可以有空自己放些图标文件来玩玩看什么效果。
+
+## 网站底部内容
+这些在`footer`选项的配置里：
+```yaml
+footer:
+  # Specify the date when the site was setup.
+  # If not defined, current year will be used.
+  #since: 2015
+
+  # Icon between year and copyright info.
+  icon: user
+
+  # If not defined, will be used `author` from Hexo main config.
+  copyright:
+  # -------------------------------------------------------------
+  # Hexo link (Powered by Hexo).
+  powered: true
+
+  theme:
+    # Theme & scheme info link (Theme - NexT.scheme).
+    enable: true
+    # Version info of NexT after scheme info (vX.X.X).
+    version: true
+  # -------------------------------------------------------------
+  # Any custom text can be defined here.
+  #custom_text: Hosted by <a target="_blank" rel="external nofollow" href="https://pages.coding.me"><b>Coding Pages</b></a>
+```
+
 {% note danger %}
-未完待续...明天继续...
+<i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续...明天继续...
 {% endnote %}
