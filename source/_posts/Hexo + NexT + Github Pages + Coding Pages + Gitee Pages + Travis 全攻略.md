@@ -364,7 +364,7 @@ root: /child/
 
 ---
 
-> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;以下内容更新于2018/1/24，承接上文
+> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;<font color="#aeaeae">以下内容更新于2018/1/24，承接上文</font>
 
 ## 配置资源文件夹
 资源（Asset）代表source文件夹中除了文章以外的所有文件，例如图片、CSS、JS 文件等。比方说，如果你的Hexo项目中只有少量图片，那最简单的方法就是将它们放在 source/images 文件夹中。然后通过类似于`![](/images/image.jpg)`的方法访问它们。
@@ -380,7 +380,7 @@ post_asset_folder: true # 设置为true
 
 ---
 
-> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;以下内容更新与2018/1/25，承接上文（不好意思，本人很懒...）
+> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;<font color="#aeaeae">以下内容更新与2018/1/25，承接上文（不好意思，本人很懒...）</font>
 
 # 写作
 ## 新建文章
@@ -547,7 +547,7 @@ INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.
 {% endnote %}
 
 ## 标签插件
-> 从上方跳转过来的朋友，[<i class="fa fa-hand-o-up" aria-hidden="true"></i>&nbsp;点击这里](#配置资源文件夹)返回 __资源配置文件夹__ 处继续阅读。
+><font color="#aeaeae">从上方跳转过来的朋友，</font>[<i class="fa fa-hand-o-up" aria-hidden="true"></i>&nbsp;点此返回__资源配置文件夹处__](#配置资源文件夹)
 
 标签插件是用于在文章中快速插入特定内容的插件。
 它的在文章中用法一般是这样：

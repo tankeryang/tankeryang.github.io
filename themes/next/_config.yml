@@ -113,7 +113,9 @@ menu:
   #tags: /tags/ || tags
   #categories: /categories/ || th
   archives: /archives/ || archive
-  Machine Learning Note: /MachineLearningNote || book
+  ML Note: /MachineLearningNote || book
+  #Deeplearning Note: /DeeplearningNote || book
+  #Scipy Lecture Note 中文版: https://www.showdoc.cc/ScipyLectureNotesZN?page_id=107274238284880 || book
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
