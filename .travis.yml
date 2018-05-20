@@ -8,6 +8,8 @@ branches:
 before_install:
 # 解密SSH
 - openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
+  -in travis_rsa.enc -out travis_rsa -d
+- openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
   -in .travis/travis_rsa.enc -out ~/.ssh/travis_rsa -d
 - chmod 600 ~/.ssh/travis_rsa
 - mv -fv .travis/config ~/.ssh/config
@@ -39,14 +41,13 @@ script:
 - hexo clean && hexo g
 
 after_script:
-# clone原master，获取.git历史
-# - git clone -b master git@github.com:tankeryang/tankeryang.github.io.git .deploy_git
-# - cd .deploy_git
-# - git checkout master
-# - mv .git/ ../public/
-
-# 初始化本地repo，提交
-- cd ./public
+# 先clone原repo，得到.git提交历史
+- git clone -b master git@github.com:tankeryang/tankeryang.github.io.git .deploy_git
+- cd .deploy_git
+- git checkout master
+- mv .git/ ../public/
+- cd ../public
+# 提交
 - git config user.name "tankeryang"
 - git config user.email "youngzyang@outlook.com"
 - git init
@@ -58,6 +59,3 @@ after_script:
 - git push -u origin master
 - git push -u coding master
 - git push -u gitee master
-# dd:
-# - openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
-#   -in travis_rsa.enc -out travis_rsa -d
