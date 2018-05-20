@@ -188,7 +188,9 @@ links:
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
-avatar: /uploads/my.jpg
+avatar: 
+  url: /uploads/my.jpg
+  rounded: true
 
 # Table Of Contents in the Sidebar
 toc:
@@ -313,7 +315,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: night eighties
+highlight_theme: normal
 
 # Enable "cheers" for archive page.
 cheers_enabled: true
@@ -687,7 +689,7 @@ note:
   border_radius: 3
   # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
   # Offset also applied to label tag variables. This option can work with disabled note tag.
-  light_bg_offset: 0
+  light_bg_offset: -10
 
 # Label tag.
 label: true
@@ -696,9 +698,9 @@ label: true
 tabs:
   enable: true
   transition:
-    tabs: false
+    tabs: true
     labels: true
-  border_radius: 0
+  border_radius: 3
 
 # Reading progress bar
 # Dependencies: https://github.com/theme-next/theme-next-reading-progress

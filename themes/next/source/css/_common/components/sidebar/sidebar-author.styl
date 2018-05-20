@@ -7,6 +7,19 @@
   border: $site-author-image-border-width solid $site-author-image-border-color;
 }
 
+if hexo-config('avatar.rounded') {
+.site-author-image {
+  border-radius: 100%;
+  }
+}
+
+img:hover {
+  -webkit-transform: rotateZ(360deg);
+  -moz-transform: rotateZ(360deg);
+  -ms-transform: rotate(360deg);
+  transform: rotateZ(360deg);
+}
+
 .site-author-name {
   margin: $site-author-name-margin;
   text-align: $site-author-name-align;

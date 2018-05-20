@@ -12,7 +12,7 @@ comments: true
 <!--more-->
 
 这几天刚更新了NexT主题，一直在修改细节，终于从5.1.x的版本更新到了6.0.x的版本，nodeJS和NPM也做了更新。本着 __互联网共享精神__，我在这里将 __如何搭建Hexo+NexT博客和如何规范化写作+构建+push的流程__ 做详细整理。
-本人现在常用Windows，所以下面的过程都是基于Windows来展开的，MacOS和Linux仅供参考。
+以下配置对于 __Windows，Mac，Linux__ 均可参考。
 
 # 安装Hexo
 ## 安装node.js
@@ -587,6 +587,15 @@ NexT主题作为hexo众多主题里最火的一款，除了简约美观的设计
 
 下面我会参照我的配置来详细介绍如何配置NexT主题。
 
+## 重要更新
+在{% label info@v6.0.x %}的版本里，NexT新增了 __缓存__ 这样一个特性：
+```yaml
+# Allow to cache content generation. Introduced in NexT v6.0.0.
+cache:
+  enable: true
+```
+这是一个非常强大的改进！也就是说，当我们执行了`hexo s`预览博客内容时，同时对 __文章内容__ 或 __主题配置__ 做了一些修改，我们只需 __刷新一下__ 页面就能实时看到更改效果，而不用重新执行`hexo clean && hexo g`来重新生成页面。对此我只能说{% label default@6 %}{% label primary@6 %}{% label success@6 %}{% label info@6 %}{% label warning@6 %}{% label danger@6 %}
+
 ## 网站图标
 下面就是网站图标的配置项：
 ```yaml
@@ -648,6 +657,472 @@ footer:
   #custom_text: Hosted by <a target="_blank" rel="external nofollow" href="https://pages.coding.me"><b>Coding Pages</b></a>
 ```
 
-{% note danger %}
-<i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续...明天继续...
+默认图标是[`user`](http://www.fontawesome.com.cn/icons/user/)。假如你想个性化的话可以参照[fontawsome](http://www.fontawesome.com.cn/)提供的图标来进行选择。下面是我的配置：
+```yaml
+footer:
+  # Specify the date when the site was setup.
+  # If not defined, current year will be used.
+  since: 2017
+
+  # Icon between year and copyright info.
+  icon: cog
+  # spiner icon
+  rotate: fa-spin fa-lg margin-bottom
+  #rotate_plus : fa-plus fa-lg margin-bottom
+
+  # If not defined, will be used `author` from Hexo main config.
+  copyright:
+  # -------------------------------------------------------------
+  # Hexo link (Powered by Hexo).
+  powered: true
+
+  theme:
+    # Theme & scheme info link (Theme - NexT.scheme).
+    enable: true
+    # Version info of NexT after scheme info (vX.X.X).
+    version: true
+  # -------------------------------------------------------------
+  # Any custom text can be defined here.
+  #custom_text: Hosted by <a target="_blank" href="https://pages.github.com">GitHub Pages</a>
+```
+
+## 菜单栏设置
+这些在`menu`选项里：
+```yaml
+# ---------------------------------------------------------------
+# Menu Settings
+# ---------------------------------------------------------------
+
+# When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash from link value (/archives -> archives).
+# Usage: `Key: /link/ || icon`
+# Key is the name of menu item. If translate for this menu will find in languages - this translate will be loaded; if not - Key name will be used. Key is case-senstive.
+# Value before `||` delimeter is the target link.
+# Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
+menu:
+  home: / || home
+  #about: /about/ || user
+  #tags: /tags/ || tags
+  #categories: /categories/ || th
+  archives: /archives/ || archive
+  #schedule: /schedule/ || calendar
+  #sitemap: /sitemap.xml || sitemap
+  #commonweal: /404/ || heartbeat
+
+# Enable/Disable menu icons / item badges.
+menu_settings:
+  icons: true
+  badges: false
+```
+`||`后面的`icon`对应的是[fontawsome](http://www.fontawesome.com.cn/)相应的图标名。如果你想添加`about`菜单的话，按照以下步骤：
+* 在`myblog`下新建`about`文件夹
+* 在`about`文件夹下新增`index.md`文件
+* 在`index.md`里添加内容
+* 在`menu`选项里添加`about: /about/ || user`
+
+刷新一下看看效果。你会发现多了一个`about`菜单。用这样的办法可以自定义很多菜单目录。
+
+## 主题布局
+NexT主题提供了4种不同风格的主题布局，按需设置：
+```yaml
+# ---------------------------------------------------------------
+# Scheme Settings
+# ---------------------------------------------------------------
+
+# Schemes
+scheme: Muse
+#scheme: Mist
+#scheme: Pisces
+#scheme: Gemini
+```
+
+## 侧边栏设置
+这一项的内容有点多，先放配置文件，我们一个个看：
+```yaml
+# ---------------------------------------------------------------
+# Sidebar Settings
+# ---------------------------------------------------------------
+
+# Posts / Categories / Tags in sidebar.
+site_state: true
+
+# Social Links.
+# Usage: `Key: permalink || icon`
+# Key is the link label showing to end users.
+# Value before `||` delimeter is the target permalink.
+# Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
+#social:
+  #GitHub: https://github.com/yourname || github
+  #E-Mail: mailto:yourname@gmail.com || envelope
+  #Google: https://plus.google.com/yourname || google
+  #Twitter: https://twitter.com/yourname || twitter
+  #FB Page: https://www.facebook.com/yourname || facebook
+  #VK Group: https://vk.com/yourname || vk
+  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
+  #YouTube: https://youtube.com/yourname || youtube
+  #Instagram: https://instagram.com/yourname || instagram
+  #Skype: skype:yourname?call|chat || skype
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: false
+  # Dependencies: exturl: true in Tags Settings section below.
+  # To encrypt links above use https://www.base64encode.org
+  # Example encoded link: `GitHub: aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQ= || github`
+  exturl: false
+
+# Follow me on GitHub banner in right-top corner.
+# Usage: `permalink || title`
+# Value before `||` delimeter is the target permalink.
+# Value after `||` delimeter is the title and aria-label name.
+#github_banner: https://github.com/yourname || Follow me on GitHub
+
+# Blog rolls
+links_icon: link
+links_title: Links
+links_layout: block
+#links_layout: inline
+#links:
+  #Title: http://example.com/
+
+# Sidebar Avatar
+avatar:
+  # in theme directory(source/images): /images/avatar.gif
+  # in site  directory(source/uploads): /uploads/avatar.gif
+  # You can also use other linking images.
+  url: #/images/avatar.gif
+  # If true, the avatar would be dispalyed in circle. 
+  rounded: false
+  # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.
+  opacity: 1
+  # If true, the avatar would be rotated with the cursor.
+  rotated: false
+
+# Table Of Contents in the Sidebar
+toc:
+  enable: true
+
+  # Automatically add list number to toc.
+  number: true
+
+  # If true, all words will placed on next lines if header width longer then sidebar width.
+  wrap: false
+
+# Creative Commons 4.0 International License.
+# http://creativecommons.org/
+# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+#creative_commons: by-nc-sa
+#creative_commons:
+
+sidebar:
+  # Sidebar Position, available value: left | right (only for Pisces | Gemini).
+  position: left
+  #position: right
+
+  # Sidebar Display, available value (only for Muse | Mist):
+  #  - post    expand on posts automatically. Default.
+  #  - always  expand for all pages automatically
+  #  - hide    expand only when click on the sidebar toggle icon.
+  #  - remove  Totally remove sidebar including sidebar toggle.
+  display: post
+  #display: always
+  #display: hide
+  #display: remove
+
+  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
+  offset: 12
+
+  # Back to top in sidebar (only for Pisces | Gemini).
+  b2t: false
+
+  # Scroll percent label in b2t button.
+  scrollpercent: false
+
+  # Enable sidebar on narrow view (only for Muse | Mist).
+  onmobile: false
+```
+
+* `social`: 这一项被注释掉了，我们先取消注释。配置内容就是对应的社交账号链接。
+* `github_banner`: 右上角的 __follow me on github__
+* `links`: 放一些友情链接或其它的你想放的链接
+* `avatar`: 头像的一些设置
+
+其余的设置参考他给出的注释说明配置即可。下面是我的配置：
+```yaml
+# ---------------------------------------------------------------
+# Sidebar Settings
+# ---------------------------------------------------------------
+
+# Posts / Categories / Tags in sidebar.
+site_state: true
+
+# Social Links.
+# Usage: `Key: permalink || icon`
+# Key is the link label showing to end users.
+# Value before `||` delimeter is the target permalink.
+# Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
+social:
+  GitHub: https://github.com/tankeryang || github
+  E-Mail: mailto:youngzyang@outlook.com || envelope
+  #Google: https://plus.google.com/yourname || google
+  #Twitter: https://twitter.com/yourname || twitter
+  #FB Page: https://www.facebook.com/yourname || facebook
+  #VK Group: https://vk.com/yourname || vk
+  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
+  #YouTube: https://youtube.com/yourname || youtube
+  #Instagram: https://instagram.com/yourname || instagram
+  #Skype: skype:yourname?call|chat || skype
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: true
+
+# Follow me on GitHub banner in right-top corner.
+# Usage: `permalink || title`
+# Value before `||` delimeter is the target permalink.
+# Value after `||` delimeter is the title and aria-label name.
+github_banner: https://github.com/tankeryang || Follow me on GitHub
+
+# Blog rolls
+links_icon: link
+links_title: 博客镜像 & 友情链接
+links_layout: block
+#links_layout: inline
+links:
+  淦 - github: https://tankeryang.github.io
+  淦 - coding: https://tankeryang.coding.me
+  淦 - gitee: http://tankeryang.gitee.io
+  未知: https://deeeeeeeee.github.io
+  简单可依赖: https://www.tiexo.cn/
+  刘伟的博客: https://darrenliuwei.com
+
+# Sidebar Avatar
+# in theme directory(source/images): /images/avatar.gif
+# in site  directory(source/uploads): /uploads/avatar.gif
+avatar: 
+  url: /uploads/my.jpg
+  rounded: true
+
+# Table Of Contents in the Sidebar
+toc:
+  enable: true
+
+  # Automatically add list number to toc.
+  number: true
+
+  # If true, all words will placed on next lines if header width longer then sidebar width.
+  wrap: false
+
+# Creative Commons 4.0 International License.
+# http://creativecommons.org/
+# Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
+creative_commons: by-nc-sa
+#creative_commons:
+
+sidebar:
+  # Sidebar Position, available value: left | right (only for Pisces | Gemini).
+  position: left
+  #position: right
+
+  # Sidebar Display, available value (only for Muse | Mist):
+  #  - post    expand on posts automatically. Default.
+  #  - always  expand for all pages automatically
+  #  - hide    expand only when click on the sidebar toggle icon.
+  #  - remove  Totally remove sidebar including sidebar toggle.
+  #display: post
+  display: always
+  #display: hide
+  #display: remove
+
+  # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
+  offset: 12
+
+  # Back to top in sidebar (only for Pisces | Gemini).
+  b2t: true
+
+  # Scroll percent label in b2t button.
+  scrollpercent: true
+
+  # Enable sidebar on narrow view (only for Muse | Mist).
+  onmobile: true
+```
+
+## 个性化设置
+因为NexT可配置的选项太多，在这里我就不一一展开了，下面在介绍两个个性化的设置
+
+### 主题标签插件
+关于标签插件，大家可以回顾一下前面的内容。NexT也自带了一些标签插件供用户使用
+
+#### note
+{% note default %}
+提示块标签，效果就像你看到的这个提示块
 {% endnote %}
+配置如下：
+```yaml
+# Note tag (bs-callout).
+note:
+  # Note tag style values:
+  #  - simple    bs-callout old alert style. Default.
+  #  - modern    bs-callout new (v2-v3) alert style.
+  #  - flat      flat callout style with background, like on Mozilla or StackOverflow.
+  #  - disabled  disable all CSS styles import of note tag.
+  style: flat
+  icons: true
+  border_radius: 2
+  # Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).
+  # Offset also applied to label tag variables. This option can work with disabled note tag.
+  light_bg_offset: 3
+```
+使用方法：
+```
+{% note class %}
+Any content (support inline tags too).
+{% endnote %}
+
+# 支持的class: class : default | primary | success | info | warning | danger.
+```
+
+#### label
+{% label primary@label标签，给文字加底色 %}
+配置如下：
+```
+# Label tag.
+label: true
+```
+使用方法：
+```
+{% label class@Text %}
+
+# 支持的class : default | primary | success | info | warning | danger.
+```
+
+#### 选项卡
+效果如下：
+{% tabs 选项卡1 选项卡2 %}
+<!-- tab 选项卡1 -->
+我是选项卡1
+{% codeblock %}
+我是代码框1
+{% endcodeblock %}
+ <!-- endtab -->
+
+ <!-- tab 选项卡2 -->
+我是选项卡2
+{% codeblock %}
+我是代码框2
+{% endcodeblock %}
+ <!-- endtab -->
+{% endtabs %}
+配置如下：
+```yaml
+# Tabs tag.
+tabs:
+  enable: true
+  transition:
+    tabs: true
+    labels: true
+  border_radius: 3
+```
+使用方法：
+```
+{% tabs 选项卡1 选项卡2 %}
+<!-- tab 选项卡1 -->
+我是选项卡1
+{% codeblock %}
+我是代码框1
+{% endcodeblock %}
+ <!-- endtab -->
+
+ <!-- tab 选项卡2 -->
+我是选项卡2
+{% codeblock %}
+我是代码框2
+{% endcodeblock %}
+ <!-- endtab -->
+{% endtabs %}
+```
+
+{% note info %}
+更多设置请参考{% label danger@v5.x %}版本的[NexT文档](http://theme-next.iissnan.com/)和最新的{% label primary@v6.x %}版本的[NexT文档](https://github.com/theme-next/hexo-theme-next/tree/master/docs/zh-CN)
+{% endnote %}
+
+---
+
+# 配置Git与Travic-CI持续集成
+{% note warning %}
+这一步是最能体现 __自动化博客写作流程__ 的关键。务必仔细阅读。
+{% endnote %}
+
+## github新建博客项目
+首先在github上新开一个repo，__repo名为: `USERNAME.github.io`__
+> `USERNAME`为你的github用户名，详细可参考[官方链接](https://pages.github.com/)
+
+## 添加.gitignore
+进入{% label @myblog %}文件夹，新增{% label @.gitignore %}文件，若存在则检查是否与如下一致：
+{% codeblock .gitignore %}
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+{% endcodeblock %}
+
+## 
+
+{% codeblock lang:yaml .travis.yml %}
+language: node_js
+node_js: stable
+
+install:
+  - npm install
+  - npm install hexo-math --save
+  - npm install hexo-generator-searchdb --save
+  - npm install hexo-symbols-count-time --save
+  - npm install hexo-generator-feed --save
+  - npm install hexo-wordcount --save
+  - npm install mermaid --save
+  - npm install hexo-tag-mermaid --save
+  - npm install hexo-tag-plantuml --save
+
+before_script:
+  - cd ./themes/next
+  - git clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox
+  - git clone https://github.com/theme-next/theme-next-jquery-lazyload source/lib/jquery_lazyload
+  - git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton
+  - git clone https://github.com/theme-next/theme-next-pace source/lib/pace
+  - git clone https://github.com/theme-next/theme-next-pangu.git source/lib/pangu
+  - git clone https://github.com/theme-next/theme-next-reading-progress source/lib/reading_progress
+
+  - cd ..
+  - cd ..
+script:
+  - hexo -version
+  - hexo clean && hexo g
+
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "USERNAME"     # 这里填你的github用户名
+  - git config user.email "YOUR EMAIL"  # 这里填你的github注册email
+  - git add .
+  - git commit -m "Update docs"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+
+branches:
+  only:
+    - dev
+env:
+ global:
+   - GH_REF: github.com/USERNAME/USERNAME.github.io.git  # USERNAME为你的github用户名
+{% endcodeblock %}
+
+
+
+
+
+<!-- {% note danger %}
+<i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续...明天继续...
+{% endnote %} -->

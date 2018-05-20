@@ -1,0 +1,26 @@
+# github
+Host github.com
+	HostName github.com
+	PreferredAuthentications publickey
+	StrictHostKeyChecking no
+	IdentitiesOnly yes
+	IdentityFile ~/.ssh/travis.key
+	User tankeryang
+
+# gitee
+Host gitee.com
+	HostName gitee.com
+	PreferredAuthentications publickey
+	StrictHostKeyChecking no
+	IdentityFile ~/.ssh/id_rsa_gitee
+	IdentitiesOnly yes
+	User tankeryang
+
+# coding
+Host git.coding.net
+	HostName git.coding.net
+	PreferredAuthentications publickey
+	StrictHostKeyChecking no
+	IdentityFile ~/.ssh/travis.key
+	IdentitiesOnly yes
+	User tankeryang
