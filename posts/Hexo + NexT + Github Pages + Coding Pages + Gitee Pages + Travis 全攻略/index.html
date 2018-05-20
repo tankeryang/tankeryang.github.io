@@ -89,7 +89,7 @@
   <meta property="og:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic2.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic3.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic4.png">
-  <meta property="og:updated_time" content="2018-05-20T06:35:51.471Z">
+  <meta property="og:updated_time" content="2018-05-20T16:44:43.547Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hexo + NexT + Github Pages + Coding Pages + Gitee Pages + Travis 全攻略">
   <meta name="twitter:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic1.png">
@@ -335,7 +335,7 @@
 
                         <span class="post-meta-item-text">words count&#58;</span>
 
-                        <span title="words count">20k</span>
+                        <span title="words count">34k</span>
 
                         <span class="post-meta-divider">|</span>
 
@@ -345,7 +345,7 @@
 
                         <span class="post-meta-item-text">minutes to read &asymp;</span>
 
-                        <span title="minutes to read">0:44</span>
+                        <span title="minutes to read">1:16</span>
 
                       </div>
 
@@ -359,7 +359,8 @@
                     <p>这几天刚更新了NexT主题，一直在修改细节，终于从5.1.x的版本更新到了6.0.x的版本，nodeJS和NPM也做了更新。本着
                       <strong>互联网共享精神</strong>，我在这里将
                       <strong>如何搭建Hexo+NexT博客和如何规范化写作+构建+push的流程</strong> 做详细整理。
-                      <br>本人现在常用Windows，所以下面的过程都是基于Windows来展开的，MacOS和Linux仅供参考。</p>
+                      <br>以下配置对于
+                      <strong>Windows，Mac，Linux</strong> 均可参考。</p>
                     <h1 id="安装Hexo">
                       <a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h1>
                     <h2 id="安装node-js">
@@ -1223,6 +1224,38 @@
                       <strong>字体</strong>，
                       <strong>语言</strong>，等文件都独立区分。</p>
                     <p>下面我会参照我的配置来详细介绍如何配置NexT主题。</p>
+                    <h2 id="重要更新">
+                      <a href="#重要更新" class="headerlink" title="重要更新"></a>重要更新</h2>
+                    <p>在
+                      <span class="label info">v6.0.x</span>的版本里，NexT新增了
+                      <strong>缓存</strong> 这样一个特性：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="comment"># Allow to cache content generation. Introduced in NexT v6.0.0.</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>这是一个非常强大的改进！也就是说，当我们执行了
+                      <code>hexo s</code>预览博客内容时，同时对
+                      <strong>文章内容</strong> 或
+                      <strong>主题配置</strong> 做了一些修改，我们只需
+                      <strong>刷新一下</strong> 页面就能实时看到更改效果，而不用重新执行
+                      <code>hexo clean &amp;&amp; hexo g</code>来重新生成页面。对此我只能说
+                      <span class="label default">6</span>
+                      <span class="label primary">6</span>
+                      <span class="label success">6</span>
+                      <span class="label info">6</span>
+                      <span class="label warning">6</span>
+                      <span class="label danger">6</span>
+                    </p>
                     <h2 id="网站图标">
                       <a href="#网站图标" class="headerlink" title="网站图标"></a>网站图标</h2>
                     <p>下面就是网站图标的配置项：
@@ -1299,10 +1332,345 @@
                         </table>
                       </figure>
                     </p>
-                    <div class="note danger">
-                      <p>
-                        <i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续…明天继续…</p>
+                    <p>默认图标是
+                      <a href="http://www.fontawesome.com.cn/icons/user/" target="_blank" rel="noopener">
+                        <code>user</code>
+                      </a>。假如你想个性化的话可以参照
+                      <a href="http://www.fontawesome.com.cn/" target="_blank" rel="noopener">fontawsome</a>提供的图标来进行选择。下面是我的配置：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="attr">footer:</span></span><br><span class="line">  <span class="comment"># Specify the date when the site was setup.</span></span><br><span class="line">  <span class="comment"># If not defined, current year will be used.</span></span><br><span class="line"><span class="attr">  since:</span> <span class="number">2017</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Icon between year and copyright info.</span></span><br><span class="line"><span class="attr">  icon:</span> <span class="string">cog</span></span><br><span class="line">  <span class="comment"># spiner icon</span></span><br><span class="line"><span class="attr">  rotate:</span> <span class="string">fa-spin</span> <span class="string">fa-lg</span> <span class="string">margin-bottom</span></span><br><span class="line">  <span class="comment">#rotate_plus : fa-plus fa-lg margin-bottom</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># If not defined, will be used `author` from Hexo main config.</span></span><br><span class="line"><span class="attr">  copyright:</span></span><br><span class="line">  <span class="comment"># -------------------------------------------------------------</span></span><br><span class="line">  <span class="comment"># Hexo link (Powered by Hexo).</span></span><br><span class="line"><span class="attr">  powered:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="attr">  theme:</span></span><br><span class="line">    <span class="comment"># Theme &amp; scheme info link (Theme - NexT.scheme).</span></span><br><span class="line"><span class="attr">    enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Version info of NexT after scheme info (vX.X.X).</span></span><br><span class="line"><span class="attr">    version:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># -------------------------------------------------------------</span></span><br><span class="line">  <span class="comment"># Any custom text can be defined here.</span></span><br><span class="line">  <span class="comment">#custom_text: Hosted by &lt;a target="_blank" href="https://pages.github.com"&gt;GitHub Pages&lt;/a&gt;</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h2 id="菜单栏设置">
+                      <a href="#菜单栏设置" class="headerlink" title="菜单栏设置"></a>菜单栏设置</h2>
+                    <p>这些在
+                      <code>menu</code>选项里：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Menu Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># When running the site in a subdirectory (e.g. domain.tld/blog), remove the leading slash from link value (/archives -&gt; archives).</span></span><br><span class="line"><span class="comment"># Usage: `Key: /link/ || icon`</span></span><br><span class="line"><span class="comment"># Key is the name of menu item. If translate for this menu will find in languages - this translate will be loaded; if not - Key name will be used. Key is case-senstive.</span></span><br><span class="line"><span class="comment"># Value before `||` delimeter is the target link.</span></span><br><span class="line"><span class="comment"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.</span></span><br><span class="line"><span class="attr">menu:</span></span><br><span class="line"><span class="attr">  home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">home</span></span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  <span class="comment">#tags: /tags/ || tags</span></span><br><span class="line">  <span class="comment">#categories: /categories/ || th</span></span><br><span class="line"><span class="attr">  archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable/Disable menu icons / item badges.</span></span><br><span class="line"><span class="attr">menu_settings:</span></span><br><span class="line"><span class="attr">  icons:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  badges:</span> <span class="literal">false</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>
+                      <code>||</code>后面的
+                      <code>icon</code>对应的是
+                      <a href="http://www.fontawesome.com.cn/" target="_blank" rel="noopener">fontawsome</a>相应的图标名。如果你想添加
+                      <code>about</code>菜单的话，按照以下步骤：</p>
+                    <ul>
+                      <li>在
+                        <code>myblog</code>下新建
+                        <code>about</code>文件夹</li>
+                      <li>在
+                        <code>about</code>文件夹下新增
+                        <code>index.md</code>文件</li>
+                      <li>在
+                        <code>index.md</code>里添加内容</li>
+                      <li>在
+                        <code>menu</code>选项里添加
+                        <code>about: /about/ || user</code>
+                      </li>
+                    </ul>
+                    <p>刷新一下看看效果。你会发现多了一个
+                      <code>about</code>菜单。用这样的办法可以自定义很多菜单目录。</p>
+                    <h2 id="主题布局">
+                      <a href="#主题布局" class="headerlink" title="主题布局"></a>主题布局</h2>
+                    <p>NexT主题提供了4种不同风格的主题布局，按需设置：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Scheme Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h2 id="侧边栏设置">
+                      <a href="#侧边栏设置" class="headerlink" title="侧边栏设置"></a>侧边栏设置</h2>
+                    <p>这一项的内容有点多，先放配置文件，我们一个个看：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Sidebar Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Posts / Categories / Tags in sidebar.</span></span><br><span class="line"><span class="attr">site_state:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Social Links.</span></span><br><span class="line"><span class="comment"># Usage: `Key: permalink || icon`</span></span><br><span class="line"><span class="comment"># Key is the link label showing to end users.</span></span><br><span class="line"><span class="comment"># Value before `||` delimeter is the target permalink.</span></span><br><span class="line"><span class="comment"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.</span></span><br><span class="line"><span class="comment">#social:</span></span><br><span class="line">  <span class="comment">#GitHub: https://github.com/yourname || github</span></span><br><span class="line">  <span class="comment">#E-Mail: mailto:yourname@gmail.com || envelope</span></span><br><span class="line">  <span class="comment">#Google: https://plus.google.com/yourname || google</span></span><br><span class="line">  <span class="comment">#Twitter: https://twitter.com/yourname || twitter</span></span><br><span class="line">  <span class="comment">#FB Page: https://www.facebook.com/yourname || facebook</span></span><br><span class="line">  <span class="comment">#VK Group: https://vk.com/yourname || vk</span></span><br><span class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span></span><br><span class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || youtube</span></span><br><span class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || instagram</span></span><br><span class="line">  <span class="comment">#Skype: skype:yourname?call|chat || skype</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social_icons:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  icons_only:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  transition:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># Dependencies: exturl: true in Tags Settings section below.</span></span><br><span class="line">  <span class="comment"># To encrypt links above use https://www.base64encode.org</span></span><br><span class="line">  <span class="comment"># Example encoded link: `GitHub: aHR0cHM6Ly9naXRodWIuY29tL3RoZW1lLW5leHQ= || github`</span></span><br><span class="line"><span class="attr">  exturl:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Follow me on GitHub banner in right-top corner.</span></span><br><span class="line"><span class="comment"># Usage: `permalink || title`</span></span><br><span class="line"><span class="comment"># Value before `||` delimeter is the target permalink.</span></span><br><span class="line"><span class="comment"># Value after `||` delimeter is the title and aria-label name.</span></span><br><span class="line"><span class="comment">#github_banner: https://github.com/yourname || Follow me on GitHub</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Blog rolls</span></span><br><span class="line"><span class="attr">links_icon:</span> <span class="string">link</span></span><br><span class="line"><span class="attr">links_title:</span> <span class="string">Links</span></span><br><span class="line"><span class="attr">links_layout:</span> <span class="string">block</span></span><br><span class="line"><span class="comment">#links_layout: inline</span></span><br><span class="line"><span class="comment">#links:</span></span><br><span class="line">  <span class="comment">#Title: http://example.com/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="comment"># in theme directory(source/images): /images/avatar.gif</span></span><br><span class="line">  <span class="comment"># in site  directory(source/uploads): /uploads/avatar.gif</span></span><br><span class="line">  <span class="comment"># You can also use other linking images.</span></span><br><span class="line"><span class="attr">  url:</span> <span class="comment">#/images/avatar.gif</span></span><br><span class="line">  <span class="comment"># If true, the avatar would be dispalyed in circle. </span></span><br><span class="line"><span class="attr">  rounded:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.</span></span><br><span class="line"><span class="attr">  opacity:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment"># If true, the avatar would be rotated with the cursor.</span></span><br><span class="line"><span class="attr">  rotated:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Table Of Contents in the Sidebar</span></span><br><span class="line"><span class="attr">toc:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Automatically add list number to toc.</span></span><br><span class="line"><span class="attr">  number:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># If true, all words will placed on next lines if header width longer then sidebar width.</span></span><br><span class="line"><span class="attr">  wrap:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Creative Commons 4.0 International License.</span></span><br><span class="line"><span class="comment"># http://creativecommons.org/</span></span><br><span class="line"><span class="comment"># Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero</span></span><br><span class="line"><span class="comment">#creative_commons: by-nc-sa</span></span><br><span class="line"><span class="comment">#creative_commons:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sidebar:</span></span><br><span class="line">  <span class="comment"># Sidebar Position, available value: left | right (only for Pisces | Gemini).</span></span><br><span class="line"><span class="attr">  position:</span> <span class="string">left</span></span><br><span class="line">  <span class="comment">#position: right</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Sidebar Display, available value (only for Muse | Mist):</span></span><br><span class="line">  <span class="comment">#  - post    expand on posts automatically. Default.</span></span><br><span class="line">  <span class="comment">#  - always  expand for all pages automatically</span></span><br><span class="line">  <span class="comment">#  - hide    expand only when click on the sidebar toggle icon.</span></span><br><span class="line">  <span class="comment">#  - remove  Totally remove sidebar including sidebar toggle.</span></span><br><span class="line"><span class="attr">  display:</span> <span class="string">post</span></span><br><span class="line">  <span class="comment">#display: always</span></span><br><span class="line">  <span class="comment">#display: hide</span></span><br><span class="line">  <span class="comment">#display: remove</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span></span><br><span class="line"><span class="attr">  offset:</span> <span class="number">12</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Back to top in sidebar (only for Pisces | Gemini).</span></span><br><span class="line"><span class="attr">  b2t:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Scroll percent label in b2t button.</span></span><br><span class="line"><span class="attr">  scrollpercent:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Enable sidebar on narrow view (only for Muse | Mist).</span></span><br><span class="line"><span class="attr">  onmobile:</span> <span class="literal">false</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <ul>
+                      <li>
+                        <code>social</code>: 这一项被注释掉了，我们先取消注释。配置内容就是对应的社交账号链接。</li>
+                      <li>
+                        <code>github_banner</code>: 右上角的
+                        <strong>follow me on github</strong>
+                      </li>
+                      <li>
+                        <code>links</code>: 放一些友情链接或其它的你想放的链接</li>
+                      <li>
+                        <code>avatar</code>: 头像的一些设置</li>
+                    </ul>
+                    <p>其余的设置参考他给出的注释说明配置即可。下面是我的配置：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Sidebar Settings</span></span><br><span class="line"><span class="comment"># ---------------------------------------------------------------</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Posts / Categories / Tags in sidebar.</span></span><br><span class="line"><span class="attr">site_state:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Social Links.</span></span><br><span class="line"><span class="comment"># Usage: `Key: permalink || icon`</span></span><br><span class="line"><span class="comment"># Key is the link label showing to end users.</span></span><br><span class="line"><span class="comment"># Value before `||` delimeter is the target permalink.</span></span><br><span class="line"><span class="comment"># Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.</span></span><br><span class="line"><span class="attr">social:</span></span><br><span class="line"><span class="attr">  GitHub:</span> <span class="attr">https://github.com/tankeryang</span> <span class="string">||</span> <span class="string">github</span></span><br><span class="line"><span class="attr">  E-Mail:</span> <span class="attr">mailto:youngzyang@outlook.com</span> <span class="string">||</span> <span class="string">envelope</span></span><br><span class="line">  <span class="comment">#Google: https://plus.google.com/yourname || google</span></span><br><span class="line">  <span class="comment">#Twitter: https://twitter.com/yourname || twitter</span></span><br><span class="line">  <span class="comment">#FB Page: https://www.facebook.com/yourname || facebook</span></span><br><span class="line">  <span class="comment">#VK Group: https://vk.com/yourname || vk</span></span><br><span class="line">  <span class="comment">#StackOverflow: https://stackoverflow.com/yourname || stack-overflow</span></span><br><span class="line">  <span class="comment">#YouTube: https://youtube.com/yourname || youtube</span></span><br><span class="line">  <span class="comment">#Instagram: https://instagram.com/yourname || instagram</span></span><br><span class="line">  <span class="comment">#Skype: skype:yourname?call|chat || skype</span></span><br><span class="line"></span><br><span class="line"><span class="attr">social_icons:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  icons_only:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">  transition:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Follow me on GitHub banner in right-top corner.</span></span><br><span class="line"><span class="comment"># Usage: `permalink || title`</span></span><br><span class="line"><span class="comment"># Value before `||` delimeter is the target permalink.</span></span><br><span class="line"><span class="comment"># Value after `||` delimeter is the title and aria-label name.</span></span><br><span class="line"><span class="attr">github_banner:</span> <span class="attr">https://github.com/tankeryang</span> <span class="string">||</span> <span class="string">Follow</span> <span class="string">me</span> <span class="string">on</span> <span class="string">GitHub</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Blog rolls</span></span><br><span class="line"><span class="attr">links_icon:</span> <span class="string">link</span></span><br><span class="line"><span class="attr">links_title:</span> <span class="string">博客镜像</span> <span class="string">&amp;</span> <span class="string">友情链接</span></span><br><span class="line"><span class="attr">links_layout:</span> <span class="string">block</span></span><br><span class="line"><span class="comment">#links_layout: inline</span></span><br><span class="line"><span class="attr">links:</span></span><br><span class="line">  <span class="string">淦</span> <span class="bullet">-</span> <span class="attr">github:</span> <span class="attr">https://tankeryang.github.io</span></span><br><span class="line">  <span class="string">淦</span> <span class="bullet">-</span> <span class="attr">coding:</span> <span class="attr">https://tankeryang.coding.me</span></span><br><span class="line">  <span class="string">淦</span> <span class="bullet">-</span> <span class="attr">gitee:</span> <span class="attr">http://tankeryang.gitee.io</span></span><br><span class="line">  <span class="string">未知:</span> <span class="attr">https://deeeeeeeee.github.io</span></span><br><span class="line">  <span class="string">简单可依赖:</span> <span class="attr">https://www.tiexo.cn/</span></span><br><span class="line">  <span class="string">刘伟的博客:</span> <span class="attr">https://darrenliuwei.com</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Sidebar Avatar</span></span><br><span class="line"><span class="comment"># in theme directory(source/images): /images/avatar.gif</span></span><br><span class="line"><span class="comment"># in site  directory(source/uploads): /uploads/avatar.gif</span></span><br><span class="line"><span class="attr">avatar:</span> </span><br><span class="line"><span class="attr">  url:</span> <span class="string">/uploads/my.jpg</span></span><br><span class="line"><span class="attr">  rounded:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Table Of Contents in the Sidebar</span></span><br><span class="line"><span class="attr">toc:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Automatically add list number to toc.</span></span><br><span class="line"><span class="attr">  number:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># If true, all words will placed on next lines if header width longer then sidebar width.</span></span><br><span class="line"><span class="attr">  wrap:</span> <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Creative Commons 4.0 International License.</span></span><br><span class="line"><span class="comment"># http://creativecommons.org/</span></span><br><span class="line"><span class="comment"># Available: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero</span></span><br><span class="line"><span class="attr">creative_commons:</span> <span class="string">by-nc-sa</span></span><br><span class="line"><span class="comment">#creative_commons:</span></span><br><span class="line"></span><br><span class="line"><span class="attr">sidebar:</span></span><br><span class="line">  <span class="comment"># Sidebar Position, available value: left | right (only for Pisces | Gemini).</span></span><br><span class="line"><span class="attr">  position:</span> <span class="string">left</span></span><br><span class="line">  <span class="comment">#position: right</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Sidebar Display, available value (only for Muse | Mist):</span></span><br><span class="line">  <span class="comment">#  - post    expand on posts automatically. Default.</span></span><br><span class="line">  <span class="comment">#  - always  expand for all pages automatically</span></span><br><span class="line">  <span class="comment">#  - hide    expand only when click on the sidebar toggle icon.</span></span><br><span class="line">  <span class="comment">#  - remove  Totally remove sidebar including sidebar toggle.</span></span><br><span class="line">  <span class="comment">#display: post</span></span><br><span class="line"><span class="attr">  display:</span> <span class="string">always</span></span><br><span class="line">  <span class="comment">#display: hide</span></span><br><span class="line">  <span class="comment">#display: remove</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Sidebar offset from top menubar in pixels (only for Pisces | Gemini).</span></span><br><span class="line"><span class="attr">  offset:</span> <span class="number">12</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Back to top in sidebar (only for Pisces | Gemini).</span></span><br><span class="line"><span class="attr">  b2t:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Scroll percent label in b2t button.</span></span><br><span class="line"><span class="attr">  scrollpercent:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Enable sidebar on narrow view (only for Muse | Mist).</span></span><br><span class="line"><span class="attr">  onmobile:</span> <span class="literal">true</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h2 id="个性化设置">
+                      <a href="#个性化设置" class="headerlink" title="个性化设置"></a>个性化设置</h2>
+                    <p>因为NexT可配置的选项太多，在这里我就不一一展开了，下面在介绍两个个性化的设置</p>
+                    <h3 id="主题标签插件">
+                      <a href="#主题标签插件" class="headerlink" title="主题标签插件"></a>主题标签插件</h3>
+                    <p>关于标签插件，大家可以回顾一下前面的内容。NexT也自带了一些标签插件供用户使用</p>
+                    <h4 id="note">
+                      <a href="#note" class="headerlink" title="note"></a>note</h4>
+                    <div class="note default">
+                      <p>提示块标签，效果就像你看到的这个提示块</p>
                     </div>
+                    <p>配置如下：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="comment"># Note tag (bs-callout).</span></span><br><span class="line"><span class="attr">note:</span></span><br><span class="line">  <span class="comment"># Note tag style values:</span></span><br><span class="line">  <span class="comment">#  - simple    bs-callout old alert style. Default.</span></span><br><span class="line">  <span class="comment">#  - modern    bs-callout new (v2-v3) alert style.</span></span><br><span class="line">  <span class="comment">#  - flat      flat callout style with background, like on Mozilla or StackOverflow.</span></span><br><span class="line">  <span class="comment">#  - disabled  disable all CSS styles import of note tag.</span></span><br><span class="line"><span class="attr">  style:</span> <span class="string">flat</span></span><br><span class="line"><span class="attr">  icons:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  border_radius:</span> <span class="number">2</span></span><br><span class="line">  <span class="comment"># Offset lighter of background in % for modern and flat styles (modern: -12 | 12; flat: -18 | 6).</span></span><br><span class="line">  <span class="comment"># Offset also applied to label tag variables. This option can work with disabled note tag.</span></span><br><span class="line"><span class="attr">  light_bg_offset:</span> <span class="number">3</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>使用方法：
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">&#123;% note class %&#125;</span><br><span class="line">Any content (support inline tags too).</span><br><span class="line">&#123;% endnote %&#125;</span><br><span class="line"></span><br><span class="line"># 支持的class: class : default | primary | success | info | warning | danger.</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h4 id="label">
+                      <a href="#label" class="headerlink" title="label"></a>label</h4>
+                    <span class="label primary">label标签，给文字加底色</span>
+                    <p>配置如下：
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"># Label tag.</span><br><span class="line">label: true</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>使用方法：
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">&#123;% label class@Text %&#125;</span><br><span class="line"></span><br><span class="line"># 支持的class : default | primary | success | info | warning | danger.</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h4 id="选项卡">
+                      <a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h4>
+                    <p>效果如下：
+                      <br>
+                      <div class="tabs" id="选项卡1-选项卡2">
+                        <ul class="nav-tabs">
+                          <li class="tab active">
+                            <a href="#选项卡1-选项卡2-1">选项卡1</a>
+                          </li>
+                          <li class="tab">
+                            <a href="#选项卡1-选项卡2-2">选项卡2</a>
+                          </li>
+                        </ul>
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="选项卡1-选项卡2-1">
+                            <p>我是选项卡1</p>
+                            <figure class="highlight plain">
+                              <table>
+                                <tr>
+                                  <td class="gutter">
+                                    <pre><span class="line">1</span><br></pre>
+                                  </td>
+                                  <td class="code">
+                                    <pre><span class="line">我是代码框1</span><br></pre>
+                                  </td>
+                                </tr>
+                              </table>
+                            </figure>
+                          </div>
+                          <div class="tab-pane" id="选项卡1-选项卡2-2">
+                            <p>我是选项卡2</p>
+                            <figure class="highlight plain">
+                              <table>
+                                <tr>
+                                  <td class="gutter">
+                                    <pre><span class="line">1</span><br></pre>
+                                  </td>
+                                  <td class="code">
+                                    <pre><span class="line">我是代码框2</span><br></pre>
+                                  </td>
+                                </tr>
+                              </table>
+                            </figure>
+                          </div>
+                        </div>
+                      </div>
+                      <br>配置如下：
+                      <br>
+                      <figure class="highlight yaml">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line"><span class="comment"># Tabs tag.</span></span><br><span class="line"><span class="attr">tabs:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  transition:</span></span><br><span class="line"><span class="attr">    tabs:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">    labels:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  border_radius:</span> <span class="number">3</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>使用方法：
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">&#123;% tabs 选项卡1 选项卡2 %&#125;</span><br><span class="line">&lt;!-- tab 选项卡1 --&gt;</span><br><span class="line">我是选项卡1</span><br><span class="line">&#123;% codeblock %&#125;</span><br><span class="line">我是代码框1</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br><span class="line"> &lt;!-- endtab --&gt;</span><br><span class="line"></span><br><span class="line"> &lt;!-- tab 选项卡2 --&gt;</span><br><span class="line">我是选项卡2</span><br><span class="line">&#123;% codeblock %&#125;</span><br><span class="line">我是代码框2</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br><span class="line"> &lt;!-- endtab --&gt;</span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <div class="note info">
+                      <p>更多设置请参考
+                        <span class="label danger">v5.x</span>版本的
+                        <a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT文档</a>和最新的
+                        <span class="label primary">v6.x</span>版本的
+                        <a href="https://github.com/theme-next/hexo-theme-next/tree/master/docs/zh-CN" target="_blank"
+                                                                                                        rel="noopener">NexT文档</a>
+                      </p>
+                    </div>
+                    <hr>
+                    <h1 id="配置Git与Travic-CI持续集成">
+                      <a href="#配置Git与Travic-CI持续集成" class="headerlink" title="配置Git与Travic-CI持续集成"></a>配置Git与Travic-CI持续集成</h1>
+                    <div class="note warning">
+                      <p>这一步是最能体现
+                        <strong>自动化博客写作流程</strong> 的关键。务必仔细阅读。</p>
+                    </div>
+                    <h2 id="github新建博客项目">
+                      <a href="#github新建博客项目" class="headerlink" title="github新建博客项目"></a>github新建博客项目</h2>
+                    <p>首先在github上新开一个repo，
+                      <strong>repo名为:
+                        <code>USERNAME.github.io</code>
+                      </strong>
+                    </p>
+                    <blockquote>
+                      <p>
+                        <code>USERNAME</code>为你的github用户名，详细可参考
+                        <a href="https://pages.github.com/" target="_blank" rel="noopener">官方链接</a>
+                      </p>
+                    </blockquote>
+                    <h2 id="添加-gitignore">
+                      <a href="#添加-gitignore" class="headerlink" title="添加.gitignore"></a>添加.gitignore</h2>
+                    <p>进入
+                      <span class="label default">myblog</span>文件夹，新增
+                      <span class="label default">.gitignore</span>文件，若存在则检查是否与如下一致：
+                      <br>
+                      <figure class="highlight plain">
+                        <figcaption>
+                          <span>.gitignore</span>
+                        </figcaption>
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>## </p>
+                    <figure class="highlight yaml">
+                      <figcaption>
+                        <span>.travis.yml</span>
+                      </figcaption>
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line"><span class="attr">language:</span> <span class="string">node_js</span></span><br><span class="line"><span class="attr">node_js:</span> <span class="string">stable</span></span><br><span class="line"></span><br><span class="line"><span class="attr">install:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-math</span> <span class="bullet">--save</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-generator-searchdb</span> <span class="bullet">--save</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-symbols-count-time</span> <span class="bullet">--save</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-generator-feed</span> <span class="bullet">--save</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-wordcount</span> <span class="bullet">--save</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">mermaid</span> <span class="bullet">--save</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-tag-mermaid</span> <span class="bullet">--save</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-tag-plantuml</span> <span class="bullet">--save</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">cd</span> <span class="string">./themes/next</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-fancybox3</span> <span class="string">source/lib/fancybox</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-jquery-lazyload</span> <span class="string">source/lib/jquery_lazyload</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-needmoreshare2</span> <span class="string">source/lib/needsharebutton</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-pace</span> <span class="string">source/lib/pace</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-pangu.git</span> <span class="string">source/lib/pangu</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">clone</span> <span class="attr">https://github.com/theme-next/theme-next-reading-progress</span> <span class="string">source/lib/reading_progress</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">  -</span> <span class="string">cd</span> <span class="string">..</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">cd</span> <span class="string">..</span></span><br><span class="line"><span class="attr">script:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span> <span class="bullet">-version</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">hexo</span> <span class="string">clean</span> <span class="string">&amp;&amp;</span> <span class="string">hexo</span> <span class="string">g</span></span><br><span class="line"></span><br><span class="line"><span class="attr">after_script:</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">cd</span> <span class="string">./public</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">init</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.name</span> <span class="string">"USERNAME"</span>     <span class="comment"># 这里填你的github用户名</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">config</span> <span class="string">user.email</span> <span class="string">"YOUR EMAIL"</span>  <span class="comment"># 这里填你的github注册email</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">commit</span> <span class="bullet">-m</span> <span class="string">"Update docs"</span></span><br><span class="line"><span class="bullet">  -</span> <span class="string">git</span> <span class="string">push</span> <span class="bullet">--force</span> <span class="bullet">--quiet</span> <span class="string">"https://$&#123;GH_TOKEN&#125;@$&#123;GH_REF&#125;"</span> <span class="attr">master:master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">branches:</span></span><br><span class="line"><span class="attr">  only:</span></span><br><span class="line"><span class="bullet">    -</span> <span class="string">dev</span></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line"><span class="attr"> global:</span></span><br><span class="line"><span class="attr">   - GH_REF:</span> <span class="string">github.com/USERNAME/USERNAME.github.io.git</span>  <span class="comment"># USERNAME为你的github用户名</span></span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <!-- <div class="note danger"><p>
+  <i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续…明天继续…</p></div> –&gt;
+-->
 
                   </div>
 
@@ -1439,8 +1807,10 @@
               <div class="site-overview">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                  <img class="site-author-image" itemprop="image" src="/uploads/my.jpg" alt="tankeryang"
-                  />
+                  <a href="/" class="site-author-image" rel="start" style="border:none">
+                    <img class="site-author-image" itemprop="image" src="/uploads/my.jpg" alt="tankeryang"
+                    />
+                  </a>
 
                   <p class="site-author-name" itemprop="name">tankeryang</p>
                   <p class="site-description motion-element" itemprop="description">汝亦知射乎？吾射不亦精乎？</p>
@@ -1512,6 +1882,10 @@
 
                     <li class="links-of-blogroll-item">
                       <a href="http://tankeryang.gitee.io" title="淦 - gitee" target="_blank">淦 - gitee</a>
+                    </li>
+
+                    <li class="links-of-blogroll-item">
+                      <a href="https://deeeeeeeee.github.io" title="未知" target="_blank">未知</a>
                     </li>
 
                     <li class="links-of-blogroll-item">
@@ -1678,17 +2052,107 @@
                       </a>
                       <ol class="nav-child">
                         <li class="nav-item nav-level-2">
-                          <a class="nav-link" href="#网站图标">
+                          <a class="nav-link" href="#重要更新">
                             <span class="nav-number">5.1.</span>
+                            <span class="nav-text">
+                              重要更新</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#网站图标">
+                            <span class="nav-number">5.2.</span>
                             <span class="nav-text">
                               网站图标</span>
                           </a>
                         </li>
                         <li class="nav-item nav-level-2">
                           <a class="nav-link" href="#网站底部内容">
-                            <span class="nav-number">5.2.</span>
+                            <span class="nav-number">5.3.</span>
                             <span class="nav-text">
                               网站底部内容</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#菜单栏设置">
+                            <span class="nav-number">5.4.</span>
+                            <span class="nav-text">
+                              菜单栏设置</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#主题布局">
+                            <span class="nav-number">5.5.</span>
+                            <span class="nav-text">
+                              主题布局</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#侧边栏设置">
+                            <span class="nav-number">5.6.</span>
+                            <span class="nav-text">
+                              侧边栏设置</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#个性化设置">
+                            <span class="nav-number">5.7.</span>
+                            <span class="nav-text">
+                              个性化设置</span>
+                          </a>
+                          <ol class="nav-child">
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#主题标签插件">
+                                <span class="nav-number">5.7.1.</span>
+                                <span class="nav-text">
+                                  主题标签插件</span>
+                              </a>
+                              <ol class="nav-child">
+                                <li class="nav-item nav-level-4">
+                                  <a class="nav-link" href="#note">
+                                    <span class="nav-number">5.7.1.1.</span>
+                                    <span class="nav-text">
+                                      note</span>
+                                  </a>
+                                </li>
+                                <li class="nav-item nav-level-4">
+                                  <a class="nav-link" href="#label">
+                                    <span class="nav-number">5.7.1.2.</span>
+                                    <span class="nav-text">
+                                      label</span>
+                                  </a>
+                                </li>
+                                <li class="nav-item nav-level-4">
+                                  <a class="nav-link" href="#选项卡">
+                                    <span class="nav-number">5.7.1.3.</span>
+                                    <span class="nav-text">
+                                      选项卡</span>
+                                  </a>
+                                </li>
+                              </ol>
+                            </li>
+                          </ol>
+                        </li>
+                      </ol>
+                    </li>
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#配置Git与Travic-CI持续集成">
+                        <span class="nav-number">6.</span>
+                        <span class="nav-text">
+                          配置Git与Travic-CI持续集成</span>
+                      </a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#github新建博客项目">
+                            <span class="nav-number">6.1.</span>
+                            <span class="nav-text">
+                              github新建博客项目</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#添加-gitignore">
+                            <span class="nav-number">6.2.</span>
+                            <span class="nav-text">
+                              添加.gitignore</span>
                           </a>
                         </li>
                       </ol>
@@ -1729,14 +2193,14 @@
             <i class="fa fa-area-chart"></i>
           </span>
 
-          <span title="total count">55k</span>
+          <span title="total count">70k</span>
 
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa-coffee"></i>
           </span>
 
-          <span title="total time">2:02</span>
+          <span title="total time">2:35</span>
 
         </div>
 
