@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+  />
+  <meta name="theme-color" content="#222">
+
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"
+  />
+
+  <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet"
+                                                                                  type="text/css" />
+
+  <link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css" />
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.0.1">
+
+  <script type="text/javascript" id="hexo.configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {
+      root: '/',
+      scheme: 'Mist',
+      version: '6.0.1',
+      sidebar: {
+        "position": "left",
+        "display": "always",
+        "offset": 12,
+        "b2t": true,
+        "scrollpercent": true,
+        "onmobile": true
+      },
+      fancybox: true,
+      fastclick: false,
+      lazyload: true,
+      tabs: true,
+      motion: {
+        "enable": true,
+        "async": false,
+        "transition": {
+          "post_block": "fadeIn",
+          "post_header": "slideDownIn",
+          "post_body": "slideDownIn",
+          "coll_header": "slideLeftIn",
+          "sidebar": "slideUpIn"
+        }
+      },
+      algolia: {
+        applicationID: '',
+        apiKey: '',
+        indexName: '',
+        hits: {
+          "per_page": 10
+        },
+        labels: {
+          "input_placeholder": "Search for Posts",
+          "hits_empty": "We didn't find any results for the search: ${query}",
+          "hits_stats": "${hits} results found in ${time} ms"
+        }
+      }
+    };
+
+  </script>
+
+  <link rel="stylesheet" href="mermaid.min.css">
+  <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+
+  <meta name="keywords" content="机器学习,ML,数学," />
+
+  <meta name="description" content="在第一周的课程里简要介绍了   什么是机器学习，   Model - 模型和   Cost Function - 代价函数的概念，以及一些必要的   线性代数的知识。         特别声明：这里不会对线性代数基础进行记录，有需要了解的请自行学习。        敬请留意">
+  <meta name="keywords" content="机器学习,ML,数学">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Machine Learning (Week1)">
+  <meta property="og:url" content="https://tankeryang.github.io/posts/Machine Learning (Week1)/index.html">
+  <meta property="og:site_name" content="淦">
+  <meta property="og:description" content="在第一周的课程里简要介绍了   什么是机器学习，   Model - 模型和   Cost Function - 代价函数的概念，以及一些必要的   线性代数的知识。         特别声明：这里不会对线性代数基础进行记录，有需要了解的请自行学习。        敬请留意">
+  <meta property="og:locale" content="zh-Hans">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic1.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic2.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic3.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic4.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic5.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic6.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic7.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic8.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic9.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic10.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic11.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic12.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic13.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic14.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic15.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic16.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic17.jpg">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic18.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic19.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic20.png">
+  <meta property="og:updated_time" content="2018-05-20T06:35:51.471Z">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Machine Learning (Week1)">
+  <meta name="twitter:description" content="在第一周的课程里简要介绍了   什么是机器学习，   Model - 模型和   Cost Function - 代价函数的概念，以及一些必要的   线性代数的知识。         特别声明：这里不会对线性代数基础进行记录，有需要了解的请自行学习。        敬请留意">
+  <meta name="twitter:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic1.jpg">
+
+  <title>Machine Learning (Week1) | 淦</title>
+
+  <noscript>
+    <style type="text/css">
+      .use-motion .motion-element,
+      .use-motion .brand,
+      .use-motion .menu-item,
+      .sidebar-inner,
+      .use-motion .post-block,
+      .use-motion .pagination,
+      .use-motion .comments,
+      .use-motion .post-header,
+      .use-motion .post-body,
+      .use-motion .collection-title {
+        opacity: initial;
+      }
+
+      .use-motion .logo,
+      .use-motion .site-title,
+      .use-motion .site-subtitle {
+        opacity: initial;
+        top: initial;
+      }
+
+      .use-motion {
+        .logo-line-before i {
+          left: initial;
+        }
+        .logo-line-after i {
+          right: initial;
+        }
+      }
+
+    </style>
+  </noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner">
+        <div class="site-brand-wrapper">
+          <div class="site-meta ">
+
+            <div class="custom-logo-site-title">
+              <a href="/" class="brand" rel="start">
+                <span class="logo-line-before">
+                  <i></i>
+                </span>
+                <span class="site-title">淦</span>
+                <span class="logo-line-after">
+                  <i></i>
+                </span>
+              </a>
+            </div>
+
+            <p class="site-subtitle">n*m*lg(b)</p>
+
+          </div>
+
+          <div class="site-nav-toggle">
+            <button>
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+              <span class="btn-bar"></span>
+            </button>
+          </div>
+        </div>
+
+        <nav class="site-nav">
+
+          <ul id="menu" class="menu">
+
+            <li class="menu-item menu-item-home">
+              <a href="/" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-home"></i>
+                <br />home</a>
+            </li>
+
+            <li class="menu-item menu-item-archives">
+              <a href="/archives/" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-archive"></i>
+                <br />archives
+                <span class="badge">10</span>
+              </a>
+            </li>
+
+            <li class="menu-item menu-item-ml-note">
+              <a href="/MachineLearningNote" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-book"></i>
+                <br />ML Note</a>
+            </li>
+
+            <li class="menu-item menu-item-about">
+              <a href="/about/" rel="section">
+                <i class="menu-item-icon fa fa-fw fa-user"></i>
+                <br />about</a>
+            </li>
+
+            <li class="menu-item menu-item-search">
+
+              <a href="javascript:;" class="popup-trigger">
+
+                <i class="menu-item-icon fa fa-search fa-fw"></i>
+                <br />search</a>
+            </li>
+
+          </ul>
+
+          <div class="site-search">
+
+            <div class="popup search-popup local-search-popup">
+              <div class="local-search-header clearfix">
+                <span class="search-icon">
+                  <i class="fa fa-search"></i>
+                </span>
+                <span class="popup-btn-close">
+                  <i class="fa fa-times-circle"></i>
+                </span>
+                <div class="local-search-input-wrapper">
+                  <input autocomplete="off" placeholder="searching..." spellcheck="false" type="text"
+                                                                                                  id="local-search-input">
+                </div>
+              </div>
+              <div id="local-search-result"></div>
+            </div>
+
+          </div>
+
+        </nav>
+      </div>
+    </header>
+
+    <a href="https://github.com/tankeryang" class="github-corner" target="_blank" title="Follow me on GitHub"
+                                                                                    aria-label="Follow me on GitHub">
+      <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
+                                                                                      aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+                                                                                        fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                                                                                        fill="currentColor" class="octo-body"></path>
+      </svg>
+    </a>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+
+            <div id="posts" class="posts-expand">
+
+              <div class="reading-progress-bar"></div>
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="https://tankeryang.github.io/posts/Machine Learning (Week1)/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="tankeryang">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="/uploads/my.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="淦">
+                  </span>
+
+                  <header class="post-header">
+
+                    <h1 class="post-title" itemprop="name headline">Machine Learning (Week1)</h1>
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">posted on</span>
+
+                        <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T15:38:01+00:00">2017-09-06</time>
+
+                      </span>
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">in</span>
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                          <a href="/categories/机器学习笔记/" itemprop="url" rel="index">
+                            <span itemprop="name">机器学习笔记</span>
+                          </a>
+                        </span>
+
+                      </span>
+
+                      <span class="post-comments-count">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-comment-o"></i>
+                        </span>
+                        <a href="/posts/Machine Learning (Week1)/#comments" itemprop="discussionUrl">
+                          <span class="post-comments-count valine-comment-count" data-xid="/posts/Machine Learning (Week1)/"
+                                                                                                          itemprop="commentCount"></span>
+                        </a>
+                      </span>
+
+                      <span id="/posts/Machine Learning (Week1)/" class="leancloud_visitors" data-flag-title="Machine Learning (Week1)">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">read times&#58;</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+                      <div class="post-wordcount">
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-file-word-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">words count&#58;</span>
+
+                        <span title="words count">13k</span>
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-clock-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">minutes to read &asymp;</span>
+
+                        <span title="minutes to read">0:28</span>
+
+                      </div>
+
+                    </div>
+                  </header>
+
+                  <div class="post-body" itemprop="articleBody">
+
+                    <p>在第一周的课程里简要介绍了
+                      <strong>什么是机器学习</strong>，
+                      <strong>Model - 模型</strong>和
+                      <strong>Cost Function - 代价函数</strong>的概念，以及一些必要的
+                      <strong>线性代数</strong>的知识。</p>
+                    <div class="note warning">
+                      <p>
+                        <strong>特别声明</strong>：这里不会对线性代数基础进行记录，有需要了解的请自行学习。</p>
+                      <center>
+                        <strong>敬请留意</strong>
+                      </center>
+                    </div>
+                    <a id="more"></a>
+                    <h1 id="Introduction-简介">
+                      <a href="#Introduction-简介" class="headerlink" title="Introduction - 简介"></a>Introduction - 简介</h1>
+                    <h2 id="What-is-Machine-Learning-何为机器学习？">
+                      <a href="#What-is-Machine-Learning-何为机器学习？" class="headerlink" title="What is Machine Learning? - 何为机器学习？"></a>What is Machine Learning? - 何为机器学习？</h2>
+                    <p>引用Tom Mitchell的经典解释（有点像绕口令）</p>
+                    <blockquote>
+                      <p>Two definitions of Machine Learning are offered. Arthur Samuel
+                        described it as: “the field of study that gives computers
+                        the ability to learn without being explicitly programmed.”
+                        This is an older, informal definition.</p>
+                      <p>Tom Mitchell provides a more modern definition: “A computer
+                        program is said to learn from experience E with respect to
+                        some class of tasks T and performance measure P, if its performance
+                        at tasks in T, as measured by P, improves with experience
+                        E.”</p>
+                      <p>Example: playing checkers.</p>
+                      <p>E = the experience of playing many games of checkers</p>
+                      <p>T = the task of playing checkers.</p>
+                      <p>P = the probability that the program will win the next game.</p>
+                      <p>In general, any machine learning problem can be assigned to
+                        one of two broad classifications:</p>
+                      <p>Supervised learning and Unsupervised learning.</p>
+                    </blockquote>
+                    <h2 id="Supervised-Learning-有监督学习">
+                      <a href="#Supervised-Learning-有监督学习" class="headerlink" title="Supervised Learning - 有监督学习"></a>Supervised Learning - 有监督学习</h2>
+                    <p>有监督学习，简要的说，就是我们有一个
+                      <strong>数据集</strong>，并且我们知道这对数据的
+                      <strong>输出</strong>是张什么样的，而且可以肯定作为变量的输入数据与作为结果的输出数据之间有着必然的联系。</p>
+                    <p>有监督学习通常分为
+                      <strong>regression - 回归</strong>与
+                      <strong>classification - 分类</strong>两类问题。</p>
+                    <ul>
+                      <li>
+                        <p>在回归问题中，我们要做的就是得到一个连续的
+                          <strong>预测函数</strong>去拟合离散的数据，也就是要把
+                          <strong>输入变量映射到连续函数上</strong>，从而实现未知数据的预测。</p>
+                        <div class="note info">
+                          <p>
+                            <strong>例子：</strong>
+                            <br>Given data about the size of houses on the real estate
+                            market, try to predict their price. Price as a function
+                            of size is a continuous output, so this is a regression
+                            problem.
+                            <br>We could turn this example into a classification problem
+                            by instead making our output about whether the house
+                            “sells for more or less than the asking price.” Here
+                            we are classifying the houses based on price into two
+                            discrete categories.
+                            <br>
+                            <img src="/posts/Machine%20Learning%20(Week1)/pic1.jpg">
+                          </p>
+                        </div>
+                      </li>
+                      <li>
+                        <p>在分类问题中，输出结果是离散的，比如二分类问题，每一类别分别对应0,1两个离散数值，我们要做的就是得到一个
+                          <strong>预测函数</strong>，能够根据输入变量得到离散的输出结果，也就是要把
+                          <strong>输入变量映射到离散的类别中</strong>
+                        </p>
+                        <div class="note info">
+                          <p>
+                            <strong>例子：</strong>
+                            <br>(a) Classification - Given a patient with a tumor, we
+                            have to predict whether the tumor is malignant or benign.
+                            <br>
+                            <img src="/posts/Machine%20Learning%20(Week1)/pic2.jpg">
+                          </p>
+                          <p>(b) Regression - Given a picture of a person, we have to
+                            predict their age on the basis of the given picture
+                            <br>
+                            <img src="/posts/Machine%20Learning%20(Week1)/pic3.jpg">
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                    <h2 id="Unsupervised-Learning-无监督学习">
+                      <a href="#Unsupervised-Learning-无监督学习" class="headerlink" title="Unsupervised Learning - 无监督学习"></a>Unsupervised Learning - 无监督学习</h2>
+                    <p>无监督学习就是有监督学习的反面情况，即我们有一组数据集，但我们并不知道它的输出结果是什么，或者它根本就没有输出，甚至它本身代表什么我们都不知道。我们要做的就是从这堆数据中
+                      <strong>找出它的规律或者结构</strong>，来确定这些输入变量产生的影响，比如将这堆数据分组。</p>
+                    <p>特别的是，无监督学习并不像有监督学习那样有基于预测结果的反馈。</p>
+                    <p>现实生活中有很多这样的例子，比如你有一堆新闻内容的数据，你要把有关联的分成一组。像这样的算法叫做
+                      <strong>聚类</strong>，就如字面意思一样。</p>
+                    <div class="note info">
+                      <p>
+                        <strong>例子：</strong>
+                        <br>
+                        <img src="/posts/Machine%20Learning%20(Week1)/pic4.jpg">
+                        <br>
+                        <img src="/posts/Machine%20Learning%20(Week1)/pic5.jpg">
+                        <br>
+                        <img src="/posts/Machine%20Learning%20(Week1)/pic6.jpg">
+                        <br>
+                        <img src="/posts/Machine%20Learning%20(Week1)/pic7.jpg">
+                      </p>
+                    </div>
+                    <hr>
+                    <h1 id="Model-and-Cost-Function-模型与代价函数">
+                      <a href="#Model-and-Cost-Function-模型与代价函数" class="headerlink" title="Model and Cost Function - 模型与代价函数"></a>Model and Cost Function - 模型与代价函数</h1>
+                    <h2 id="Model-Representation-模型的表示方法">
+                      <a href="#Model-Representation-模型的表示方法" class="headerlink" title="Model Representation - 模型的表示方法"></a>Model Representation - 模型的表示方法</h2>
+                    <p>对于
+                      <strong>有监督学习</strong>，在这门课程里有一套专门的符号，参数，公式的表示方法：</p>
+                    <ul>
+                      <li>$vector$: 向量（都指列向量）</li>
+                      <li>$m$: 训练样本组数</li>
+                      <li>$x^{\left(i \right)}$ : 第$i$组输入变量（一般为向量）</li>
+                      <li>$y^{\left(i \right)}$: 第$i$组输出变量（一般为向量）</li>
+                      <li>$\left(x^{\left(i \right)}, y^{\left(i \right)} \right)$: 第$i$组训练样本</li>
+                      <li>$\left(x, y\right)$: 全体训练样本数据</li>
+                      <li>$X$: 输入变量空间（一般为矩阵）</li>
+                      <li>$Y$: 输出变量空间（一般为矩阵）</li>
+                      <li>$h_{\theta} \left(x \right)$: 预测函数</li>
+                      <li>$\theta_{j}$: 第$j$组学习参数</li>
+                    </ul>
+                    <div class="note info">
+                      <p>
+                        <strong>例子：</strong>
+                        <br>假设我们有一组（房子面积, 价格）数据集，对应下表:</p>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th style="text-align:center">$Size in feet^{2}$ (x)</th>
+                            <th style="text-align:center">$prize$ (y)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="text-align:center">2104</td>
+                            <td style="text-align:center">460</td>
+                          </tr>
+                          <tr>
+                            <td style="text-align:center">1416</td>
+                            <td style="text-align:center">232</td>
+                          </tr>
+                          <tr>
+                            <td style="text-align:center">1534</td>
+                            <td style="text-align:center">315</td>
+                          </tr>
+                          <tr>
+                            <td style="text-align:center">852</td>
+                            <td style="text-align:center">178</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <p>其中</p>
+                    <ul>
+                      <li>$m = 4$</li>
+                      <li>$x^{\left(1 \right)} = 2104$</li>
+                      <li>$y^{\left(1 \right)} = 460$</li>
+                      <li>$\left(x^{\left(1 \right)}, y^{\left(1 \right)} \right) = (2104,
+                        460)$</li>
+                      <li>$X$ = $\begin{bmatrix}2104 &amp; 1416 &amp; 1534 &amp; 852\end{bmatrix}^{T}$</li>
+                      <li>$Y$ = $\begin{bmatrix}460 &amp; 232 &amp; 315 &amp; 178\end{bmatrix}^{T}$</li>
+                      <li>
+                        <span>$h_{\theta}\left(x\right)=\theta_{0}+\theta_{1}x$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>$\theta_{1}$: 第$1$组学习参数</li>
+                    </ul>
+                    <p>对于多变量（或者叫
+                      <strong>feature - 特征</strong>）的表示方法，如下
+                      <br>
+                      <div class="note info">
+                        <p>
+                          <strong>例子：</strong>
+                          <br>假设我们有一组多个特征的数据，每组特征对应一个确定的输出：</p>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th style="text-align:center">$X_{0}$</th>
+                              <th style="text-align:center">$X_{1}$</th>
+                              <th style="text-align:center">$X_{2}$</th>
+                              <th style="text-align:center">$X_{3}$</th>
+                              <th style="text-align:center">…</th>
+                              <th style="text-align:center">$X_{n}$</th>
+                              <th style="text-align:center">$Y$</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td style="text-align:center">$1$</td>
+                              <td style="text-align:center">$x_{1}^{(1)}$</td>
+                              <td style="text-align:center">$x_{2}^{(1)}$</td>
+                              <td style="text-align:center">$x_{3}^{(1)}$</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">$x_{n}^{(1)}$</td>
+                              <td style="text-align:center">$y^{(1)}$</td>
+                            </tr>
+                            <tr>
+                              <td style="text-align:center">$1$</td>
+                              <td style="text-align:center">$x_{1}^{(2)}$</td>
+                              <td style="text-align:center">$x_{2}^{(2)}$</td>
+                              <td style="text-align:center">$x_{3}^{(2)}$</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">$x_{n}^{(2)}$</td>
+                              <td style="text-align:center">$y^{(2)}$</td>
+                            </tr>
+                            <tr>
+                              <td style="text-align:center">$1$</td>
+                              <td style="text-align:center">$x_{1}^{(3)}$</td>
+                              <td style="text-align:center">$x_{2}^{(3)}$</td>
+                              <td style="text-align:center">$x_{3}^{(3)}$</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">$x_{n}^{(3)}$</td>
+                              <td style="text-align:center">$y^{(3)}$</td>
+                            </tr>
+                            <tr>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">…</td>
+                            </tr>
+                            <tr>
+                              <td style="text-align:center">$1$</td>
+                              <td style="text-align:center">$x_{1}^{(m)}$</td>
+                              <td style="text-align:center">$x_{2}^{(m)}$</td>
+                              <td style="text-align:center">$x_{3}^{(m)}$</td>
+                              <td style="text-align:center">…</td>
+                              <td style="text-align:center">$x_{n}^{(m)}$</td>
+                              <td style="text-align:center">$y^{(m)}$</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </p>
+                    <p>其中</p>
+                    <ul>
+                      <li>
+                        <span>$X_{m\times (n+1)} = \begin{bmatrix}1 &amp; x_{1}^{(1)} &amp;
+                          \cdots &amp;x_{n}^{(1)} \\ \vdots &amp; \vdots &amp; \ddots
+                          &amp; \vdots \\ 1 &amp; x_{1}^{(m)} &amp; \cdots &amp;
+                          x_{n}^{(m)} \\ \end{bmatrix}$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <p>$Y_{m\times 1} = \begin{bmatrix} y^{(1)} &amp; \cdots &amp;
+                          y^{(m)}\end{bmatrix}^{T}$</p>
+                      </li>
+                      <li>
+                        <span>$\theta = \begin{bmatrix} \theta_{0} &amp; \theta_{1} &amp;
+                          \cdots &amp; \theta_{n} \end{bmatrix}^{T}$
+                        </span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <span>$h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&amp;h_{\theta}\left(x^{(2)}\right)&amp;\cdots&amp;h_{\theta}\left(x^{(m)}\right)\end{bmatrix}^{T}=\begin{bmatrix}\theta^{T}x^{(1)}&amp;\theta^{T}x^{(2)}&amp;\cdots&amp;\theta^{T}x^{(m)}\end{bmatrix}^{T}$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                    </ul>
+                    <p>整个监督学习的过程，就是找到最优的$\theta$，从而得到最优的
+                      <span>$h_{\theta}\left(x\right)$</span>
+                      <!-- Has MathJax -->。对于
+                      <strong>回归问题</strong>，预测就是我们把一组$x$丢进
+                      <span>$h_{\theta}\left(x\right)$</span>
+                      <!-- Has MathJax -->中，得到的结果就是预测值。对于
+                      <strong>分类问题</strong>，$h_{\theta}\left(x\right)$得到的结果是一个概率，即输入$x$属于某一类的概率值是多少。或许你觉得我解释得很抽象，因为这里的内容只是让你的大脑对机器学习有一个大致的轮廓。详细的过程将记录在后面的笔记中，请读者放心。</p>
+                    <h2 id="Cost-Function-代价函数">
+                      <a href="#Cost-Function-代价函数" class="headerlink" title="Cost Function - 代价函数"></a>Cost Function - 代价函数</h2>
+                    <p>回到我们上面的那个（房子面积, 价格）数据集的例子中。这是一个
+                      <strong>单变量</strong>的回归问题。如下
+                      <br>
+                      <div class="note info">
+                        <p>
+                          <img src="/posts/Machine%20Learning%20(Week1)/pic8.jpg">
+                        </p>
+                      </div>
+                      <br>在这里，我们的预测函数为
+                      <span>$h_{\theta}(x)=\theta_{0}+\theta_{1}x$</span>
+                      <!-- Has MathJax -->。当$\theta$取不同值时，对应如下图：</p>
+                    <img src="/posts/Machine%20Learning%20(Week1)/pic9.jpg">
+                    <p>我们要找到最优的$\theta$去拟合$(x,y)$，首先就要定义一个能判断当前$\theta$是否最优的函数，这个函数就是
+                      <strong>代价函数</strong>。在这里我们将它定义为$J(\theta)$。</p>
+                    <p>那么它等于什么呢？下面给个直观的图例辅助解释：</p>
+                    <img src="/posts/Machine%20Learning%20(Week1)/pic10.jpg">
+                    <p>在这幅图里，有3组样本数据为</p>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style="text-align:center">$X$</th>
+                          <th style="text-align:center">$Y$</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="text-align:center">1</td>
+                          <td style="text-align:center">1</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">2</td>
+                          <td style="text-align:center">2</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">3</td>
+                          <td style="text-align:center">3</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <p>分别对应上图三个
+                      <font color="#fc0c0c">红色×点</font>。
+                      <font color="#000000">黑色斜线</font>为</p>
+                    <center>
+                      <br>
+                      <span>$h_{\theta}(x)=0+0.5x$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>过这3点分别作垂直于$x$轴的
+                    <strong>垂线段</strong>交于
+                    <span>$h_{\theta}(x)$</span>
+                    <!-- Has MathJax -->。则第$i$个样本点的误差（即代价）就是该样本点对应
+                    <strong>垂线段的长度</strong>，为
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\left|h_{\theta}(x^{(i)})-y^{(i)}\right|$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>为方便处理，我们将绝对值去掉，重新定义误差为
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>则总误差为
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\sum_{i=1}^{3}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>平均误差为
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\frac{1}{3}\sum_{i=1}^{3}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>为了方便后面处理，这里我们一般将平均误差乘一个$\frac{1}{2}$，即
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\frac{1}{2 \times 3}\sum_{i=1}^{3}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>上式就是我们的代价函数，即
+                    <br>
+                    <center>
+                      <br>
+                      <span>$J(\theta)=\frac{1}{6}\sum_{i=1}^{3}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>将上式扩展到$m$个样本点的一般情况，即
+                    <br>
+                    <center>
+                      <br>
+                      <span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+
+                    <p>当我们的$\theta$能令$J(\theta)$取到最小值时，我们就认为这是最优的$\theta$。
+                      <br>是不是很直观？
+                      <br>有了代价函数之后，我们要做的就是找出令它取得最小值的$\theta$，下图就是我们的任务：
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic11.jpg">
+                    </p>
+                    <hr>
+                    <h1 id="Parameter-Learning-参数学习">
+                      <a href="#Parameter-Learning-参数学习" class="headerlink" title="Parameter Learning - 参数学习"></a>Parameter Learning - 参数学习</h1>
+                    <h2 id="Gradient-Descent-梯度下降">
+                      <a href="#Gradient-Descent-梯度下降" class="headerlink" title="Gradient Descent - 梯度下降"></a>Gradient Descent - 梯度下降</h2>
+                    <p>这是典型的极值问题，在数学方法中，我们可以求导解决，可是在计算机程序中，我们要用一种
+                      <strong>通用的数值方法</strong>，去逼近。</p>
+                    <p>我们看只有一个学习参数的情况，假设
+                      <span>$h_{\theta}(x)=\theta x$</span>
+                      <!-- Has MathJax -->
+                    </p>
+                    <p>当
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->比较小时：
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic12.png">
+                      <br>我们看到
+                      <span>$h_{\theta}(x)$</span>
+                      <!-- Has MathJax -->没有很好地拟合数据，
+                      <span>$J(\theta)$</span>
+                      <!-- Has MathJax -->比较大。</p>
+                    <p>当
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->比较大时：
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic13.png">
+                      <br>同样的，
+                      <span>$h_{\theta}(x)$</span>
+                      <!-- Has MathJax -->没有很好地拟合数据，
+                      <span>$J(\theta)$</span>
+                      <!-- Has MathJax -->比较大。</p>
+                    <p>当
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->比取到能使
+                      <span>$h_{\theta}(x)=\theta x$</span>
+                      <!-- Has MathJax -->很好地拟合数据时：
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic14.png">
+                      <br>这时的
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->就是
+                      <span>$J(\theta)$</span>
+                      <!-- Has MathJax -->的极小值点。也就是最优的
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->。
+                      <br>接下来我们就来讲，如何让计算机自动训练出最优的$\theta$</p>
+                    <p>我们继续用上面的例子，
+                      <br>当
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->比较小时：
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic15.png">
+                      <br>我们求得
+                      <span>$J(\theta)$</span>
+                      <!-- Has MathJax -->在当前
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->的导数，
+                      <strong>小于</strong>
+                      <span>$0$</span>
+                      <!-- Has MathJax -->。此时我们把
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->更新为
+                      <span>$\theta - \alpha\frac{dJ(\theta)}{d\theta}$</span>
+                      <!-- Has MathJax -->，
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->就会
+                      <strong>变大</strong>，往极值点靠近。其中
+                      <span>$\alpha$</span>
+                      <!-- Has MathJax -->为
+                      <strong>学习速率</strong>。</p>
+                    <p>当
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->比较大时：
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic16.png">
+                      <br>我们求得
+                      <span>$J(\theta)$</span>
+                      <!-- Has MathJax -->在当前
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->的导数，
+                      <strong>大于</strong>
+                      <span>$0$</span>
+                      <!-- Has MathJax -->。此时我们把
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->更新为
+                      <span>$\theta - \alpha\frac{dJ(\theta)}{d\theta}$</span>
+                      <!-- Has MathJax -->，
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->就会
+                      <strong>减小</strong>，往极值点靠近。其中
+                      <span>$\alpha$</span>
+                      <!-- Has MathJax -->为
+                      <strong>学习速率</strong>。</p>
+                    <p>这就是
+                      <strong>梯度下降</strong>算法。通过多次的迭代，更新
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->，我们就能无限逼近最优值。</p>
+                    <p>将
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->拓展到
+                      <strong>二维向量</strong>（即有两个参数）的情形，我们可能会得到如下的
+                      <span>$J(\theta)$</span>
+                      <!-- Has MathJax -->：
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic17.jpg">
+                      <br>这是一个二维曲面，这种情况我们就要分别对
+                      <span>$\theta_{0},\theta_{1}$</span>
+                      <!-- Has MathJax -->求偏导来进行梯度下降。</p>
+                    <p>对于梯度下降，还有一些要注意的地方：</p>
+                    <ul>
+                      <li>
+                        <p>关于
+                          <strong>学习速率</strong>
+                          <span>$\alpha$</span>
+                          <!-- Has MathJax -->，怎样设置学习速率也是很关键的问题，如果
+                          <span>$\alpha$</span>
+                          <!-- Has MathJax -->设置的
+                          <strong>过小</strong>，则梯度下降就会收敛得很慢，训练时间会过长。如果
+                          <span>$\alpha$</span>
+                          <!-- Has MathJax -->设置的过大，则梯度下降有可能会发散，就是越过了极值点：</p>
+                        <div class="note info">
+                          <p>
+                            <img src="/posts/Machine%20Learning%20(Week1)/pic18.png">
+                            <br>所以我们在做迭代时一定要关注着$J(\theta)$，确保它是在下降的。</p>
+                        </div>
+                      </li>
+                      <li>
+                        <p>在实际问题中，我们的
+                          <span>$J(\theta)$</span>
+                          <!-- Has MathJax -->一般不会是
+                          <strong>凸函数</strong>，也就是说我们做梯度下降得到的只是
+                          <strong>局部最优值</strong>，而不是
+                          <strong>全局最优值</strong>：</p>
+                        <div class="note info">
+                          <p>
+                            <img src="/posts/Machine%20Learning%20(Week1)/pic19.png">
+                            <br>
+                            <img src="/posts/Machine%20Learning%20(Week1)/pic20.png">
+                          </p>
+                        </div>
+                      </li>
+                    </ul>
+                    <h2 id="Gradient-Descent-for-Liner-Regression-线性回归中的梯度下降">
+                      <a href="#Gradient-Descent-for-Liner-Regression-线性回归中的梯度下降" class="headerlink" title="Gradient Descent for Liner Regression - 线性回归中的梯度下降"></a>Gradient Descent for Liner Regression - 线性回归中的梯度下降</h2>
+                    <p>对于线性回归，我们有如下定义：</p>
+                    <ul>
+                      <li>
+                        <span>$X_{m\times (n+1)} = \begin{bmatrix}1 &amp; x_{1}^{(1)} &amp;
+                          \cdots &amp;x_{n}^{(1)} \\ \vdots &amp; \vdots &amp; \ddots
+                          &amp; \vdots \\ 1 &amp; x_{1}^{(m)} &amp; \cdots &amp;
+                          x_{n}^{(m)} \\ \end{bmatrix}$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <span>$Y_{m\times 1} = \begin{bmatrix} y^{(1)} &amp; \cdots &amp;
+                          y^{(m)}\end{bmatrix}^{T}$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <span>$\theta = \begin{bmatrix} \theta_{0} &amp; \theta_{1} &amp;
+                          \cdots &amp; \theta_{n} \end{bmatrix}^{T}$
+                        </span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <span>$h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&amp;h_{\theta}\left(x^{(2)}\right)&amp;\cdots&amp;h_{\theta}\left(x^{(m)}\right)\end{bmatrix}^{T}=\begin{bmatrix}\theta^{T}x^{(1)}&amp;\theta^{T}x^{(2)}&amp;\cdots&amp;\theta^{T}x^{(m)}\end{bmatrix}^{T}
+                          = X \theta$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <span>$h_{\theta}\left(x^{(i)}\right) = \theta_{0} + \theta_{1}x_{1}^{(i)}
+                          + \cdots + \theta_{n}x_{n}^{(i)}$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <span>$J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                    </ul>
+                    <p>我们对
+                      <span>$J(\theta)$</span>
+                      <!-- Has MathJax -->求所有
+                      <span>$\theta$</span>
+                      <!-- Has MathJax -->的偏导：</p>
+                    <center>
+                      <br>
+                      <span>$\frac{\partial J}{\partial \theta_{j}} = \frac{1}{m} \sum_{i=1}^{m}
+                        \left[\left( h_{\theta}(x^{(i)})-y^{i} \right) \frac{\partial
+                        h_{\theta}(x^{(i)})}{\partial \theta_{j}} \right]$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>当
+                    <span>$j=0$</span>
+                    <!-- Has MathJax -->时：
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\frac{\partial h_{\theta}(x^{(i)})}{\partial \theta_{0}} =
+                        1$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>当
+                    <span>$j=1 \cdots n$</span>
+                    <!-- Has MathJax -->时：
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\frac{\partial h_{\theta}(x^{(i)})}{\partial \theta_{j}} =
+                        x_{j}^{(i)}$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>综上：
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \sum_{i=1}^{m}
+                        \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right)\right]$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                      <br>
+                      <span>$\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \sum_{i=1}^{m}
+                        \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{1}^{(i)}
+                        \right]$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                      <br>
+                      <span>$\vdots$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                      <br>
+                      <span>$\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \sum_{i=1}^{m}
+                        \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{n}^{(i)}
+                        \right]$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+                    <br>更新
+                    <span>$\theta$</span>
+                    <!-- Has MathJax -->：
+                    <br>
+                    <center>
+                      <br>
+                      <span>$\theta_{0}:=\theta_{0} - \alpha \frac{\partial J}{\partial
+                        \theta_{0}} = \theta_{0} - \alpha \frac{1}{m} \sum_{i=1}^{m}
+                        \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right)\right]$
+                      </span>
+                      <!-- Has MathJax -->
+                      <br>
+                      <br>
+                      <span>$\theta_{1}:=\theta_{1} - \alpha \frac{\partial J}{\partial
+                        \theta_{1}} = \theta_{1} - \alpha \frac{1}{m} \sum_{i=1}^{m}
+                        \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{1}^{(i)}
+                        \right]$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                      <br>
+                      <span>$\vdots$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                      <br>
+                      <span>$\theta_{n}:=\theta_{n} - \alpha \frac{\partial J}{\partial
+                        \theta_{n}} = \theta_{n} - \alpha \frac{1}{m} \sum_{i=1}^{m}
+                        \left[\left( h_{\theta}(x^{(i)})-y^{(i)} \right) x_{n}^{(i)}
+                        \right]$</span>
+                      <!-- Has MathJax -->
+                      <br>
+                    </center>
+
+                    <p>我们将上述过程向量化：</p>
+                    <ul>
+                      <li>
+                        <p>首先将偏导数向量化：
+                          <br>
+                          <center>
+                          </center>
+                        </p>
+                        <span>$$\frac{\partial J}{\partial \theta_{0}} = \frac{1}{m} \begin{bmatrix}1&amp;1&amp;\cdots&amp;1\end{bmatrix}
+                          \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}\\h_{\theta}(x^{(2)})-y^{(2)}\\
+                          \vdots\\h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix}$$</span>
+                        <!-- Has MathJax -->
+                        <span>$$\frac{\partial J}{\partial \theta_{1}} = \frac{1}{m} \begin{bmatrix}x_{1}^{(1)}&amp;x_{1}^{(2)}&amp;\cdots&amp;x_{1}^{(m)}\end{bmatrix}
+                          \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}\\h_{\theta}(x^{(2)})-y^{(2)}\\
+                          \vdots\\h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix}$$</span>
+                        <!-- Has MathJax -->
+                        <span>$$\vdots$$</span>
+                        <!-- Has MathJax -->
+                        <span>$$\frac{\partial J}{\partial \theta_{n}} = \frac{1}{m} \begin{bmatrix}x_{n}^{(1)}&amp;x_{n}^{(2)}&amp;\cdots&amp;x_{n}^{(m)}\end{bmatrix}
+                          \begin{bmatrix}h_{\theta}(x^{(1)})-y^{(1)}\\h_{\theta}(x^{(2)})-y^{(2)}\\
+                          \vdots\\h_{\theta}(x^{(m)})-y^{(m)}\end{bmatrix}$$</span>
+                        <!-- Has MathJax -->
+                        <p>可得：</p>
+                        <span>$$\frac{\partial J}{\partial \theta} = grad_{(n+1)\times
+                          1} = \begin{bmatrix}\frac{\partial J}{\partial \theta_{0}}\\\frac{\partial
+                          J}{\partial \theta_{1}}\\ \vdots\\\frac{\partial J}{\partial
+                          \theta_{n}}\end{bmatrix} = \frac{1}{m} X^{T}(X\theta -
+                          Y)$$</span>
+                        <!-- Has MathJax -->
+                      </li>
+                      <li>
+                        <p>接着将梯度下降的过程向量化：</p>
+                        <span>$$\theta := \theta - \alpha \frac{1}{m} X^{T}(X\theta - Y)$$</span>
+                        <!-- Has MathJax -->
+                        <p>
+
+                        </p>
+                      </li>
+                    </ul>
+                    <hr>
+                    <p>PS:其实上面的
+                      <strong>多变量线性回归梯度下降</strong> 是
+                      <strong>week2</strong>的内容，因为不算太复杂我就搬到这里讲了，那么
+                      <strong>week2</strong>的笔记里就会跳过这部分内容，请大家注意。</p>
+                    <p>
+                      <br>
+                      <br>
+                      <div class="note info">
+                        <p>
+                          <center>
+                            <strong>课程资料</strong>
+                          </center>
+                        </p>
+                        <ul>
+                          <li>
+                            <a href="https://github.com/tankeryang/Coursera-machine-learning-lecture-note/tree/master/week1"
+                                                                                                            target="_blank" rel="noopener">week1课程讲义</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </p>
+
+                  </div>
+
+                  <div>
+
+                    <div>
+
+                      <div style="text-align:center;color: #ccc;font-size:14px;">---------------------------------END---------------------------------</div>
+
+                    </div>
+
+                  </div>
+
+                  <div>
+                    <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                      <div>手抖一下？</div>
+                      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                        <span>献爱心</span>
+                      </button>
+                      <div id="QR" style="display: none;">
+
+                        <div id="wechat" style="display: inline-block">
+                          <img id="wechat_qr" src="/images/wx_pay1.png" alt="tankeryang WechatPay" />
+                          <p>WechatPay</p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/机器学习/" rel="tag">
+                        <i class="fa fa-tag"></i> 机器学习</a>
+
+                      <a href="/tags/ML/" rel="tag">
+                        <i class="fa fa-tag"></i> ML</a>
+
+                      <a href="/tags/数学/" rel="tag">
+                        <i class="fa fa-tag"></i> 数学</a>
+
+                    </div>
+
+                    <div class="post-widgets">
+
+                      <div id="needsharebutton-postbottom">
+                        <span class="btn">
+                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                        </span>
+                      </div>
+
+                    </div>
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/posts/Machine Learning (Week0) Openning/" rel="next" title="Machine Learning (Week0) Openning">
+                          <i class="fa fa-chevron-left"></i> Machine Learning (Week0) Openning
+                        </a>
+
+                      </div>
+
+                      <span class="post-nav-divider"></span>
+
+                      <div class="post-nav-prev post-nav-item">
+
+                        <a href="/posts/deeplearning.ai 0 (openning)/" rel="prev" title="deeplearning.ai 0 (openning)">
+                          deeplearning.ai 0 (openning)
+                          <i class="fa fa-chevron-right"></i>
+                        </a>
+
+                      </div>
+                    </div>
+
+                  </footer>
+                </div>
+
+              </article>
+
+              <div class="post-spread">
+
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox">
+                  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59b14058bcac3b78"
+                                                                                                  async="async"></script>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <div class="comments" id="comments">
+          </div>
+
+        </div>
+
+        <div class="sidebar-toggle">
+          <div class="sidebar-toggle-line-wrap">
+            <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+            <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+          </div>
+        </div>
+
+        <aside id="sidebar" class="sidebar">
+
+          <div id="sidebar-dimmer"></div>
+
+          <div class="sidebar-inner">
+
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+                站点概览
+              </li>
+            </ul>
+
+            <section class="site-overview-wrap sidebar-panel">
+              <div class="site-overview">
+                <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+
+                  <img class="site-author-image" itemprop="image" src="/uploads/my.jpg" alt="tankeryang"
+                  />
+
+                  <p class="site-author-name" itemprop="name">tankeryang</p>
+                  <p class="site-description motion-element" itemprop="description">汝亦知射乎？吾射不亦精乎？</p>
+                </div>
+
+                <nav class="site-state motion-element">
+
+                  <div class="site-state-item site-state-posts">
+
+                    <a href="/archives/">
+
+                      <span class="site-state-item-count">10</span>
+                      <span class="site-state-item-name">日志</span>
+                    </a>
+                  </div>
+
+                  <div class="site-state-item site-state-categories">
+                    <a href="/categories/index.html">
+                      <span class="site-state-item-count">5</span>
+                      <span class="site-state-item-name">分类</span>
+                    </a>
+                  </div>
+
+                  <div class="site-state-item site-state-tags">
+                    <a href="/tags/index.html">
+                      <span class="site-state-item-count">16</span>
+                      <span class="site-state-item-name">标签</span>
+                    </a>
+                  </div>
+
+                </nav>
+
+                <div class="links-of-author motion-element">
+
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/tankeryang" target="_blank" title="GitHub">
+
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+
+                  <span class="links-of-author-item">
+                    <a href="mailto:youngzyang@outlook.com" target="_blank" title="E-Mail">
+
+                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+
+                </div>
+
+                <div class="cc-license motion-element" itemprop="license">
+                  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                    <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+                  </a>
+                </div>
+
+                <div class="links-of-blogroll motion-element links-of-blogroll-block">
+                  <div class="links-of-blogroll-title">
+                    <i class="fa  fa-fw fa-link"></i>
+                    博客镜像 & 友情链接
+                  </div>
+                  <ul class="links-of-blogroll-list">
+
+                    <li class="links-of-blogroll-item">
+                      <a href="https://tankeryang.github.io" title="淦 - github" target="_blank">淦 - github</a>
+                    </li>
+
+                    <li class="links-of-blogroll-item">
+                      <a href="https://tankeryang.coding.me" title="淦 - coding" target="_blank">淦 - coding</a>
+                    </li>
+
+                    <li class="links-of-blogroll-item">
+                      <a href="http://tankeryang.gitee.io" title="淦 - gitee" target="_blank">淦 - gitee</a>
+                    </li>
+
+                    <li class="links-of-blogroll-item">
+                      <a href="https://www.tiexo.cn/" title="简单可依赖" target="_blank">简单可依赖</a>
+                    </li>
+
+                    <li class="links-of-blogroll-item">
+                      <a href="https://darrenliuwei.com" title="刘伟的博客" target="_blank">刘伟的博客</a>
+                    </li>
+
+                  </ul>
+                </div>
+
+              </div>
+            </section>
+
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#Introduction-简介">
+                        <span class="nav-number">1.</span>
+                        <span class="nav-text">
+                          Introduction - 简介</span>
+                      </a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#What-is-Machine-Learning-何为机器学习？">
+                            <span class="nav-number">1.1.</span>
+                            <span class="nav-text">
+                              What is Machine Learning? - 何为机器学习？</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#Supervised-Learning-有监督学习">
+                            <span class="nav-number">1.2.</span>
+                            <span class="nav-text">
+                              Supervised Learning - 有监督学习</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#Unsupervised-Learning-无监督学习">
+                            <span class="nav-number">1.3.</span>
+                            <span class="nav-text">
+                              Unsupervised Learning - 无监督学习</span>
+                          </a>
+                        </li>
+                      </ol>
+                    </li>
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#Model-and-Cost-Function-模型与代价函数">
+                        <span class="nav-number">2.</span>
+                        <span class="nav-text">
+                          Model and Cost Function - 模型与代价函数</span>
+                      </a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#Model-Representation-模型的表示方法">
+                            <span class="nav-number">2.1.</span>
+                            <span class="nav-text">
+                              Model Representation - 模型的表示方法</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#Cost-Function-代价函数">
+                            <span class="nav-number">2.2.</span>
+                            <span class="nav-text">
+                              Cost Function - 代价函数</span>
+                          </a>
+                        </li>
+                      </ol>
+                    </li>
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#Parameter-Learning-参数学习">
+                        <span class="nav-number">3.</span>
+                        <span class="nav-text">
+                          Parameter Learning - 参数学习</span>
+                      </a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#Gradient-Descent-梯度下降">
+                            <span class="nav-number">3.1.</span>
+                            <span class="nav-text">
+                              Gradient Descent - 梯度下降</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#Gradient-Descent-for-Liner-Regression-线性回归中的梯度下降">
+                            <span class="nav-number">3.2.</span>
+                            <span class="nav-text">
+                              Gradient Descent for Liner Regression - 线性回归中的梯度下降</span>
+                          </a>
+                        </li>
+                      </ol>
+                    </li>
+                  </ol>
+                </div>
+
+              </div>
+            </section>
+            <!--/noindex-->
+
+            <div class="back-to-top">
+              <i class="fa fa-arrow-up"></i>
+
+              <span id="scrollpercent">
+                <span>0</span>%</span>
+
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <hr>
+        <div class="copyright">&copy; 2017 &mdash;
+          <span itemprop="copyrightYear">2018</span>
+          <span class="with-love">
+            <i class="fa fa-cog fa-spin fa-lg margin-bottom"></i>
+          </span>
+          <span class="author" itemprop="copyrightHolder">tankeryang</span>
+
+          <span class="post-meta-divider">|</span>
+          <span class="post-meta-item-icon">
+            <i class="fa fa-area-chart"></i>
+          </span>
+
+          <span title="total count">55k</span>
+
+          <span class="post-meta-divider">|</span>
+          <span class="post-meta-item-icon">
+            <i class="fa fa-coffee"></i>
+          </span>
+
+          <span title="total time">2:02</span>
+
+        </div>
+
+        <div class="powered-by">Powered by —
+          <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a>
+        </div>
+
+        <span class="post-meta-divider">|</span>
+
+        <div class="theme-info">theme &mdash;
+          <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.1</div>
+
+        <div class="busuanzi-count">
+          <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+          <span class="site-uv">
+            <i class="fa fa-user"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+            visitors
+          </span>
+
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <script type="text/javascript">
+    if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+      window.Promise = null;
+    }
+
+  </script>
+
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script type="text/javascript">
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.indexOf(item) > -1;
+    });
+    new Valine({
+      el: '#comments',
+      verify: true,
+      notify: true,
+      appId: 'NiFbgAF3vRyR2BayGJOswb21-gzGzoHsz',
+      appKey: 'xGF7qavyOOQGtVACk06SnLrW',
+      placeholder: 'Just go go',
+      avatar: 'retro',
+      guest_info: guest,
+      pageSize: '10' || 10,
+    });
+
+  </script>
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+    var onPopupClose = function(e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append(
+          '<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css(
+        'text-align', 'center');
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(
+                  /<[^>]+>/g, "");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if (title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text,
+                      caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0,
+                        position = [],
+                        index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word,
+                          startPosition)) > -1) {
+                        index.push({
+                          position: position,
+                          word: word
+                        });
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+                    indexOfTitle = indexOfTitle.concat(
+                      getIndexByWord(keyword,
+                        titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(
+                      getIndexByWord(keyword,
+                        contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length >
+                    0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length +
+                      indexOfContent.length;
+                  }
+                }
+                // show search results
+                if (isMatch) {
+                  // sort index by position of keyword
+                  [indexOfTitle, indexOfContent].forEach(function(
+                    index) {
+                    index.sort(function(itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft
+                        .position) {
+                        return itemRight.position -
+                          itemLeft.position;
+                      } else {
+                        return itemLeft.word.length -
+                          itemRight.word.length;
+                      }
+                    });
+                  });
+                  // merge hits into slices
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index
+                      .length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({
+                        position: position,
+                        length: word.length
+                      });
+                      var wordEnd = position + word.length;
+                      // move to next position of hit
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0,
+                      title.length, indexOfTitle));
+                  }
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length -
+                      1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if (start < 0) {
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if (end > content.length) {
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content,
+                      start, end, indexOfContent));
+                  }
+                  // sort slices in content by search text's count and hits' count
+                  slicesOfContent.sort(function(sliceLeft,
+                    sliceRight) {
+                    if (sliceLeft.searchTextCount !==
+                      sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount -
+                        sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !==
+                      sliceRight.hits.length) {
+                      return sliceRight.hits.length -
+                        sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+                  // select top N slices in content
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0,
+                      upperBound);
+                  }
+                  // highlight title and content
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function(hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' +
+                        text.substring(hit.position, end) +
+                        '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+                  var resultItem = '';
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl +
+                      "' class='search-result-title'>" +
+                      highlightKeyword(title, slicesOfTitle[0]) +
+                      "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl +
+                      "' class='search-result-title'>" + title +
+                      "</a>";
+                  }
+                  slicesOfContent.forEach(function(slice) {
+                    resultItem += "<a href='" + articleUrl +
+                      "'>" +
+                      "<p class=\"search-result\">" +
+                      highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML =
+                '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML =
+                '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function(resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft
+                    .searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList =
+                '<ul class=\"search-result-list\">';
+              resultItems.forEach(function(result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function(event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+          proceedsearch();
+        }
+      });
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function(event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+  </script>
+
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>
+    AV.initialize("cXvMcAzGUP3gsldOnkkG74dK-gzGzoHsz",
+      "8h6mkKLBlNSv4Vwo1kk6rqwi");
+
+  </script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+      $visitors.each(function() {
+        entries.push($(this).attr("id").trim());
+      });
+      query.containedIn('url', entries);
+      query.find()
+        .done(function(results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if (countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function(object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(
+                  counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log(
+                  'Failed to save Visitor num, with error message: ' +
+                  error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(
+                  newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes:
+    true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
+    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax'
+                                                                                    ; } }); </script>
+      <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+      <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+      <script>
+        pbOptions = {};
+        pbOptions.iconStyle = "box";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "topCenter";
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+        new needShareButton('#needsharebutton-postbottom', pbOptions);
+
+      </script>
+
+      <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+      <script type="text/javascript">
+        pangu.spacingPage();
+
+      </script>
+
+      <script type="text/javascript" src="/js/src/exturl.js?v=6.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i
+  <
+                                                                                  all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax'
+                                                                                  ; } }); </script>
+
+    <script type="text/javascript" src="custom_mathjax_source">
+
+
+    </script>
+    <!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+</body>
+
+</html>
