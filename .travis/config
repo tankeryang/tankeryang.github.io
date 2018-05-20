@@ -12,7 +12,7 @@ Host gitee.com
 	HostName gitee.com
 	PreferredAuthentications publickey
 	StrictHostKeyChecking no
-	IdentityFile ~/.ssh/id_rsa_gitee
+	IdentityFile ~/.ssh/travis_rsa
 	IdentitiesOnly yes
 	User tankeryang
 
