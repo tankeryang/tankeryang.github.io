@@ -6,14 +6,13 @@ branches:
   - dev
 
 before_install:
-# 解密私钥并设置为本机 ssh 私钥
+# 解密SSH
+- openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
+  -in .travis/travis_key.enc -out ~/.ssh/travis_rsa -d
+- chmod 600 ~/.ssh/travis_rsa
 - openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
   -in .travis/id_rsa_gitee.enc -out ~/.ssh/id_rsa_gitee -d
-- openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
-  -in .travis/travis.key.enc -out ~/.ssh/travis_rsa -d
 - chmod 600 ~/.ssh/id_rsa_gitee
-- chmod 600 ~/.ssh/travis.key
-# 修改本机 ssh 配置，防止秘钥认证过程影响自动部署
 - mv -fv .travis/config ~/.ssh/config
 
 install:
@@ -43,28 +42,23 @@ script:
 - hexo clean && hexo g
 
 after_script:
-# 先 clone 再 commit，避免直接 force commit
-# 不然整个 branch 就总是只有一个 commit，不好看
+# clone原master，获取.git历史
 - git clone -b master git@github.com:tankeryang/tankeryang.github.io.git .deploy_git
 - cd .deploy_git
 - git checkout master
 - mv .git/ ../public/
-# 提交更改
+# 提交
 - cd ../public
 - git config user.name "tankeryang"
 - git config user.email "youngzyang@outlook.com"
 - git add .
 - git commit -m "Site updated:`date +"%Y-%m-%d %H:%M:%S"`"
-# 添加coding和gitee的远程库
+# push
 - git remote add coding git@git.coding.net:tankeryang/tankeryang.git
 - git remote add gitee git@gitee.com:tankeryang/tankeryang.git
-# push
 - git push -u origin master
 - git push -u coding master
 - git push -u gitee master
-# - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-
-# env:
-#   global:
-#   - GH_REF: github.com/tankeryang/tankeryang.github.io.git
-
+# dd:
+# - openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
+#   -in travis_rsa.enc -out travis_rsa -d
