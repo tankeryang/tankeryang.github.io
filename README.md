@@ -9,15 +9,15 @@ git config --global http.https://github.com.proxy https://127.0.0.1:1080
 git config --global https.https://github.com.proxy https://127.0.0.1:1080
 ```
 
+* 克隆
+```
+git clone https://github.com/tankeryang/tankeryang.github.io.git
+```
+
 * 取消代理
 ```
 git config --global --unset http.proxy
 git config --global --unset https.proxy
-```
-
-* 克隆
-```
-git clone https://github.com/tankeryang/tankeryang.github.io.git
 ```
 
 * 更改```~/.git```下的```config```

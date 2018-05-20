@@ -6,7 +6,7 @@
     "version": "3.4.4"
   },
   "dependencies": {
-    "hexo": "^3.2.0",
+    "hexo": "^3.4.4",
     "hexo-addlink": "^1.0.4",
     "hexo-algolia": "^1.2.3",
     "hexo-beautify": "^1.0.2",
