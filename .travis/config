@@ -4,7 +4,7 @@ Host github.com
 	PreferredAuthentications publickey
 	StrictHostKeyChecking no
 	IdentitiesOnly yes
-	IdentityFile ~/.ssh/travis.key
+	IdentityFile ~/.ssh/travis_rsa
 	User tankeryang
 
 # gitee
@@ -21,6 +21,6 @@ Host git.coding.net
 	HostName git.coding.net
 	PreferredAuthentications publickey
 	StrictHostKeyChecking no
-	IdentityFile ~/.ssh/travis.key
+	IdentityFile ~/.ssh/travis_rsa
 	IdentitiesOnly yes
 	User tankeryang

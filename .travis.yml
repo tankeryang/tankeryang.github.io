@@ -10,7 +10,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
   -in .travis/id_rsa_gitee.enc -out ~/.ssh/id_rsa_gitee -d
 - openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
-  -in .travis/travis.key.enc -out ~/.ssh/travis.key -d
+  -in .travis/travis.key.enc -out ~/.ssh/travis_rsa -d
 - chmod 600 ~/.ssh/id_rsa_gitee
 - chmod 600 ~/.ssh/travis.key
 # 修改本机 ssh 配置，防止秘钥认证过程影响自动部署
