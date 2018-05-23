@@ -58,5 +58,5 @@ after_script:
 - git remote add coding git@git.coding.net:tankeryang/tankeryang.git
 - git remote add gitee git@gitee.com:tankeryang/tankeryang.git
 - git push -u origin master
-- git push -u coding master
-- git push -u gitee master
+- git push -u coding master -f
+- git push -u gitee master -f
