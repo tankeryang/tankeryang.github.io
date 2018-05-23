@@ -1173,9 +1173,9 @@ after_script:
 # push
 - git remote add coding git@git.coding.net:USERNAME/USERNAME.git  # USERNAME为你的coding用户名
 - git remote add gitee git@gitee.com:USERNAME/USERNAME.git  # USERNAME为你的gitee用户名
-- git push -u origin master
-- git push -u coding master
-- git push -u gitee master
+- git push -u origin master -f
+- git push -u coding master -f
+- git push -u gitee master -f
 {% endcodeblock %}
 
 ## 最后，将你的本地博客目录与远程github博客项目关联
@@ -1196,7 +1196,3 @@ git push -u origin dev
 * 之后写完文章只要`git push origin dev`就ok了。注意要在`dev`分支下进行。可以通过`git checkout dev`切换分支
 
 从年初开始写，一直到今天（2018-05-23）才写完...足以证明我是一个多么~~懒到没谱~~持之以恒的人，这样的博主还不赶快献爱心一个？
-
-<!-- {% note danger %}
-<i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续...明天继续...
-{% endnote %} -->

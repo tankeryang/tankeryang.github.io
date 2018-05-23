@@ -67,3 +67,7 @@ graph LR;
 其中layer 2是 __隐藏层__，是中间的计算单元，将结果反馈到下一层。这里我们定义一下符号表示：
 * {% math %}a_{i}^{(j)}{% endmath %}为第j层第i个节点
 * {% math %}h_{\Theta}(x){% endmath %}为输出结果
+
+{% note danger %}
+<i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续...有空继续...
+{% endnote %}
