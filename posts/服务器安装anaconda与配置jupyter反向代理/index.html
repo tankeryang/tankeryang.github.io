@@ -76,20 +76,24 @@
   <link rel="stylesheet" href="mermaid.min.css">
   <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="anaconda,jupyter,nginx,反向代理," />
 
-  <meta name="description" content="汝亦知射乎？吾射不亦精乎？">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="淦">
-  <meta property="og:url" content="https://tankeryang.github.io/categories/技术杂项/index.html">
+  <meta name="description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
+  <meta name="keywords" content="anaconda,jupyter,nginx,反向代理">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="服务器安装anaconda与配置jupyter反向代理">
+  <meta property="og:url" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/index.html">
   <meta property="og:site_name" content="淦">
-  <meta property="og:description" content="汝亦知射乎？吾射不亦精乎？">
+  <meta property="og:description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
   <meta property="og:locale" content="zh-Hans">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic1.png">
+  <meta property="og:updated_time" content="2018-05-23T16:38:40.680Z">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="淦">
-  <meta name="twitter:description" content="汝亦知射乎？吾射不亦精乎？">
+  <meta name="twitter:title" content="服务器安装anaconda与配置jupyter反向代理">
+  <meta name="twitter:description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
+  <meta name="twitter:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic1.png">
 
-  <title>分类: 技术杂项 | 淦</title>
+  <title>服务器安装anaconda与配置jupyter反向代理 | 淦</title>
 
   <noscript>
     <style type="text/css">
@@ -129,7 +133,7 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,66 +247,252 @@
         <div class="content-wrap">
           <div id="content" class="content">
 
-            <div class="post-block category">
+            <div id="posts" class="posts-expand">
 
-              <div id="posts" class="posts-collapse">
-                <div class="collection-title">
-                  <h1>技术杂项
-                    <small>分类</small>
-                  </h1>
+              <div class="reading-progress-bar"></div>
+
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="tankeryang">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="/uploads/my.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="淦">
+                  </span>
+
+                  <header class="post-header">
+
+                    <h1 class="post-title" itemprop="name headline">服务器安装anaconda与配置jupyter反向代理</h1>
+
+                    <div class="post-meta">
+                      <span class="post-time">
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">posted on</span>
+
+                        <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T23:54:26+00:00">2018-05-23</time>
+
+                      </span>
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">in</span>
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                          <a href="/categories/技术杂项/" itemprop="url" rel="index">
+                            <span itemprop="name">技术杂项</span>
+                          </a>
+                        </span>
+
+                      </span>
+
+                      <span class="post-comments-count">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-comment-o"></i>
+                        </span>
+                        <a href="/posts/服务器安装anaconda与配置jupyter反向代理/#comments" itemprop="discussionUrl">
+                          <span class="post-comments-count valine-comment-count" data-xid="/posts/服务器安装anaconda与配置jupyter反向代理/"
+                                                                                                          itemprop="commentCount"></span>
+                        </a>
+                      </span>
+
+                      <span id="/posts/服务器安装anaconda与配置jupyter反向代理/" class="leancloud_visitors" data-flag-title="服务器安装anaconda与配置jupyter反向代理">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">read times&#58;</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+                      <div class="post-wordcount">
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-file-word-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">words count&#58;</span>
+
+                        <span title="words count">608</span>
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-clock-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">minutes to read &asymp;</span>
+
+                        <span title="minutes to read">0:01</span>
+
+                      </div>
+
+                    </div>
+                  </header>
+
+                  <div class="post-body" itemprop="articleBody">
+
+                    <img src="/posts/服务器安装anaconda与配置jupyter反向代理/pic1.png">
+                    <p>最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下</p>
+                    <a id="more"></a>
+                    <hr>
+                    <h1 id="安装Anaconda">
+                      <a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h1>
+                    <p>
+                      <strong>公司服务器系统信息:</strong>
+                    </p>
+                    <blockquote>
+                      <ul>
+                        <li>Linux version:
+                          <code>4.4.0-116-generic (buildd@lgw01-amd64-021)</code>
+                        </li>
+                        <li>Distribution:
+                          <code>Ubuntu 16.04.4 LTS</code>
+                        </li>
+                        <li>gcc version:
+                          <code>5.4.0 20160609</code>
+                        </li>
+                        <li>CPU info:
+                          <code>32 Intel(R) Xeon(R) CPU E5-2670 0 @ 2.60GHz</code> (双物理cpu，单个cpu
+                          8核16线程…)</li>
+                        <li>内网ip:
+                          <code>10.10.22.13</code>
+                        </li>
+                      </ul>
+                    </blockquote>
+                    <p>首先
+                      <code>ssh</code>到服务器，
+                      <code>cd</code>到一个非系统级的目录，下载anaconda安装脚本:
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">wget https://mirrors4.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.1.0-Linux-x86_64.sh</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <div class="note danger">
+                      <p>
+                        <i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续…有空继续…</p>
+                    </div>
+
+                  </div>
+
+                  <div>
+
+                    <div>
+
+                      <div style="text-align:center;color: #ccc;font-size:14px;">---------------------------------END---------------------------------</div>
+
+                    </div>
+
+                  </div>
+
+                  <div>
+                    <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                      <div>手抖一下？</div>
+                      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                        <span>献爱心</span>
+                      </button>
+                      <div id="QR" style="display: none;">
+
+                        <div id="wechat" style="display: inline-block">
+                          <img id="wechat_qr" src="/images/wx_pay1.png" alt="tankeryang WechatPay" />
+                          <p>WechatPay</p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/anaconda/" rel="tag">
+                        <i class="fa fa-tag"></i> anaconda</a>
+
+                      <a href="/tags/jupyter/" rel="tag">
+                        <i class="fa fa-tag"></i> jupyter</a>
+
+                      <a href="/tags/nginx/" rel="tag">
+                        <i class="fa fa-tag"></i> nginx</a>
+
+                      <a href="/tags/反向代理/" rel="tag">
+                        <i class="fa fa-tag"></i> 反向代理</a>
+
+                    </div>
+
+                    <div class="post-widgets">
+
+                      <div id="needsharebutton-postbottom">
+                        <span class="btn">
+                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                        </span>
+                      </div>
+
+                    </div>
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/posts/Machine-Learning (Week4)/" rel="next" title="Machine Learning (Week4)">
+                          <i class="fa fa-chevron-left"></i> Machine Learning (Week4)
+                        </a>
+
+                      </div>
+
+                      <span class="post-nav-divider"></span>
+
+                      <div class="post-nav-prev post-nav-item">
+
+                      </div>
+                    </div>
+
+                  </footer>
                 </div>
 
-                <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-                  <header class="post-header">
+              </article>
 
-                    <h2 class="post-title">
+              <div class="post-spread">
 
-                      <a class="post-title-link" href="/posts/服务器安装anaconda与配置jupyter反向代理/" itemprop="url">
-
-                        <span itemprop="name">服务器安装anaconda与配置jupyter反向代理</span>
-
-                      </a>
-
-                    </h2>
-
-                    <div class="post-meta">
-                      <time class="post-time" itemprop="dateCreated" datetime="2018-05-23T23:54:26+00:00"
-                                                                                                      content="2018-05-23">
-                        05-23
-                      </time>
-                    </div>
-
-                  </header>
-                </article>
-
-                <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-                  <header class="post-header">
-
-                    <h2 class="post-title">
-
-                      <a class="post-title-link" href="/posts/Hexo + NexT + Github Pages + Coding Pages + Gitee Pages + Travis 全攻略/"
-                                                                                                      itemprop="url">
-
-                        <span itemprop="name">Hexo+NexT+GithubPages+CodingPages+GiteePages+Travis全攻略</span>
-
-                      </a>
-
-                    </h2>
-
-                    <div class="post-meta">
-                      <time class="post-time" itemprop="dateCreated" datetime="2018-01-22T15:34:54+00:00"
-                                                                                                      content="2018-01-22">
-                        01-22
-                      </time>
-                    </div>
-
-                  </header>
-                </article>
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox">
+                  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59b14058bcac3b78"
+                                                                                                  async="async"></script>
+                </div>
 
               </div>
-
             </div>
 
+          </div>
+
+          <div class="comments" id="comments">
           </div>
 
         </div>
@@ -321,7 +511,16 @@
 
           <div class="sidebar-inner">
 
-            <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+                站点概览
+              </li>
+            </ul>
+
+            <section class="site-overview-wrap sidebar-panel">
               <div class="site-overview">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
@@ -420,6 +619,26 @@
               </div>
             </section>
 
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#安装Anaconda">
+                        <span class="nav-number">1.</span>
+                        <span class="nav-text">
+                          安装Anaconda</span>
+                      </a>
+                    </li>
+                  </ol>
+                </div>
+
+              </div>
+            </section>
+            <!--/noindex-->
+
             <div class="back-to-top">
               <i class="fa fa-arrow-up"></i>
 
@@ -507,6 +726,9 @@
   <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
 
   <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
 
@@ -974,37 +1196,25 @@
 
   </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes:
-    true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
-    });
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    pbOptions = {};
+    pbOptions.iconStyle = "box";
+    pbOptions.boxForm = "horizontal";
+    pbOptions.position = "topCenter";
+    pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+
   </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax'
-                                                                                    ; } }); </script>
-      <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">
+    pangu.spacingPage();
 
-      <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  </script>
 
-      <script>
-        pbOptions = {};
-        pbOptions.iconStyle = "box";
-        pbOptions.boxForm = "horizontal";
-        pbOptions.position = "topCenter";
-        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-        new needShareButton('#needsharebutton-postbottom', pbOptions);
-
-      </script>
-
-      <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
-      <script type="text/javascript">
-        pangu.spacingPage();
-
-      </script>
-
-      <script type="text/javascript" src="/js/src/exturl.js?v=6.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
