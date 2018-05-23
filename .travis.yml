@@ -39,6 +39,9 @@ script:
 - hexo clean && hexo g
 
 after_script:
+# 设置环境
+- set -ev
+- export TZ='Asia/Shanghai'
 # 先clone原repo，得到.git提交历史
 - git clone -b master git@github.com:tankeryang/tankeryang.github.io.git .deploy_git
 - cd .deploy_git
@@ -54,6 +57,6 @@ after_script:
 # push
 - git remote add coding git@git.coding.net:tankeryang/tankeryang.git
 - git remote add gitee git@gitee.com:tankeryang/tankeryang.git
-- git push -u origin master
-- git push -u coding master
-- git push -u gitee master
+- git push origin master
+- git push coding master
+- git push gitee master

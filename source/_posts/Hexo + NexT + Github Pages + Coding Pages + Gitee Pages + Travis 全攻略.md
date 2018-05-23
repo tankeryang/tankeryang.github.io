@@ -1,5 +1,5 @@
 ---
-title: Hexo + NexT + Github Pages + Coding Pages + Gitee Pages + Travis 全攻略
+title: Hexo+NexT+GithubPages+CodingPages+GiteePages+Travis全攻略
 date: 2018-01-22 15:34:54
 categories: 技术杂项
 tags: [Hexo, NexT, Github Pages, Coding Pages, Gitee Pages, Travis]
@@ -12,7 +12,7 @@ comments: true
 <!--more-->
 
 这几天刚更新了NexT主题，一直在修改细节，终于从5.1.x的版本更新到了6.0.x的版本，nodeJS和NPM也做了更新。本着 __互联网共享精神__，我在这里将 __如何搭建Hexo+NexT博客和如何规范化写作+构建+push的流程__ 做详细整理。
-以下配置对于 __Windows，Mac，Linux__ 均可参考。
+本人目前常用 __Mac__。以下配置对于 __Windows，Linux__ 自行参考。
 
 # 安装Hexo
 ## 安装node.js
@@ -20,17 +20,17 @@ comments: true
 如果你已经安装了node.js，请忽略。
 {% endnote %}
 
-访问[node.js官网](https://nodejs.org/en/)，下载安装程序（msi文件）进行安装。
+访问[node.js官网](https://nodejs.org/en/)，根据指引进行安装。
 
 ## 安装Git
 {% note success %}
 如果你已经安装了Git，请忽略。
 {% endnote %}
 
-访问[Git官网](https://git-scm.com/)，下载安装程序（exe文件）进行安装。
+访问[Git官网](https://git-scm.com/)，根据指引进行安装。
 
 {% note warning %}
-由于众所周知的原因，从上面的链接下载git for windows最好挂上一个代理，否则下载速度十分缓慢。也可以参考[这个页面](https://github.com/waylau/git-for-win)，收录了存储于百度云的下载地址。
+由于众所周知的原因，Windows从上面的链接下载git for windows最好挂上一个代理，否则下载速度十分缓慢。也可以参考[这个页面](https://github.com/waylau/git-for-win)，收录了存储于百度云的下载地址。
 {% endnote %}
 
 ## 安装Hexo
@@ -380,7 +380,7 @@ post_asset_folder: true # 设置为true
 
 ---
 
-> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;<font color="#aeaeae">以下内容更新与2018/1/25，承接上文（不好意思，本人很懒...）</font>
+> <i class="fa fa-hand-o-down" aria-hidden="true"></i>&nbsp;<font color="#aeaeae">以下内容更新于2018/1/25，承接上文（不好意思，本人很懒...）</font>
 
 # 写作
 ## 新建文章
@@ -1054,9 +1054,11 @@ tabs:
 这一步是最能体现 __自动化博客写作流程__ 的关键。务必仔细阅读。
 {% endnote %}
 
-## github新建博客项目
-首先在github上新开一个repo，__repo名为: `USERNAME.github.io`__
-> `USERNAME`为你的github用户名，详细可参考[官方链接](https://pages.github.com/)
+## github，gitee，coding新建博客项目
+在github上新开一个repo，__repo名: `USERNAME.github.io`__
+同理，__coding repo名: `USERNAME`__， __gitee repo名: `USERNAME`__
+> `USERNAME`为你的github，gitee，coding用户名
+> pages服务参考：[github](https://pages.github.com/)，[coding](https://coding.net/help/doc/pages/creating-pages.html)，[gitee](http://git.mydoc.io/?t=154714)
 
 ## 添加.gitignore
 进入{% label @myblog %}文件夹，新增{% label @.gitignore %}文件，若存在则检查是否与如下一致：
@@ -1070,58 +1072,130 @@ public/
 .deploy*/
 {% endcodeblock %}
 
-## 
+## 设置travis关联USERNAME.github.io
+* 先用github账号登陆[travis](https://www.travis-ci.org/)
 
+* 勾选你的博客项目，顺便点旁边的{% label primary@setting %}进入设置，参照图2来勾选：
+{% asset_img pic5.png%}
+{% asset_img pic6.png%}
+
+## 为博客项目设置deploy key
+这一步比较重要，这是travis能否访问你的repo的关键。按照下面的步骤配置：
+* 在`myblog`下新建一个`.travis`文件夹，并进入`.travis`文件夹
+
+* 在`myblog/.travis`下生成一个专门给travis用的`ssh key`:
+执行`ssh-keygen -t rsa -f travis_rsa -C "your@email.com"`，遇到密码输入直接`enter回车`，email记得替换
+
+* github博客项目添加travis_rsa.pub公钥
+将`.travis`下的`travis_rsa.pub`的内容复制，按下图进入`Add deploy key`界面，将内容粘贴，__并勾选可读写权限（一定不要遗漏!!!）__
+{% asset_img pic7.png %}
+
+* coding过程同上
+
+* gitee因为项目的`deploy key`不能设置可写入权限，所以只能将`travis_rsa.pub`添加到个人的公钥
+
+## 加密travis_rsa
+
+* 先安装[gem](https://rubygems.org/)（关于ruby，gem相关的安装这里就不列出来了，我相信你的动手能力:)）
+
+* 接着安装travis命令行工具: `sudo gem install travis`
+
+* 装好后，进入`myblog/.travis`文件夹，在当前路径下执行如下命令：
+```sh
+travis login --auto
+travis encrypt-file travis_rsa -add
+```
+
+{% note warning %}
+需要注意的是，travis命令行工具貌似在Windows下不太好使...因此需要换另外的方法使得travis能访问到github，coding和gitee上的博客项目，主要是通过 __token__ 来访问。相关的配置百度一下就有很多教程，比ssh来的更简单。就是在 __安全__ 性上差了一点，因为 __token__ 是有操作所有 __repo__ 的权限的...
+{% endnote %}
+
+加密完成后你会发现`.travis`文件夹下多了个`travis_rsa.enc`的文件，这个就是加密后的`travis_rsa`。同时`myblog`下也多了`.travis.yml`文件。下面我们就配置一下`.travis.yml`。
+
+* 先将`.travis`下的`travis_rsa`，`travis_rsa.pub`删掉。__请记住一定要删掉！！！只保留加密文件__
+
+* 按照下面配置`.travis.yml`:
 {% codeblock lang:yaml .travis.yml %}
 language: node_js
 node_js: stable
 
-install:
-  - npm install
-  - npm install hexo-math --save
-  - npm install hexo-generator-searchdb --save
-  - npm install hexo-symbols-count-time --save
-  - npm install hexo-generator-feed --save
-  - npm install hexo-wordcount --save
-  - npm install mermaid --save
-  - npm install hexo-tag-mermaid --save
-  - npm install hexo-tag-plantuml --save
-
-before_script:
-  - cd ./themes/next
-  - git clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox
-  - git clone https://github.com/theme-next/theme-next-jquery-lazyload source/lib/jquery_lazyload
-  - git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton
-  - git clone https://github.com/theme-next/theme-next-pace source/lib/pace
-  - git clone https://github.com/theme-next/theme-next-pangu.git source/lib/pangu
-  - git clone https://github.com/theme-next/theme-next-reading-progress source/lib/reading_progress
-
-  - cd ..
-  - cd ..
-script:
-  - hexo -version
-  - hexo clean && hexo g
-
-after_script:
-  - cd ./public
-  - git init
-  - git config user.name "USERNAME"     # 这里填你的github用户名
-  - git config user.email "YOUR EMAIL"  # 这里填你的github注册email
-  - git add .
-  - git commit -m "Update docs"
-  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
-
 branches:
   only:
-    - dev
-env:
- global:
-   - GH_REF: github.com/USERNAME/USERNAME.github.io.git  # USERNAME为你的github用户名
+  - dev
+
+before_install:
+# 解密SSH
+- openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
+  -in .travis/travis_rsa.enc -out ~/.ssh/travis_rsa -d
+- chmod 600 ~/.ssh/travis_rsa
+- mv -fv .travis/config ~/.ssh/config
+
+# 安装hexo以及一些插件，没用到的可移除相关命令
+install:
+- npm install hexo-cli -g
+- npm install hexo-math --save
+- npm install hexo-generator-searchdb --save
+- npm install hexo-symbols-count-time --save
+- npm install hexo-generator-feed --save
+- npm install hexo-wordcount --save
+- npm install mermaid --save
+- npm install hexo-tag-mermaid --save
+- npm install hexo-tag-plantuml --save
+
+# 安装next主题插件，没用到的可移除相关命令
+before_script:
+- cd ./themes/next
+- git clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox
+- git clone https://github.com/theme-next/theme-next-jquery-lazyload source/lib/jquery_lazyload
+- git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton
+- git clone https://github.com/theme-next/theme-next-pace source/lib/pace
+- git clone https://github.com/theme-next/theme-next-pangu.git source/lib/pangu
+- git clone https://github.com/theme-next/theme-next-reading-progress source/lib/reading_progress
+- cd ..
+- cd ..
+
+# 构建博客
+script:
+- hexo -version
+- hexo clean && hexo g
+
+after_script:
+# 设置环境
+- set -ev
+- export TZ='Asia/Shanghai'
+- cd ./public
+# 提交
+- git config user.name "USERNAME"  # 你的github用户名
+- git config user.email "your@email.com"  # 你的github邮箱
+- git init
+- git add .
+- git commit -m "Site updated:`date +"%Y-%m-%d %H:%M:%S"`"
+# push
+- git remote add coding git@git.coding.net:USERNAME/USERNAME.git  # USERNAME为你的coding用户名
+- git remote add gitee git@gitee.com:USERNAME/USERNAME.git  # USERNAME为你的gitee用户名
+- git push -u origin master
+- git push -u coding master
+- git push -u gitee master
 {% endcodeblock %}
 
+## 最后，将你的本地博客目录与远程github博客项目关联
+* 先初始化本地博客目录用git管理
+```sh
+git init
+git remote add origin git @github.com:USERNAME/USERNAME.github.io.git
+git checkout -b dev
+git add .
+git commit -m "first commit"
+git push -u origin dev 
+```
 
+* 上[travis](https://www.travis-ci.org/)检查构建流程，看看是否有问题，有问题再根据日志进行`.travis.yml`的修改
 
+* 构建完成后，分享到朋友圈:)
 
+* 之后写完文章只要`git push origin dev`就ok了。注意要在`dev`分支下进行。可以通过`git checkout dev`切换分支
+
+从年初开始写，一直到今天（2018-05-23）才写完...足以证明我是一个多么~~懒到没谱~~持之以恒的人，这样的博主还不赶快献爱心一个？
 
 <!-- {% note danger %}
 <i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续...明天继续...
