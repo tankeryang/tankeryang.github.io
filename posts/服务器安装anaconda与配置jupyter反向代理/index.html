@@ -86,12 +86,12 @@
   <meta property="og:site_name" content="淦">
   <meta property="og:description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
   <meta property="og:locale" content="zh-Hans">
-  <meta property="og:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic1.png">
-  <meta property="og:updated_time" content="2018-05-23T16:38:40.680Z">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic0.png">
+  <meta property="og:updated_time" content="2018-05-25T15:03:13.756Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="服务器安装anaconda与配置jupyter反向代理">
   <meta name="twitter:description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
-  <meta name="twitter:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic1.png">
+  <meta name="twitter:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic0.png">
 
   <title>服务器安装anaconda与配置jupyter反向代理 | 淦</title>
 
@@ -331,7 +331,7 @@
 
                         <span class="post-meta-item-text">words count&#58;</span>
 
-                        <span title="words count">608</span>
+                        <span title="words count">4k</span>
 
                         <span class="post-meta-divider">|</span>
 
@@ -341,7 +341,7 @@
 
                         <span class="post-meta-item-text">minutes to read &asymp;</span>
 
-                        <span title="minutes to read">0:01</span>
+                        <span title="minutes to read">0:09</span>
 
                       </div>
 
@@ -350,7 +350,7 @@
 
                   <div class="post-body" itemprop="articleBody">
 
-                    <img src="/posts/服务器安装anaconda与配置jupyter反向代理/pic1.png">
+                    <img src="/posts/服务器安装anaconda与配置jupyter反向代理/pic0.png">
                     <p>最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下</p>
                     <a id="more"></a>
                     <hr>
@@ -378,9 +378,64 @@
                         </li>
                       </ul>
                     </blockquote>
-                    <p>首先
-                      <code>ssh</code>到服务器，
-                      <code>cd</code>到一个非系统级的目录，下载anaconda安装脚本:
+                    <ul>
+                      <li>
+                        <p>首先
+                          <code>ssh</code>到服务器，
+                          <code>cd</code>到一个非系统级的目录，下载anaconda安装脚本:
+                          <br>
+                          <code>wget https://mirrors4.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.1.0-Linux-x86_64.sh</code>
+                        </p>
+                      </li>
+                      <li>
+                        <p>执行安装脚本:
+                          <br>
+                          <code>sh Anaconda3-5.1.0-Linux-x86_64.sh</code>
+                        </p>
+                        <div class="note warning">
+                          <ul>
+                            <li>若中途问你是否添加环境变量，请选择否，不然会覆盖系统的python环境变量</li>
+                            <li>安装位置自选</li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li>
+                        <p>设置软链接至
+                          <code>usr/local/bin</code>:
+                          <br>因为不设置环境变量，所以这一步是方便我们可以在命令行直接输入
+                          <code>可执行文件名</code> 执行
+                          <code>anaconda3/bin</code> 下的可执行文件，如
+                          <code>jupyter</code>
+                        </p>
+                        <figure class="highlight shell">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line"><span class="meta">#</span> 将anaconda3/bin/python解释器运行脚本软链接至/usr/local/bin/python36，python36可换成其他你喜欢的名字</span><br><span class="line">ln -s $&#123;path to anaconda3&#125;/bin/python /usr/local/bin/python36</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 将anaconda3/bin/jupyter运行脚本软链接至/usr/local/bin/jupyter</span><br><span class="line">ln -s $&#123;path to anaconda3&#125;/bin/jupyter /usr/local/bin/jupyter</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 还有什么要软链过去的请参照上面自便</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                    </ul>
+                    <p>在终端输入
+                      <code>python36</code>，
+                      <code>jupyter</code>查看是否生效</p>
+                    <hr>
+                    <h1 id="服务器配置jupyter">
+                      <a href="#服务器配置jupyter" class="headerlink" title="服务器配置jupyter"></a>服务器配置jupyter</h1>
+                    <p>到重头戏了</p>
+                    <p>这里有两个需求:</p>
+                    <ul>
+                      <li>在公司内网能访问到juoyter服务的端口</li>
+                      <li>在家时连上公司VPN能访问到jupyter服务的端口</li>
+                    </ul>
+                    <h2 id="首先生成jupyter配置文件">
+                      <a href="#首先生成jupyter配置文件" class="headerlink" title="首先生成jupyter配置文件"></a>首先生成jupyter配置文件</h2>
+                    <p>执行下面的命令:
                       <br>
                       <figure class="highlight plain">
                         <table>
@@ -389,16 +444,145 @@
                               <pre><span class="line">1</span><br></pre>
                             </td>
                             <td class="code">
-                              <pre><span class="line">wget https://mirrors4.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.1.0-Linux-x86_64.sh</span><br></pre>
+                              <pre><span class="line">jupyter notebook --generate-config</span><br></pre>
                             </td>
                           </tr>
                         </table>
                       </figure>
                     </p>
-                    <div class="note danger">
-                      <p>
-                        <i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续…有空继续…</p>
-                    </div>
+                    <p>配置文件会生成在以下路径:</p>
+                    <ul>
+                      <li>Windows:
+                        <code>C:\Users\USERNAME\.jupyter\jupyter_notebook_config.py</code>
+                      </li>
+                      <li>OS X:
+                        <code>/Users/USERNAME/.jupyter/jupyter_notebook_config.py</code>
+                      </li>
+                      <li>Linux:
+                        <code>/home/USERNAME/.jupyter/jupyter_notebook_config.py</code>
+                      </li>
+                    </ul>
+                    <h2 id="生成密码与加密后的hash串">
+                      <a href="#生成密码与加密后的hash串" class="headerlink" title="生成密码与加密后的hash串"></a>生成密码与加密后的hash串</h2>
+                    <p>执行下面的命令，输入设定的密码
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">jupyter notebook password</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>hash文件生成在以下路径:</p>
+                    <ul>
+                      <li>Windows:
+                        <code>C:\Users\USERNAME\.jupyter\jupyter_notebook_config.json</code>
+                      </li>
+                      <li>OS X:
+                        <code>/Users/USERNAME/.jupyter/jupyter_notebook_config.json</code>
+                      </li>
+                      <li>Linux:
+                        <code>/home/USERNAME/.jupyter/jupyter_notebook_config.json</code>
+                      </li>
+                    </ul>
+                    <h2 id="配置jupyter-notebook-config-py">
+                      <a href="#配置jupyter-notebook-config-py" class="headerlink" title="配置jupyter_notebook_config.py"></a>配置
+                      <code>jupyter_notebook_config.py</code>
+                    </h2>
+                    <p>先
+                      <code>cd</code>进
+                      <code>.jupyter</code>目录，然后
+                      <code>vim jupyter_notebook_config.py</code>进行修改</p>
+                    <p>在顶部添加下面的配置:
+                      <br>
+                      <figure class="highlight python">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">c.NotebookApp.allow_origin = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="keyword">False</span></span><br><span class="line">c.NotebookApp.password = <span class="string">u"sha1:bb7b06..."</span>  <span class="comment"># 这里将jupyter_notebook_config.json里的sha1串复制过来</span></span><br><span class="line">c.NotebookApp.port = <span class="number">9999</span>  <span class="comment"># 端口可设为其他，注意不要冲突</span></span><br><span class="line">c.NotebookApp.trust_xheaders = <span class="keyword">True</span></span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h2 id="配置hosts">
+                      <a href="#配置hosts" class="headerlink" title="配置hosts"></a>配置hosts</h2>
+                    <p>以我的为例
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">10.10.22.13 fp-bd13</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <h2 id="启动jupyter">
+                      <a href="#启动jupyter" class="headerlink" title="启动jupyter"></a>启动jupyter</h2>
+                    <p>用nohup在后台启动:
+                      <br>
+                      <figure class="highlight shell">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">nohup jupyter notebook --allow-root &amp;</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>浏览器访问
+                      <code>http://fp-bd13:9999</code>，看看效果。
+                      <br>
+                      <div class="note info">
+                        <p>Tips: jupyter新的jupyter lab比notebook做了一些优化，界面也高端很多。只要在url后面加
+                          <code>/lab</code>就能立即享用
+                          <br>
+                          <code>http://fp-bd13:9999/lab</code>
+                        </p>
+                      </div>
+                    </p>
+                    <h2 id="配置反向代理">
+                      <a href="#配置反向代理" class="headerlink" title="配置反向代理"></a>配置反向代理</h2>
+                    <p>这一步是最坑爹的</p>
+                    <p>我们公司内部的vpn统一登上这台服务器
+                      <code>172.17.22.229</code>，然后通过它再连
+                      <code>10.10.22.*</code>的机器。所以需要在
+                      <code>172.17.22.229</code>的nginx上配置反向代理，这样我们就能在外面访问到jupyter了</p>
+                    <p>折腾了N久，最终配置如下:
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">map $http_upgrade $connection_upgrade &#123;</span><br><span class="line">        default upgrade;</span><br><span class="line">        &apos;&apos;      close;</span><br><span class="line">&#125;</span><br><span class="line">server&#123;</span><br><span class="line">        server_name fp.bd13.dev.jupyter;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass http://10.10.22.13:9999;</span><br><span class="line">                proxy_redirect off;</span><br><span class="line">                proxy_set_header HOST $host;</span><br><span class="line">                proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">                proxy_http_version 1.1;</span><br><span class="line">                proxy_set_header Upgrade $http_upgrade;</span><br><span class="line">                proxy_set_header Connection &quot;upgrade&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>重新加载下nginx的配置，在浏览器访问
+                      <code>fp.bd13.dev.jupyter</code>就能愉快地玩耍啦</p>
 
                   </div>
 
@@ -632,6 +816,58 @@
                           安装Anaconda</span>
                       </a>
                     </li>
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#服务器配置jupyter">
+                        <span class="nav-number">2.</span>
+                        <span class="nav-text">
+                          服务器配置jupyter</span>
+                      </a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#首先生成jupyter配置文件">
+                            <span class="nav-number">2.1.</span>
+                            <span class="nav-text">
+                              首先生成jupyter配置文件</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#生成密码与加密后的hash串">
+                            <span class="nav-number">2.2.</span>
+                            <span class="nav-text">
+                              生成密码与加密后的hash串</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#配置jupyter-notebook-config-py">
+                            <span class="nav-number">2.3.</span>
+                            <span class="nav-text">
+                              配置 jupyter_notebook_config.py
+                            </span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#配置hosts">
+                            <span class="nav-number">2.4.</span>
+                            <span class="nav-text">
+                              配置hosts</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#启动jupyter">
+                            <span class="nav-number">2.5.</span>
+                            <span class="nav-text">
+                              启动jupyter</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#配置反向代理">
+                            <span class="nav-number">2.6.</span>
+                            <span class="nav-text">
+                              配置反向代理</span>
+                          </a>
+                        </li>
+                      </ol>
+                    </li>
                   </ol>
                 </div>
 
@@ -668,14 +904,14 @@
             <i class="fa fa-area-chart"></i>
           </span>
 
-          <span title="total count">73k</span>
+          <span title="total count">76k</span>
 
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa-coffee"></i>
           </span>
 
-          <span title="total time">2:42</span>
+          <span title="total time">2:50</span>
 
         </div>
 
