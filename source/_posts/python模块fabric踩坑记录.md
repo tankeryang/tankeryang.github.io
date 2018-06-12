@@ -89,7 +89,19 @@ paramiko.ssh_exception.SSHException: No authentication methods available
 
 我们可以看到调用堆栈上的错误回溯，定位到`line 501`，在实例化`Connection`对象后调用`client.connect(**kwargs)`时抽了...
 
-直接摸过去，先了解下`Connection`类的定义和构造函数，这里我抽出了关键部分，并加了一些简要的注释说明传参给哪些变量:
+直接摸过去，从`Connection`类出发往他祖宗上刨，下面先给出继承关系和`Connection`的关键部分，然后逐块拆分说明:
+
+{% plantuml %}
+object DataProxy
+object Context
+object Config
+object Connection
+
+DataProxy <|-- Context
+DataProxy <|-- Config
+Context <|-- Connection
+{% endplantuml %}
+
 ```python connection.py
 class Connection(Context):
     host = None
@@ -117,7 +129,7 @@ class Connection(Context):
         connect_timeout=None,
         connect_kwargs=None,
     ):
-        # config
+
         super(Connection, self).__init__(config=config)
         if config is None:
             config = Config()
@@ -125,7 +137,6 @@ class Connection(Context):
             config = config.clone(into=Config)
         self._set(_config=config)
 
-        # 处理host参数
         shorthand = self.derive_shorthand(host)
         host = shorthand["host"]
         err = (
@@ -202,8 +213,49 @@ class Connection(Context):
         # transport
         self.transport = None
 ```
-然后是父类`Context`的定义和构造函数和一些关键函数:
-```python contex.py
+
+## 重要的成员变量
+
+```python
+host = None             # 主机名或IP地址: www.host.com, 66.66.66.66
+original_host = None    # 同host
+user = None             # 系统用户名: root, someone
+port = None             # 端口号（远程执行某些应用需提供）
+gateway = None          # 网关
+forward_agent = None    # 代理
+connect_timeout = None  # 超时时间
+connect_kwargs = None   # 连接参数（记住这个，非常重要）
+client = None           # 客户端
+```
+
+## 构造函数参数
+
+```python
+host
+user=None
+port=None
+config=None
+gateway=None
+forward_agent=None
+connect_timeout=None
+connect_kwargs=None
+```
+这些就是我们在实例化`Connection`对象时可以控制的一些部分，比较重要的有`config`和`connection_kwargs`
+
+## 构造函数主体
+
+### config
+
+```python
+super(Connection, self).__init__(config=config)
+if config is None:
+    config = Config()
+elif not isinstance(config, Config):
+    config = config.clone(into=Config)
+self._set(_config=config)
+```
+`config`成员变量是一个`Config`对象，它是调用父类`Context.__init__()`方法来初始化的。`Context.__init__()`定义如下:
+```python
 class Context(DataProxy):
     def __init__(self, config=None):
         config = config if config is not None else Config()
@@ -214,39 +266,54 @@ class Context(DataProxy):
 
         command_cwds = list()
         self._set(command_cwds=command_cwds)
-
-    @property
-    def config(self):
-        return self._config
-
-    @config.setter
-    def config(self, value):
-        self._set(_config=value)
 ```
-最后看一下`_set()`函数
-```python config.py
-class DataProxy(object):
-  def _set(self, *args, **kwargs):
-      if args:
-          object.__setattr__(self, *args)
-      for key, value in six.iteritems(kwargs):
-          object.__setattr__(self, key, value)
+具体过程是`Context.__init__()`初始化时调用`_set()`绑定了`Config`成员对象`_config`:
+```python
+def _set(self, *args, **kwargs):
+    if args:
+        object.__setattr__(self, *args)
+    for key, value in six.iteritems(kwargs):
+        object.__setattr__(self, key, value)
 ```
+再通过加了`@property`的`config()`函数，使得`connection`对象能直接用`self.config`来引用`_config`:
+```python
+@property
+def config(self):
+    return self._config
+
+@config.setter
+def config(self, value):
+    self._set(_config=value)
+```
+
+### host, user, port
+
+```python
+shorthand = self.derive_shorthand(host)
+host = shorthand["host"]
+err = (
+    "You supplied the {} via both shorthand and kwarg! Please pick one."  # noqa
+)
+if shorthand["user"] is not None:
+    if user is not None:
+        raise ValueError(err.format("user"))
+    user = shorthand["user"]
+if shorthand["port"] is not None:
+    if port is not None:
+        raise ValueError(err.format("port"))
+    port = shorthand["port"]
+```
+这段是处理`host`参数的。`host`可以有下面集中传入形式:
+```
+user@host:port  # 例如: root@10.10.10.10:6666
+user@host       # 例如: root@10.10.10.10
+host:port       # 例如: 10.10.10.10:6666
+host            # 例如: 10.10.10.10
+```
+前三种会调用`self.derive_shorthand(host)`分别解析出`self.host`，`self.user`和`self.port`，最后一种需单独传入`user`，`port`。
+如果用前三种传入方式的话，记得不要再重复传入`user`或`port`了，会抛出异常
+
 源码是真他妈长啊，注释就占了一两百行 (微笑
-
-对`Connection`里的成员变量做一下分析:
-* host
-    主机名，可以为IP地址或域名主机名之类的。可以有如下几种传入形式:
-    ```
-    user@host:port  # 例如: root@10.10.10.10:6666
-    user@host       # 例如: root@10.10.10.10
-    host:port       # 例如: 10.10.10.10:6666
-    host            # 例如: 10.10.10.10
-    ```
-    前三种会调用`self.derive_shorthand(host)`分别解析出`self.host`，`self.user`和`self.port`，最后一种需单独传入`user`，`port`。如果用前三种传入方式的话，记得不要再重复传入`user`或`port`了，会抛出异常
-
-* config
-`connection`里的`config`成员变量是一个`Config`对象，它是调用父类`Context.__init__()`方法来定义的。具体过程是`Context.__init__()`初始化时调用`_set()`定义了`_config`变量，再通过加了`@property`的`config()`函数，使得`connection`对象能直接用`self.config`来引用`_config`
 
 {% note danger %}
 <i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续...有空继续...
