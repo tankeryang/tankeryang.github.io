@@ -42,22 +42,22 @@ Supervised learning and Unsupervised learning.
 
 有监督学习通常分为__regression - 回归__与__classification - 分类__两类问题。
 * 在回归问题中，我们要做的就是得到一个连续的__预测函数__去拟合离散的数据，也就是要把__输入变量映射到连续函数上__，从而实现未知数据的预测。
-{% note info %} 
+
 __例子：__
 Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.
 We could turn this example into a classification problem by instead making our output about whether the house "sells for more or less than the asking price." Here we are classifying the houses based on price into two discrete categories.
 {% asset_img pic1.jpg %}
-{% endnote %}
+
 
 * 在分类问题中，输出结果是离散的，比如二分类问题，每一类别分别对应0,1两个离散数值，我们要做的就是得到一个__预测函数__，能够根据输入变量得到离散的输出结果，也就是要把__输入变量映射到离散的类别中__
-{% note info %} 
+
 __例子：__
 (a) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.
 {% asset_img pic2.jpg %}
 
 (b) Regression - Given a picture of a person, we have to predict their age on the basis of the given picture
 {% asset_img pic3.jpg %}
-{% endnote %}
+
 
 ## Unsupervised Learning - 无监督学习
 无监督学习就是有监督学习的反面情况，即我们有一组数据集，但我们并不知道它的输出结果是什么，或者它根本就没有输出，甚至它本身代表什么我们都不知道。我们要做的就是从这堆数据中__找出它的规律或者结构__，来确定这些输入变量产生的影响，比如将这堆数据分组。
@@ -66,13 +66,12 @@ __例子：__
 
 现实生活中有很多这样的例子，比如你有一堆新闻内容的数据，你要把有关联的分成一组。像这样的算法叫做__聚类__，就如字面意思一样。
 
-{% note info %} 
+
 __例子：__
 {% asset_img pic4.jpg %}
 {% asset_img pic5.jpg %}
 {% asset_img pic6.jpg %}
 {% asset_img pic7.jpg %}
-{% endnote %}
 
 ---
 # Model and Cost Function - 模型与代价函数
@@ -89,7 +88,6 @@ __例子：__
 * $h_{\theta} \left(x \right)$: 预测函数
 * $\theta_{j}$: 第$j$组学习参数
 
-{% note info %} 
 __例子：__
 假设我们有一组（房子面积, 价格）数据集，对应下表:
 
@@ -99,8 +97,6 @@ __例子：__
 |1416|232|
 |1534|315|
 |852|178|
-
-{% endnote %}
 
 其中
 * $m = 4$
@@ -113,7 +109,7 @@ __例子：__
 * $\theta_{1}$: 第$1$组学习参数
 
 对于多变量（或者叫__feature - 特征__）的表示方法，如下
-{% note info %}
+
 __例子：__
 假设我们有一组多个特征的数据，每组特征对应一个确定的输出：
 
@@ -124,8 +120,6 @@ __例子：__
 |$1$|$x_{1}^{(3)}$|$x_{2}^{(3)}$|$x_{3}^{(3)}$|...|$x_{n}^{(3)}$|$y^{(3)}$|
 |...|...|...|...|...|...|...|
 |$1$|$x_{1}^{(m)}$|$x_{2}^{(m)}$|$x_{3}^{(m)}$|...|$x_{n}^{(m)}$|$y^{(m)}$|
-
-{% endnote %}
 
 其中
 * {% math %}X_{m\times (n+1)} = \begin{bmatrix}1 & x_{1}^{(1)} & \cdots &x_{n}^{(1)} \\ \vdots & \vdots & \ddots & \vdots \\ 1 & x_{1}^{(m)} & \cdots & x_{n}^{(m)} \\ \end{bmatrix}{% endmath %}
@@ -142,9 +136,8 @@ h_{\theta}\left(x\right)=\begin{bmatrix}h_{\theta}\left(x^{(1)}\right)&h_{\theta
 
 ## Cost Function - 代价函数
 回到我们上面的那个（房子面积, 价格）数据集的例子中。这是一个<strong>单变量</strong>的回归问题。如下
-{% note info %}
 {% asset_image pic8.jpg %}
-{% endnote %}
+
 在这里，我们的预测函数为{% math %}h_{\theta}(x)=\theta_{0}+\theta_{1}x{% endmath %}。当$\theta$取不同值时，对应如下图：
 
 {% asset_image pic9.jpg %}
@@ -253,16 +246,13 @@ J(\theta)=\frac{1}{2m}\sum_{i=1}^{m}\left(h_{\theta}(x^{(i)})-y^{(i)}\right)^{2}
 
 对于梯度下降，还有一些要注意的地方：
 * 关于__学习速率__{% math %}\alpha{% endmath %}，怎样设置学习速率也是很关键的问题，如果{% math %}\alpha{% endmath %}设置的__过小__，则梯度下降就会收敛得很慢，训练时间会过长。如果{% math %}\alpha{% endmath %}设置的过大，则梯度下降有可能会发散，就是越过了极值点：
-{% note info %}
 {% asset_img pic18.png %}
+
 所以我们在做迭代时一定要关注着$J(\theta)$，确保它是在下降的。
-{% endnote %}
 
 * 在实际问题中，我们的{% math %}J(\theta){% endmath %}一般不会是__凸函数__，也就是说我们做梯度下降得到的只是__局部最优值__，而不是__全局最优值__：
-{% note info%}
 {% asset_img pic19.png %}
 {% asset_img pic20.png %}
-{% endnote %}
 
 ## Gradient Descent for Liner Regression - 线性回归中的梯度下降
 对于线性回归，我们有如下定义：
