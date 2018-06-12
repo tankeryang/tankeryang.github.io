@@ -343,7 +343,7 @@ hr {
 
 blockquote {
   padding: 0 15px;
-  color: #666;
+  color: #999;
   border-left: 4px solid #ddd;
 }
 
@@ -571,8 +571,8 @@ pre, code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: #555;
-  background: #eee;
+  color: #c7254e;
+  background: #f9f2f4;
   border-radius: 3px;
   font-size: 13px;
 }
@@ -2386,7 +2386,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #94224f;
+  background: #2ea8ff;
 }
 
 .links-of-blogroll {

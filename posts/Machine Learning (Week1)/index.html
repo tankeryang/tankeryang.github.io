@@ -35,7 +35,7 @@
       version: '6.0.1',
       sidebar: {
         "position": "left",
-        "display": "always",
+        "display": "post",
         "offset": 12,
         "b2t": true,
         "scrollpercent": true,
@@ -107,7 +107,7 @@
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic18.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic19.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic20.png">
-  <meta property="og:updated_time" content="2018-05-25T15:04:07.294Z">
+  <meta property="og:updated_time" content="2018-06-12T05:51:47.198Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Machine Learning (Week1)">
   <meta name="twitter:description" content="在第一周的课程里简要介绍了   什么是机器学习，   Model - 模型和   Cost Function - 代价函数的概念，以及一些必要的   线性代数的知识。          特别声明：这里不会对线性代数基础进行记录，有需要了解的请自行学习。        敬请留意">
@@ -200,7 +200,7 @@
               <a href="/archives/" rel="section">
                 <i class="menu-item-icon fa fa-fw fa-archive"></i>
                 <br />archives
-                <span class="badge">11</span>
+                <span class="badge">12</span>
               </a>
             </li>
 
@@ -351,7 +351,7 @@
 
                         <span class="post-meta-item-text">words count&#58;</span>
 
-                        <span title="words count">13k</span>
+                        <span title="words count">12k</span>
 
                         <span class="post-meta-divider">|</span>
 
@@ -361,7 +361,7 @@
 
                         <span class="post-meta-item-text">minutes to read &asymp;</span>
 
-                        <span title="minutes to read">0:28</span>
+                        <span title="minutes to read">0:27</span>
 
                       </div>
 
@@ -416,48 +416,40 @@
                       <strong>regression - 回归</strong>与
                       <strong>classification - 分类</strong>两类问题。</p>
                     <ul>
-                      <li>
-                        <p>在回归问题中，我们要做的就是得到一个连续的
-                          <strong>预测函数</strong>去拟合离散的数据，也就是要把
-                          <strong>输入变量映射到连续函数上</strong>，从而实现未知数据的预测。</p>
-                        <div class="note info">
-                          <p>
-                            <strong>例子：</strong>
-                            <br>Given data about the size of houses on the real estate
-                            market, try to predict their price. Price as a function
-                            of size is a continuous output, so this is a regression
-                            problem.
-                            <br>We could turn this example into a classification problem
-                            by instead making our output about whether the house
-                            “sells for more or less than the asking price.” Here
-                            we are classifying the houses based on price into two
-                            discrete categories.
-                            <br>
-                            <img src="/posts/Machine%20Learning%20(Week1)/pic1.jpg">
-                          </p>
-                        </div>
-                      </li>
-                      <li>
-                        <p>在分类问题中，输出结果是离散的，比如二分类问题，每一类别分别对应0,1两个离散数值，我们要做的就是得到一个
-                          <strong>预测函数</strong>，能够根据输入变量得到离散的输出结果，也就是要把
-                          <strong>输入变量映射到离散的类别中</strong>
-                        </p>
-                        <div class="note info">
-                          <p>
-                            <strong>例子：</strong>
-                            <br>(a) Classification - Given a patient with a tumor, we
-                            have to predict whether the tumor is malignant or benign.
-                            <br>
-                            <img src="/posts/Machine%20Learning%20(Week1)/pic2.jpg">
-                          </p>
-                          <p>(b) Regression - Given a picture of a person, we have to
-                            predict their age on the basis of the given picture
-                            <br>
-                            <img src="/posts/Machine%20Learning%20(Week1)/pic3.jpg">
-                          </p>
-                        </div>
+                      <li>在回归问题中，我们要做的就是得到一个连续的
+                        <strong>预测函数</strong>去拟合离散的数据，也就是要把
+                        <strong>输入变量映射到连续函数上</strong>，从而实现未知数据的预测。</li>
+                    </ul>
+                    <p>
+                      <strong>例子：</strong>
+                      <br>Given data about the size of houses on the real estate market,
+                      try to predict their price. Price as a function of size is
+                      a continuous output, so this is a regression problem.
+                      <br>We could turn this example into a classification problem by
+                      instead making our output about whether the house “sells for
+                      more or less than the asking price.” Here we are classifying
+                      the houses based on price into two discrete categories.
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic1.jpg">
+                    </p>
+                    <ul>
+                      <li>在分类问题中，输出结果是离散的，比如二分类问题，每一类别分别对应0,1两个离散数值，我们要做的就是得到一个
+                        <strong>预测函数</strong>，能够根据输入变量得到离散的输出结果，也就是要把
+                        <strong>输入变量映射到离散的类别中</strong>
                       </li>
                     </ul>
+                    <p>
+                      <strong>例子：</strong>
+                      <br>(a) Classification - Given a patient with a tumor, we have
+                      to predict whether the tumor is malignant or benign.
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic2.jpg">
+                    </p>
+                    <p>(b) Regression - Given a picture of a person, we have to predict
+                      their age on the basis of the given picture
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic3.jpg">
+                    </p>
                     <h2 id="Unsupervised-Learning-无监督学习">
                       <a href="#Unsupervised-Learning-无监督学习" class="headerlink" title="Unsupervised Learning - 无监督学习"></a>Unsupervised Learning - 无监督学习</h2>
                     <p>无监督学习就是有监督学习的反面情况，即我们有一组数据集，但我们并不知道它的输出结果是什么，或者它根本就没有输出，甚至它本身代表什么我们都不知道。我们要做的就是从这堆数据中
@@ -465,19 +457,17 @@
                     <p>特别的是，无监督学习并不像有监督学习那样有基于预测结果的反馈。</p>
                     <p>现实生活中有很多这样的例子，比如你有一堆新闻内容的数据，你要把有关联的分成一组。像这样的算法叫做
                       <strong>聚类</strong>，就如字面意思一样。</p>
-                    <div class="note info">
-                      <p>
-                        <strong>例子：</strong>
-                        <br>
-                        <img src="/posts/Machine%20Learning%20(Week1)/pic4.jpg">
-                        <br>
-                        <img src="/posts/Machine%20Learning%20(Week1)/pic5.jpg">
-                        <br>
-                        <img src="/posts/Machine%20Learning%20(Week1)/pic6.jpg">
-                        <br>
-                        <img src="/posts/Machine%20Learning%20(Week1)/pic7.jpg">
-                      </p>
-                    </div>
+                    <p>
+                      <strong>例子：</strong>
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic4.jpg">
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic5.jpg">
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic6.jpg">
+                      <br>
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic7.jpg">
+                    </p>
                     <hr>
                     <h1 id="Model-and-Cost-Function-模型与代价函数">
                       <a href="#Model-and-Cost-Function-模型与代价函数" class="headerlink" title="Model and Cost Function - 模型与代价函数"></a>Model and Cost Function - 模型与代价函数</h1>
@@ -497,37 +487,35 @@
                       <li>$h_{\theta} \left(x \right)$: 预测函数</li>
                       <li>$\theta_{j}$: 第$j$组学习参数</li>
                     </ul>
-                    <div class="note info">
-                      <p>
-                        <strong>例子：</strong>
-                        <br>假设我们有一组（房子面积, 价格）数据集，对应下表:</p>
-                      <table>
-                        <thead>
-                          <tr>
-                            <th style="text-align:center">$Size in feet^{2}$ (x)</th>
-                            <th style="text-align:center">$prize$ (y)</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td style="text-align:center">2104</td>
-                            <td style="text-align:center">460</td>
-                          </tr>
-                          <tr>
-                            <td style="text-align:center">1416</td>
-                            <td style="text-align:center">232</td>
-                          </tr>
-                          <tr>
-                            <td style="text-align:center">1534</td>
-                            <td style="text-align:center">315</td>
-                          </tr>
-                          <tr>
-                            <td style="text-align:center">852</td>
-                            <td style="text-align:center">178</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                    <p>
+                      <strong>例子：</strong>
+                      <br>假设我们有一组（房子面积, 价格）数据集，对应下表:</p>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style="text-align:center">$Size in feet^{2}$ (x)</th>
+                          <th style="text-align:center">$prize$ (y)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="text-align:center">2104</td>
+                          <td style="text-align:center">460</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">1416</td>
+                          <td style="text-align:center">232</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">1534</td>
+                          <td style="text-align:center">315</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">852</td>
+                          <td style="text-align:center">178</td>
+                        </tr>
+                      </tbody>
+                    </table>
                     <p>其中</p>
                     <ul>
                       <li>$m = 4$</li>
@@ -544,74 +532,70 @@
                       <li>$\theta_{1}$: 第$1$组学习参数</li>
                     </ul>
                     <p>对于多变量（或者叫
-                      <strong>feature - 特征</strong>）的表示方法，如下
-                      <br>
-                      <div class="note info">
-                        <p>
-                          <strong>例子：</strong>
-                          <br>假设我们有一组多个特征的数据，每组特征对应一个确定的输出：</p>
-                        <table>
-                          <thead>
-                            <tr>
-                              <th style="text-align:center">$X_{0}$</th>
-                              <th style="text-align:center">$X_{1}$</th>
-                              <th style="text-align:center">$X_{2}$</th>
-                              <th style="text-align:center">$X_{3}$</th>
-                              <th style="text-align:center">…</th>
-                              <th style="text-align:center">$X_{n}$</th>
-                              <th style="text-align:center">$Y$</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td style="text-align:center">$1$</td>
-                              <td style="text-align:center">$x_{1}^{(1)}$</td>
-                              <td style="text-align:center">$x_{2}^{(1)}$</td>
-                              <td style="text-align:center">$x_{3}^{(1)}$</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">$x_{n}^{(1)}$</td>
-                              <td style="text-align:center">$y^{(1)}$</td>
-                            </tr>
-                            <tr>
-                              <td style="text-align:center">$1$</td>
-                              <td style="text-align:center">$x_{1}^{(2)}$</td>
-                              <td style="text-align:center">$x_{2}^{(2)}$</td>
-                              <td style="text-align:center">$x_{3}^{(2)}$</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">$x_{n}^{(2)}$</td>
-                              <td style="text-align:center">$y^{(2)}$</td>
-                            </tr>
-                            <tr>
-                              <td style="text-align:center">$1$</td>
-                              <td style="text-align:center">$x_{1}^{(3)}$</td>
-                              <td style="text-align:center">$x_{2}^{(3)}$</td>
-                              <td style="text-align:center">$x_{3}^{(3)}$</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">$x_{n}^{(3)}$</td>
-                              <td style="text-align:center">$y^{(3)}$</td>
-                            </tr>
-                            <tr>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">…</td>
-                            </tr>
-                            <tr>
-                              <td style="text-align:center">$1$</td>
-                              <td style="text-align:center">$x_{1}^{(m)}$</td>
-                              <td style="text-align:center">$x_{2}^{(m)}$</td>
-                              <td style="text-align:center">$x_{3}^{(m)}$</td>
-                              <td style="text-align:center">…</td>
-                              <td style="text-align:center">$x_{n}^{(m)}$</td>
-                              <td style="text-align:center">$y^{(m)}$</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </p>
+                      <strong>feature - 特征</strong>）的表示方法，如下</p>
+                    <p>
+                      <strong>例子：</strong>
+                      <br>假设我们有一组多个特征的数据，每组特征对应一个确定的输出：</p>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th style="text-align:center">$X_{0}$</th>
+                          <th style="text-align:center">$X_{1}$</th>
+                          <th style="text-align:center">$X_{2}$</th>
+                          <th style="text-align:center">$X_{3}$</th>
+                          <th style="text-align:center">…</th>
+                          <th style="text-align:center">$X_{n}$</th>
+                          <th style="text-align:center">$Y$</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="text-align:center">$1$</td>
+                          <td style="text-align:center">$x_{1}^{(1)}$</td>
+                          <td style="text-align:center">$x_{2}^{(1)}$</td>
+                          <td style="text-align:center">$x_{3}^{(1)}$</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">$x_{n}^{(1)}$</td>
+                          <td style="text-align:center">$y^{(1)}$</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">$1$</td>
+                          <td style="text-align:center">$x_{1}^{(2)}$</td>
+                          <td style="text-align:center">$x_{2}^{(2)}$</td>
+                          <td style="text-align:center">$x_{3}^{(2)}$</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">$x_{n}^{(2)}$</td>
+                          <td style="text-align:center">$y^{(2)}$</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">$1$</td>
+                          <td style="text-align:center">$x_{1}^{(3)}$</td>
+                          <td style="text-align:center">$x_{2}^{(3)}$</td>
+                          <td style="text-align:center">$x_{3}^{(3)}$</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">$x_{n}^{(3)}$</td>
+                          <td style="text-align:center">$y^{(3)}$</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">…</td>
+                        </tr>
+                        <tr>
+                          <td style="text-align:center">$1$</td>
+                          <td style="text-align:center">$x_{1}^{(m)}$</td>
+                          <td style="text-align:center">$x_{2}^{(m)}$</td>
+                          <td style="text-align:center">$x_{3}^{(m)}$</td>
+                          <td style="text-align:center">…</td>
+                          <td style="text-align:center">$x_{n}^{(m)}$</td>
+                          <td style="text-align:center">$y^{(m)}$</td>
+                        </tr>
+                      </tbody>
+                    </table>
                     <p>其中</p>
                     <ul>
                       <li>
@@ -648,12 +632,9 @@
                     <p>回到我们上面的那个（房子面积, 价格）数据集的例子中。这是一个
                       <strong>单变量</strong>的回归问题。如下
                       <br>
-                      <div class="note info">
-                        <p>
-                          <img src="/posts/Machine%20Learning%20(Week1)/pic8.jpg">
-                        </p>
-                      </div>
-                      <br>在这里，我们的预测函数为
+                      <img src="/posts/Machine%20Learning%20(Week1)/pic8.jpg">
+                    </p>
+                    <p>在这里，我们的预测函数为
                       <span>$h_{\theta}(x)=\theta_{0}+\theta_{1}x$</span>
                       <!-- Has MathJax -->。当$\theta$取不同值时，对应如下图：</p>
                     <img src="/posts/Machine%20Learning%20(Week1)/pic9.jpg">
@@ -870,36 +851,28 @@
                       <!-- Has MathJax -->求偏导来进行梯度下降。</p>
                     <p>对于梯度下降，还有一些要注意的地方：</p>
                     <ul>
-                      <li>
-                        <p>关于
-                          <strong>学习速率</strong>
-                          <span>$\alpha$</span>
-                          <!-- Has MathJax -->，怎样设置学习速率也是很关键的问题，如果
-                          <span>$\alpha$</span>
-                          <!-- Has MathJax -->设置的
-                          <strong>过小</strong>，则梯度下降就会收敛得很慢，训练时间会过长。如果
-                          <span>$\alpha$</span>
-                          <!-- Has MathJax -->设置的过大，则梯度下降有可能会发散，就是越过了极值点：</p>
-                        <div class="note info">
-                          <p>
-                            <img src="/posts/Machine%20Learning%20(Week1)/pic18.png">
-                            <br>所以我们在做迭代时一定要关注着$J(\theta)$，确保它是在下降的。</p>
-                        </div>
+                      <li>关于
+                        <strong>学习速率</strong>
+                        <span>$\alpha$</span>
+                        <!-- Has MathJax -->，怎样设置学习速率也是很关键的问题，如果
+                        <span>$\alpha$</span>
+                        <!-- Has MathJax -->设置的
+                        <strong>过小</strong>，则梯度下降就会收敛得很慢，训练时间会过长。如果
+                        <span>$\alpha$</span>
+                        <!-- Has MathJax -->设置的过大，则梯度下降有可能会发散，就是越过了极值点：
+                        <img src="/posts/Machine%20Learning%20(Week1)/pic18.png">
                       </li>
-                      <li>
-                        <p>在实际问题中，我们的
-                          <span>$J(\theta)$</span>
-                          <!-- Has MathJax -->一般不会是
-                          <strong>凸函数</strong>，也就是说我们做梯度下降得到的只是
-                          <strong>局部最优值</strong>，而不是
-                          <strong>全局最优值</strong>：</p>
-                        <div class="note info">
-                          <p>
-                            <img src="/posts/Machine%20Learning%20(Week1)/pic19.png">
-                            <br>
-                            <img src="/posts/Machine%20Learning%20(Week1)/pic20.png">
-                          </p>
-                        </div>
+                    </ul>
+                    <p>所以我们在做迭代时一定要关注着$J(\theta)$，确保它是在下降的。</p>
+                    <ul>
+                      <li>在实际问题中，我们的
+                        <span>$J(\theta)$</span>
+                        <!-- Has MathJax -->一般不会是
+                        <strong>凸函数</strong>，也就是说我们做梯度下降得到的只是
+                        <strong>局部最优值</strong>，而不是
+                        <strong>全局最优值</strong>：
+                        <img src="/posts/Machine%20Learning%20(Week1)/pic19.png">
+                        <img src="/posts/Machine%20Learning%20(Week1)/pic20.png">
                       </li>
                     </ul>
                     <h2 id="Gradient-Descent-for-Liner-Regression-线性回归中的梯度下降">
@@ -1234,21 +1207,21 @@
 
                     <a href="/archives/">
 
-                      <span class="site-state-item-count">11</span>
+                      <span class="site-state-item-count">12</span>
                       <span class="site-state-item-name">日志</span>
                     </a>
                   </div>
 
                   <div class="site-state-item site-state-categories">
                     <a href="/categories/index.html">
-                      <span class="site-state-item-count">5</span>
+                      <span class="site-state-item-count">6</span>
                       <span class="site-state-item-name">分类</span>
                     </a>
                   </div>
 
                   <div class="site-state-item site-state-tags">
                     <a href="/tags/index.html">
-                      <span class="site-state-item-count">20</span>
+                      <span class="site-state-item-count">22</span>
                       <span class="site-state-item-name">标签</span>
                     </a>
                   </div>
@@ -1432,14 +1405,14 @@
             <i class="fa fa-area-chart"></i>
           </span>
 
-          <span title="total count">76k</span>
+          <span title="total count">85k</span>
 
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa-coffee"></i>
           </span>
 
-          <span title="total time">2:50</span>
+          <span title="total time">3:08</span>
 
         </div>
 
