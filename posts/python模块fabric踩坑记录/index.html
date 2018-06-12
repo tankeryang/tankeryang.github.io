@@ -87,7 +87,8 @@
   <meta property="og:description" content="最近都在狂写脚本，好像变成   半个运维 一样…   刚好有需求写些部署工具，于是了解到了   fabric这个模块。下面简单带过一下">
   <meta property="og:locale" content="zh-Hans">
   <meta property="og:image" content="https://tankeryang.github.io/posts/python模块fabric踩坑记录/pic0.jpeg">
-  <meta property="og:updated_time" content="2018-06-12T05:51:47.242Z">
+  <meta property="og:image" content="http://www.plantuml.com/plantuml/svg/oq_AIaqkKN19B4aCACglgEJAXmWuv-ULf5QK877JCjEHU7b0EZC_ZuiBhbF1faPN5wuFKnYa7oeB5uEQ0W00">
+  <meta property="og:updated_time" content="2018-06-12T11:12:52.069Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="python模块fabric踩坑记录">
   <meta name="twitter:description" content="最近都在狂写脚本，好像变成   半个运维 一样…   刚好有需求写些部署工具，于是了解到了   fabric这个模块。下面简单带过一下">
@@ -339,7 +340,7 @@
 
                         <span class="post-meta-item-text">words count&#58;</span>
 
-                        <span title="words count">9k</span>
+                        <span title="words count">10k</span>
 
                         <span class="post-meta-divider">|</span>
 
@@ -349,7 +350,7 @@
 
                         <span class="post-meta-item-text">minutes to read &asymp;</span>
 
-                        <span title="minutes to read">0:20</span>
+                        <span title="minutes to read">0:22</span>
 
                       </div>
 
@@ -444,110 +445,174 @@
                       <code>line 501</code>，在实例化
                       <code>Connection</code>对象后调用
                       <code>client.connect(**kwargs)</code>时抽了…</p>
-                    <p>直接摸过去，先了解下
-                      <code>Connection</code>类的定义和构造函数，这里我抽出了关键部分，并加了一些简要的注释说明传参给哪些变量:
+                    <p>直接摸过去，从
+                      <code>Connection</code>类出发往他祖宗上刨，下面先给出继承关系和
+                      <code>Connection</code>的关键部分，然后逐块拆分说明:</p>
+                    <img src="http://www.plantuml.com/plantuml/svg/oq_AIaqkKN19B4aCACglgEJAXmWuv-ULf5QK877JCjEHU7b0EZC_ZuiBhbF1faPN5wuFKnYa7oeB5uEQ0W00">
+                    <figure class="highlight python">
+                      <figcaption>
+                        <span>connection.py</span>
+                      </figcaption>
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Connection</span><span class="params">(Context)</span>:</span></span><br><span class="line">    host = <span class="keyword">None</span></span><br><span class="line">    original_host = <span class="keyword">None</span></span><br><span class="line">    user = <span class="keyword">None</span></span><br><span class="line">    port = <span class="keyword">None</span></span><br><span class="line">    ssh_config = <span class="keyword">None</span></span><br><span class="line">    gateway = <span class="keyword">None</span></span><br><span class="line">    forward_agent = <span class="keyword">None</span></span><br><span class="line">    connect_timeout = <span class="keyword">None</span></span><br><span class="line">    connect_kwargs = <span class="keyword">None</span></span><br><span class="line">    client = <span class="keyword">None</span></span><br><span class="line">    transport = <span class="keyword">None</span></span><br><span class="line">    _sftp = <span class="keyword">None</span></span><br><span class="line">    _agent_handler = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        self,</span></span></span><br><span class="line"><span class="function"><span class="params">        host,</span></span></span><br><span class="line"><span class="function"><span class="params">        user=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        port=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        config=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        gateway=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        forward_agent=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        connect_timeout=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        connect_kwargs=None,</span></span></span><br><span class="line"><span class="function"><span class="params">    )</span>:</span></span><br><span class="line"></span><br><span class="line">        super(Connection, self).__init__(config=config)</span><br><span class="line">        <span class="keyword">if</span> config <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            config = Config()</span><br><span class="line">        <span class="keyword">elif</span> <span class="keyword">not</span> isinstance(config, Config):</span><br><span class="line">            config = config.clone(into=Config)</span><br><span class="line">        self._set(_config=config)</span><br><span class="line"></span><br><span class="line">        shorthand = self.derive_shorthand(host)</span><br><span class="line">        host = shorthand[<span class="string">"host"</span>]</span><br><span class="line">        err = (</span><br><span class="line">            <span class="string">"You supplied the &#123;&#125; via both shorthand and kwarg! Please pick one."</span>  <span class="comment"># noqa</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">if</span> shorthand[<span class="string">"user"</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">raise</span> ValueError(err.format(<span class="string">"user"</span>))</span><br><span class="line">            user = shorthand[<span class="string">"user"</span>]</span><br><span class="line">        <span class="keyword">if</span> shorthand[<span class="string">"port"</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> port <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">raise</span> ValueError(err.format(<span class="string">"port"</span>))</span><br><span class="line">            port = shorthand[<span class="string">"port"</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># ssh_config</span></span><br><span class="line">        self.ssh_config = self.config.base_ssh_config.lookup(host)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># original_host</span></span><br><span class="line">        self.original_host = host</span><br><span class="line"></span><br><span class="line">        <span class="comment"># host</span></span><br><span class="line">        self.host = host</span><br><span class="line">        <span class="keyword">if</span> <span class="string">"hostname"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">            self.host = self.ssh_config[<span class="string">"hostname"</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># user</span></span><br><span class="line">        self.user = user <span class="keyword">or</span> self.ssh_config.get(<span class="string">"user"</span>, self.config.user)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># port</span></span><br><span class="line">        self.port = port <span class="keyword">or</span> int(self.ssh_config.get(<span class="string">"port"</span>, self.config.port))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> gateway <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">"proxyjump"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">                hops = reversed(self.ssh_config[<span class="string">"proxyjump"</span>].split(<span class="string">","</span>))</span><br><span class="line">                prev_gw = <span class="keyword">None</span></span><br><span class="line">                <span class="keyword">for</span> hop <span class="keyword">in</span> hops:</span><br><span class="line">                    <span class="keyword">if</span> prev_gw <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                        cxn = Connection(hop)</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        cxn = Connection(hop, gateway=prev_gw)</span><br><span class="line">                    prev_gw = cxn</span><br><span class="line">                gateway = prev_gw</span><br><span class="line">            <span class="keyword">elif</span> <span class="string">"proxycommand"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">                gateway = self.ssh_config[<span class="string">"proxycommand"</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                gateway = self.config.gateway</span><br><span class="line">        self.gateway = gateway</span><br><span class="line"></span><br><span class="line">        <span class="comment"># forward_agent</span></span><br><span class="line">        <span class="keyword">if</span> forward_agent <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            forward_agent = self.config.forward_agent</span><br><span class="line">            <span class="keyword">if</span> <span class="string">"forwardagent"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">                map_ = &#123;<span class="string">"yes"</span>: <span class="keyword">True</span>, <span class="string">"no"</span>: <span class="keyword">False</span>&#125;</span><br><span class="line">                forward_agent = map_[self.ssh_config[<span class="string">"forwardagent"</span>]]</span><br><span class="line">        self.forward_agent = forward_agent</span><br><span class="line"></span><br><span class="line">        <span class="comment"># connect_timeout</span></span><br><span class="line">        <span class="keyword">if</span> connect_timeout <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            connect_timeout = self.ssh_config.get(</span><br><span class="line">                <span class="string">"connecttimeout"</span>, self.config.timeouts.connect</span><br><span class="line">            )</span><br><span class="line">        <span class="keyword">if</span> connect_timeout <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            connect_timeout = int(connect_timeout)</span><br><span class="line">        self.connect_timeout = connect_timeout</span><br><span class="line"></span><br><span class="line">        <span class="comment"># connect_kwargs</span></span><br><span class="line">        self.connect_kwargs = self.resolve_connect_kwargs(connect_kwargs)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># client</span></span><br><span class="line">        client = SSHClient()</span><br><span class="line">        client.set_missing_host_key_policy(AutoAddPolicy())</span><br><span class="line">        self.client = client</span><br><span class="line"></span><br><span class="line">        <span class="comment"># transport</span></span><br><span class="line">        self.transport = <span class="keyword">None</span></span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h2 id="重要的成员变量">
+                      <a href="#重要的成员变量" class="headerlink" title="重要的成员变量"></a>重要的成员变量</h2>
+                    <figure class="highlight python">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">host = <span class="keyword">None</span>             <span class="comment"># 主机名或IP地址: www.host.com, 66.66.66.66</span></span><br><span class="line">original_host = <span class="keyword">None</span>    <span class="comment"># 同host</span></span><br><span class="line">user = <span class="keyword">None</span>             <span class="comment"># 系统用户名: root, someone</span></span><br><span class="line">port = <span class="keyword">None</span>             <span class="comment"># 端口号（远程执行某些应用需提供）</span></span><br><span class="line">gateway = <span class="keyword">None</span>          <span class="comment"># 网关</span></span><br><span class="line">forward_agent = <span class="keyword">None</span>    <span class="comment"># 代理</span></span><br><span class="line">connect_timeout = <span class="keyword">None</span>  <span class="comment"># 超时时间</span></span><br><span class="line">connect_kwargs = <span class="keyword">None</span>   <span class="comment"># 连接参数（记住这个，非常重要）</span></span><br><span class="line">client = <span class="keyword">None</span>           <span class="comment"># 客户端</span></span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h2 id="构造函数参数">
+                      <a href="#构造函数参数" class="headerlink" title="构造函数参数"></a>构造函数参数</h2>
+                    <figure class="highlight python">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">host</span><br><span class="line">user=<span class="keyword">None</span></span><br><span class="line">port=<span class="keyword">None</span></span><br><span class="line">config=<span class="keyword">None</span></span><br><span class="line">gateway=<span class="keyword">None</span></span><br><span class="line">forward_agent=<span class="keyword">None</span></span><br><span class="line">connect_timeout=<span class="keyword">None</span></span><br><span class="line">connect_kwargs=<span class="keyword">None</span></span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>这些就是我们在实例化
+                      <code>Connection</code>对象时可以控制的一些部分，比较重要的有
+                      <code>config</code>和
+                      <code>connection_kwargs</code>
+                    </p>
+                    <h2 id="构造函数主体">
+                      <a href="#构造函数主体" class="headerlink" title="构造函数主体"></a>构造函数主体</h2>
+                    <h3 id="config">
+                      <a href="#config" class="headerlink" title="config"></a>config</h3>
+                    <figure class="highlight python">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">super(Connection, self).__init__(config=config)</span><br><span class="line"><span class="keyword">if</span> config <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">    config = Config()</span><br><span class="line"><span class="keyword">elif</span> <span class="keyword">not</span> isinstance(config, Config):</span><br><span class="line">    config = config.clone(into=Config)</span><br><span class="line">self._set(_config=config)</span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>
+                      <code>config</code>成员变量是一个
+                      <code>Config</code>对象，它是调用父类
+                      <code>Context.__init__()</code>方法来初始化的。
+                      <code>Context.__init__()</code>定义如下:
                       <br>
                       <figure class="highlight python">
-                        <figcaption>
-                          <span>connection.py</span>
-                        </figcaption>
                         <table>
                           <tr>
                             <td class="gutter">
-                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre>
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre>
                             </td>
                             <td class="code">
-                              <pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Connection</span><span class="params">(Context)</span>:</span></span><br><span class="line">    host = <span class="keyword">None</span></span><br><span class="line">    original_host = <span class="keyword">None</span></span><br><span class="line">    user = <span class="keyword">None</span></span><br><span class="line">    port = <span class="keyword">None</span></span><br><span class="line">    ssh_config = <span class="keyword">None</span></span><br><span class="line">    gateway = <span class="keyword">None</span></span><br><span class="line">    forward_agent = <span class="keyword">None</span></span><br><span class="line">    connect_timeout = <span class="keyword">None</span></span><br><span class="line">    connect_kwargs = <span class="keyword">None</span></span><br><span class="line">    client = <span class="keyword">None</span></span><br><span class="line">    transport = <span class="keyword">None</span></span><br><span class="line">    _sftp = <span class="keyword">None</span></span><br><span class="line">    _agent_handler = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">        self,</span></span></span><br><span class="line"><span class="function"><span class="params">        host,</span></span></span><br><span class="line"><span class="function"><span class="params">        user=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        port=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        config=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        gateway=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        forward_agent=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        connect_timeout=None,</span></span></span><br><span class="line"><span class="function"><span class="params">        connect_kwargs=None,</span></span></span><br><span class="line"><span class="function"><span class="params">    )</span>:</span></span><br><span class="line">        <span class="comment"># config</span></span><br><span class="line">        super(Connection, self).__init__(config=config)</span><br><span class="line">        <span class="keyword">if</span> config <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            config = Config()</span><br><span class="line">        <span class="keyword">elif</span> <span class="keyword">not</span> isinstance(config, Config):</span><br><span class="line">            config = config.clone(into=Config)</span><br><span class="line">        self._set(_config=config)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 处理host参数</span></span><br><span class="line">        shorthand = self.derive_shorthand(host)</span><br><span class="line">        host = shorthand[<span class="string">"host"</span>]</span><br><span class="line">        err = (</span><br><span class="line">            <span class="string">"You supplied the &#123;&#125; via both shorthand and kwarg! Please pick one."</span>  <span class="comment"># noqa</span></span><br><span class="line">        )</span><br><span class="line">        <span class="keyword">if</span> shorthand[<span class="string">"user"</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">raise</span> ValueError(err.format(<span class="string">"user"</span>))</span><br><span class="line">            user = shorthand[<span class="string">"user"</span>]</span><br><span class="line">        <span class="keyword">if</span> shorthand[<span class="string">"port"</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> port <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">                <span class="keyword">raise</span> ValueError(err.format(<span class="string">"port"</span>))</span><br><span class="line">            port = shorthand[<span class="string">"port"</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># ssh_config</span></span><br><span class="line">        self.ssh_config = self.config.base_ssh_config.lookup(host)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># original_host</span></span><br><span class="line">        self.original_host = host</span><br><span class="line"></span><br><span class="line">        <span class="comment"># host</span></span><br><span class="line">        self.host = host</span><br><span class="line">        <span class="keyword">if</span> <span class="string">"hostname"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">            self.host = self.ssh_config[<span class="string">"hostname"</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># user</span></span><br><span class="line">        self.user = user <span class="keyword">or</span> self.ssh_config.get(<span class="string">"user"</span>, self.config.user)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># port</span></span><br><span class="line">        self.port = port <span class="keyword">or</span> int(self.ssh_config.get(<span class="string">"port"</span>, self.config.port))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> gateway <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            <span class="keyword">if</span> <span class="string">"proxyjump"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">                hops = reversed(self.ssh_config[<span class="string">"proxyjump"</span>].split(<span class="string">","</span>))</span><br><span class="line">                prev_gw = <span class="keyword">None</span></span><br><span class="line">                <span class="keyword">for</span> hop <span class="keyword">in</span> hops:</span><br><span class="line">                    <span class="keyword">if</span> prev_gw <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">                        cxn = Connection(hop)</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        cxn = Connection(hop, gateway=prev_gw)</span><br><span class="line">                    prev_gw = cxn</span><br><span class="line">                gateway = prev_gw</span><br><span class="line">            <span class="keyword">elif</span> <span class="string">"proxycommand"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">                gateway = self.ssh_config[<span class="string">"proxycommand"</span>]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                gateway = self.config.gateway</span><br><span class="line">        self.gateway = gateway</span><br><span class="line"></span><br><span class="line">        <span class="comment"># forward_agent</span></span><br><span class="line">        <span class="keyword">if</span> forward_agent <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            forward_agent = self.config.forward_agent</span><br><span class="line">            <span class="keyword">if</span> <span class="string">"forwardagent"</span> <span class="keyword">in</span> self.ssh_config:</span><br><span class="line">                map_ = &#123;<span class="string">"yes"</span>: <span class="keyword">True</span>, <span class="string">"no"</span>: <span class="keyword">False</span>&#125;</span><br><span class="line">                forward_agent = map_[self.ssh_config[<span class="string">"forwardagent"</span>]]</span><br><span class="line">        self.forward_agent = forward_agent</span><br><span class="line"></span><br><span class="line">        <span class="comment"># connect_timeout</span></span><br><span class="line">        <span class="keyword">if</span> connect_timeout <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            connect_timeout = self.ssh_config.get(</span><br><span class="line">                <span class="string">"connecttimeout"</span>, self.config.timeouts.connect</span><br><span class="line">            )</span><br><span class="line">        <span class="keyword">if</span> connect_timeout <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            connect_timeout = int(connect_timeout)</span><br><span class="line">        self.connect_timeout = connect_timeout</span><br><span class="line"></span><br><span class="line">        <span class="comment"># connect_kwargs</span></span><br><span class="line">        self.connect_kwargs = self.resolve_connect_kwargs(connect_kwargs)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># client</span></span><br><span class="line">        client = SSHClient()</span><br><span class="line">        client.set_missing_host_key_policy(AutoAddPolicy())</span><br><span class="line">        self.client = client</span><br><span class="line"></span><br><span class="line">        <span class="comment"># transport</span></span><br><span class="line">        self.transport = <span class="keyword">None</span></span><br></pre>
+                              <pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context</span><span class="params">(DataProxy)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, config=None)</span>:</span></span><br><span class="line">        config = config <span class="keyword">if</span> config <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> Config()</span><br><span class="line">        self._set(_config=config)</span><br><span class="line"></span><br><span class="line">        command_prefixes = list()</span><br><span class="line">        self._set(command_prefixes=command_prefixes)</span><br><span class="line"></span><br><span class="line">        command_cwds = list()</span><br><span class="line">        self._set(command_cwds=command_cwds)</span><br></pre>
                             </td>
                           </tr>
                         </table>
                       </figure>
                     </p>
-                    <p>然后是父类
-                      <code>Context</code>的定义和构造函数和一些关键函数:
+                    <p>具体过程是
+                      <code>Context.__init__()</code>初始化时调用
+                      <code>_set()</code>绑定了
+                      <code>Config</code>成员对象
+                      <code>_config</code>:
                       <br>
                       <figure class="highlight python">
-                        <figcaption>
-                          <span>contex.py</span>
-                        </figcaption>
                         <table>
                           <tr>
                             <td class="gutter">
-                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre>
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
                             </td>
                             <td class="code">
-                              <pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Context</span><span class="params">(DataProxy)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, config=None)</span>:</span></span><br><span class="line">        config = config <span class="keyword">if</span> config <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span> <span class="keyword">else</span> Config()</span><br><span class="line">        self._set(_config=config)</span><br><span class="line"></span><br><span class="line">        command_prefixes = list()</span><br><span class="line">        self._set(command_prefixes=command_prefixes)</span><br><span class="line"></span><br><span class="line">        command_cwds = list()</span><br><span class="line">        self._set(command_cwds=command_cwds)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">config</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._config</span><br><span class="line"></span><br><span class="line"><span class="meta">    @config.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">config</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        self._set(_config=value)</span><br></pre>
+                              <pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_set</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> args:</span><br><span class="line">        object.__setattr__(self, *args)</span><br><span class="line">    <span class="keyword">for</span> key, value <span class="keyword">in</span> six.iteritems(kwargs):</span><br><span class="line">        object.__setattr__(self, key, value)</span><br></pre>
                             </td>
                           </tr>
                         </table>
                       </figure>
                     </p>
-                    <p>最后看一下
-                      <code>_set()</code>函数
+                    <p>再通过加了
+                      <code>@property</code>的
+                      <code>config()</code>函数，使得
+                      <code>connection</code>对象能直接用
+                      <code>self.config</code>来引用
+                      <code>_config</code>:
                       <br>
                       <figure class="highlight python">
-                        <figcaption>
-                          <span>config.py</span>
-                        </figcaption>
                         <table>
                           <tr>
                             <td class="gutter">
-                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre>
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
                             </td>
                             <td class="code">
-                              <pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DataProxy</span><span class="params">(object)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">_set</span><span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">      <span class="keyword">if</span> args:</span><br><span class="line">          object.__setattr__(self, *args)</span><br><span class="line">      <span class="keyword">for</span> key, value <span class="keyword">in</span> six.iteritems(kwargs):</span><br><span class="line">          object.__setattr__(self, key, value)</span><br></pre>
+                              <pre><span class="line"><span class="meta">@property</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">config</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> self._config</span><br><span class="line"></span><br><span class="line"><span class="meta">@config.setter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">config</span><span class="params">(self, value)</span>:</span></span><br><span class="line">    self._set(_config=value)</span><br></pre>
                             </td>
                           </tr>
                         </table>
                       </figure>
                     </p>
+                    <h3 id="host-user-port">
+                      <a href="#host-user-port" class="headerlink" title="host, user, port"></a>host, user, port</h3>
+                    <figure class="highlight python">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">shorthand = self.derive_shorthand(host)</span><br><span class="line">host = shorthand[<span class="string">"host"</span>]</span><br><span class="line">err = (</span><br><span class="line">    <span class="string">"You supplied the &#123;&#125; via both shorthand and kwarg! Please pick one."</span>  <span class="comment"># noqa</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">if</span> shorthand[<span class="string">"user"</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">    <span class="keyword">if</span> user <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(err.format(<span class="string">"user"</span>))</span><br><span class="line">    user = shorthand[<span class="string">"user"</span>]</span><br><span class="line"><span class="keyword">if</span> shorthand[<span class="string">"port"</span>] <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">    <span class="keyword">if</span> port <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">        <span class="keyword">raise</span> ValueError(err.format(<span class="string">"port"</span>))</span><br><span class="line">    port = shorthand[<span class="string">"port"</span>]</span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>这段是处理
+                      <code>host</code>参数的。
+                      <code>host</code>可以有下面集中传入形式:
+                      <br>
+                      <figure class="highlight plain">
+                        <table>
+                          <tr>
+                            <td class="gutter">
+                              <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre>
+                            </td>
+                            <td class="code">
+                              <pre><span class="line">user@host:port  # 例如: root@10.10.10.10:6666</span><br><span class="line">user@host       # 例如: root@10.10.10.10</span><br><span class="line">host:port       # 例如: 10.10.10.10:6666</span><br><span class="line">host            # 例如: 10.10.10.10</span><br></pre>
+                            </td>
+                          </tr>
+                        </table>
+                      </figure>
+                    </p>
+                    <p>前三种会调用
+                      <code>self.derive_shorthand(host)</code>分别解析出
+                      <code>self.host</code>，
+                      <code>self.user</code>和
+                      <code>self.port</code>，最后一种需单独传入
+                      <code>user</code>，
+                      <code>port</code>。
+                      <br>如果用前三种传入方式的话，记得不要再重复传入
+                      <code>user</code>或
+                      <code>port</code>了，会抛出异常</p>
                     <p>源码是真他妈长啊，注释就占了一两百行 (微笑</p>
-                    <p>对
-                      <code>Connection</code>里的成员变量做一下分析:</p>
-                    <ul>
-                      <li>
-                        <p>host
-                          <br> 主机名，可以为IP地址或域名主机名之类的。可以有如下几种传入形式:</p>
-                        <figure class="highlight plain">
-                          <table>
-                            <tr>
-                              <td class="gutter">
-                                <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre>
-                              </td>
-                              <td class="code">
-                                <pre><span class="line">user@host:port  # 例如: root@10.10.10.10:6666</span><br><span class="line">user@host       # 例如: root@10.10.10.10</span><br><span class="line">host:port       # 例如: 10.10.10.10:6666</span><br><span class="line">host            # 例如: 10.10.10.10</span><br></pre>
-                              </td>
-                            </tr>
-                          </table>
-                        </figure>
-                        <p> 前三种会调用
-                          <code>self.derive_shorthand(host)</code>分别解析出
-                          <code>self.host</code>，
-                          <code>self.user</code>和
-                          <code>self.port</code>，最后一种需单独传入
-                          <code>user</code>，
-                          <code>port</code>。如果用前三种传入方式的话，记得不要再重复传入
-                          <code>user</code>或
-                          <code>port</code>了，会抛出异常</p>
-                      </li>
-                      <li>
-                        <p>config
-                          <br>
-                          <code>connection</code>里的
-                          <code>config</code>成员变量是一个
-                          <code>Config</code>对象，它是调用父类
-                          <code>Context.__init__()</code>方法来定义的。具体过程是
-                          <code>Context.__init__()</code>初始化时调用
-                          <code>_set()</code>定义了
-                          <code>_config</code>变量，再通过加了
-                          <code>@property</code>的
-                          <code>config()</code>函数，使得
-                          <code>connection</code>对象能直接用
-                          <code>self.config</code>来引用
-                          <code>_config</code>
-                        </p>
-                      </li>
-                    </ul>
                     <div class="note danger">
                       <p>
                         <i class="fa fa-spinner fa-pulse fa-lg margin-bottom" aria-hidden="true"></i>&nbsp;未完待续…有空继续…</p>
@@ -788,6 +853,45 @@
                         <span class="nav-text">
                           源码分析</span>
                       </a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#重要的成员变量">
+                            <span class="nav-number">2.1.</span>
+                            <span class="nav-text">
+                              重要的成员变量</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#构造函数参数">
+                            <span class="nav-number">2.2.</span>
+                            <span class="nav-text">
+                              构造函数参数</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#构造函数主体">
+                            <span class="nav-number">2.3.</span>
+                            <span class="nav-text">
+                              构造函数主体</span>
+                          </a>
+                          <ol class="nav-child">
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#config">
+                                <span class="nav-number">2.3.1.</span>
+                                <span class="nav-text">
+                                  config</span>
+                              </a>
+                            </li>
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#host-user-port">
+                                <span class="nav-number">2.3.2.</span>
+                                <span class="nav-text">
+                                  host, user, port</span>
+                              </a>
+                            </li>
+                          </ol>
+                        </li>
+                      </ol>
                     </li>
                   </ol>
                 </div>
@@ -825,14 +929,14 @@
             <i class="fa fa-area-chart"></i>
           </span>
 
-          <span title="total count">85k</span>
+          <span title="total count">86k</span>
 
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa-coffee"></i>
           </span>
 
-          <span title="total time">3:08</span>
+          <span title="total time">3:11</span>
 
         </div>
 
