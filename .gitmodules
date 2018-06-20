@@ -1,0 +1,3 @@
+[submodule "pod-library"]
+    path = themes/next_v360
+    url = https://github.com/theme-next/hexo-theme-next.git
