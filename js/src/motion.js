@@ -222,7 +222,7 @@ $(document).ready(function () {
       var $subtitle = $('.site-subtitle');
       var $logoLineTop = $('.logo-line-before i');
       var $logoLineBottom = $('.logo-line-after i');
-      $brand.length > 0 && sequence.push({
+      $brand.size() > 0 && sequence.push({
         e: $brand,
         p: {
           opacity: 1
@@ -288,7 +288,7 @@ $(document).ready(function () {
       function hasElement($elements) {
         $elements = Array.isArray($elements) ? $elements : [$elements];
         return $elements.every(function ($element) {
-          return $element.length > 0;
+          return $.isFunction($element.size) && $element.size() > 0;
         });
       }
     },
@@ -316,7 +316,7 @@ $(document).ready(function () {
       var $collHeaderTransition = CONFIG.motion.transition.coll_header;
       var $sidebarAffix = $('.sidebar-inner');
       var $sidebarAffixTransition = CONFIG.motion.transition.sidebar;
-      var hasPost = $postBlock.length > 0;
+      var hasPost = $postBlock.size() > 0;
       hasPost ? postMotion() : integrator.next();
       if (CONFIG.motion.async) {
         integrator.next();

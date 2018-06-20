@@ -28,6 +28,7 @@ $(document).ready(function () {
   CONFIG.fancybox && NexT.utils.wrapImageWithFancyBox();
   CONFIG.tabs && NexT.utils.registerTabsTag();
   NexT.utils.embeddedVideoTransformer();
+  NexT.utils.addActiveClassToMenuItem();
   // Define Motion Sequence.
   NexT.motion.integrator
     .add(NexT.motion.middleWares.logo)
