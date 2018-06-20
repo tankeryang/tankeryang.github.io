@@ -1,5 +1,5 @@
 ---
-title: COS站半次元原图爬虫 banciyuan-downloader v1.0 发布
+title: 半次元爬虫 banciyuan-downloader v1.0 发布
 date: 2017-10-29 17:14:13
 categories: python
 tags: [python, 爬虫, 二次元]
@@ -42,7 +42,7 @@ cos粉毛那位
 
 关注一波。想着有空写个爬虫来爬她的原图吧。结果越写添加的功能越多。现在这个版本我push到了[github](https://github.com/tankeryang/banciyuan-downloader)，上面有详细的使用方法。
 
-## 目前版本支持功能情况
+# 目前版本支持功能情况
 * [x] 根据```coser_id```批量下载某个coser发布的主题的所有图片
 * [x] 图片保存在以 __coser名__ 命名的文件夹内
 * [x] 图片按 __coser发布的主题__ 分文件夹保存，文件夹以主题标题命名
@@ -55,23 +55,23 @@ cos粉毛那位
 * [ ] ~~智能下载 __未下载过的主题__~~
 * [ ] ~~无须提前关注就可下载 __粉丝可见的主题__~~
 
-## 运行环境及python包版本（本人）
+# 运行环境及python包版本（本人）
 * __windows__ 10 1703-15063.674
 * __python__ 3.6.1
 * __beautifulsoup__ 4.5.3
 * __requests__ 2.13.0
 * __lxml__ 3.7.2
 
-## 运行结果
+# 运行结果
 
 {% asset_img home_folder.png %}
 {% asset_img coser_folder.png %}
 {% asset_img post_folder.png %}
 
-## FAQ
+# FAQ
 有何疑问可在[github](https://github.com/tankeryang/banciyuan-downloader)发布[issue](https://github.com/tankeryang/banciyuan-downloader/issues) ，本人会尽量及时查看
 
-## 疯狂打call
+# 疯狂打call
 原图出处: [小魔女学园-主角三人搞事组cos](https://bcy.net/coser/detail/99095/1511757)
 苏西·曼芭芭拉(粉毛) __cn__ :[犬神洛洛子](https://bcy.net/u/770554)
 亚可·卡嘉莉(黑毛) __cn__ :real\_\_yami
