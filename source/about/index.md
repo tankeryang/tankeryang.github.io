@@ -12,5 +12,5 @@ comments: false
 <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;__Description__: peppery chicken
 <i class="fa fa-building" aria-hidden="true"></i>&nbsp;__Company__: [Trendy-global](http://www.trendy-global.com/)
 <i class="fa fa-user" aria-hidden="true"></i>&nbsp;__Position__: ML engineer
-<i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;[have fun with me :)](mailto:youngzyang@outlook.com)
+<i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;[__Contact me__:)](mailto:youngzyang@outlook.com)
 </center>
