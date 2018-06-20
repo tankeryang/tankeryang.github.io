@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html class="theme-next mist use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="en">
 
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"
   />
   <meta name="theme-color" content="#222">
 
@@ -23,16 +23,16 @@
   <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet"
                                                                                   type="text/css" />
 
-  <link href="/css/main.css?v=6.0.1" rel="stylesheet" type="text/css" />
+  <link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=6.3.0">
 
   <script type="text/javascript" id="hexo.configurations">
     var NexT = window.NexT || {};
     var CONFIG = {
       root: '/',
       scheme: 'Mist',
-      version: '6.0.1',
+      version: '6.3.0',
       sidebar: {
         "position": "left",
         "display": "post",
@@ -73,11 +73,6 @@
 
   </script>
 
-  <link rel="stylesheet" href="mermaid.min.css">
-  <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
-
-  <meta name="keywords" content="anaconda,jupyter,nginx,反向代理," />
-
   <meta name="description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
   <meta name="keywords" content="anaconda,jupyter,nginx,反向代理">
   <meta property="og:type" content="article">
@@ -85,13 +80,20 @@
   <meta property="og:url" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/index.html">
   <meta property="og:site_name" content="淦">
   <meta property="og:description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
-  <meta property="og:locale" content="zh-Hans">
+  <meta property="og:locale" content="en">
   <meta property="og:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic0.png">
-  <meta property="og:updated_time" content="2018-06-20T06:10:37.981Z">
+  <meta property="og:updated_time" content="2018-06-20T12:38:50.721Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="服务器安装anaconda与配置jupyter反向代理">
   <meta name="twitter:description" content="最近在公司的服务器上搭环境和工具，折腾了一小会，记录一下">
   <meta name="twitter:image" content="https://tankeryang.github.io/posts/服务器安装anaconda与配置jupyter反向代理/pic0.png">
+
+  <script type="text/javascript" id="page.configurations">
+    CONFIG.page = {
+      sidebar: "",
+    };
+
+  </script>
 
   <title>服务器安装anaconda与配置jupyter反向代理 | 淦</title>
 
@@ -131,7 +133,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
@@ -158,7 +160,7 @@
           </div>
 
           <div class="site-nav-toggle">
-            <button>
+            <button aria-label="Toggle navigation bar">
               <span class="btn-bar"></span>
               <span class="btn-bar"></span>
               <span class="btn-bar"></span>
@@ -173,13 +175,13 @@
             <li class="menu-item menu-item-home">
               <a href="/" rel="section">
                 <i class="menu-item-icon fa fa-fw fa-home"></i>
-                <br />home</a>
+                <br />Home</a>
             </li>
 
             <li class="menu-item menu-item-archives">
               <a href="/archives/" rel="section">
                 <i class="menu-item-icon fa fa-fw fa-archive"></i>
-                <br />archives
+                <br />Archives
                 <span class="badge">13</span>
               </a>
             </li>
@@ -193,7 +195,7 @@
             <li class="menu-item menu-item-about">
               <a href="/about/" rel="section">
                 <i class="menu-item-icon fa fa-fw fa-user"></i>
-                <br />about</a>
+                <br />About</a>
             </li>
 
             <li class="menu-item menu-item-search">
@@ -201,7 +203,7 @@
               <a href="javascript:;" class="popup-trigger">
 
                 <i class="menu-item-icon fa fa-search fa-fw"></i>
-                <br />search</a>
+                <br />Search</a>
             </li>
 
           </ul>
@@ -217,7 +219,7 @@
                   <i class="fa fa-times-circle"></i>
                 </span>
                 <div class="local-search-input-wrapper">
-                  <input autocomplete="off" placeholder="searching..." spellcheck="false" type="text"
+                  <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text"
                                                                                                   id="local-search-input">
                 </div>
               </div>
@@ -227,11 +229,13 @@
           </div>
 
         </nav>
+
       </div>
     </header>
 
     <a href="https://github.com/tankeryang" class="github-corner" target="_blank" title="Follow me on GitHub"
                                                                                     aria-label="Follow me on GitHub">
+
       <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#222; color:#fff; position: absolute; top: 0; border: 0; right: 0;"
                                                                                       aria-hidden="true">
         <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -240,11 +244,13 @@
         <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
                                                                                         fill="currentColor" class="octo-body"></path>
       </svg>
+
     </a>
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+
           <div id="content" class="content">
 
             <div id="posts" class="posts-expand">
@@ -258,8 +264,8 @@
 
                   <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
                     <meta itemprop="name" content="tankeryang">
-                    <meta itemprop="description" content="">
-                    <meta itemprop="image" content="/uploads/my.jpg">
+                    <meta itemprop="description" content="汝亦知射乎？吾射不亦精乎？">
+                    <meta itemprop="image" content="/images/my.jpg">
                   </span>
 
                   <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -268,7 +274,9 @@
 
                   <header class="post-header">
 
-                    <h1 class="post-title" itemprop="name headline">服务器安装anaconda与配置jupyter反向代理</h1>
+                    <h1 class="post-title" itemprop="name headline">服务器安装anaconda与配置jupyter反向代理
+
+                    </h1>
 
                     <div class="post-meta">
                       <span class="post-time">
@@ -277,9 +285,19 @@
                           <i class="fa fa-calendar-o"></i>
                         </span>
 
-                        <span class="post-meta-item-text">posted on</span>
+                        <span class="post-meta-item-text">Posted on</span>
 
-                        <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T23:54:26+00:00">2018-05-23</time>
+                        <time title="Created: 2018-05-23 23:54:26" itemprop="dateCreated datePublished" datetime="2018-05-23T23:54:26+00:00">2018-05-23</time>
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-check-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">Edited on</span>
+
+                        <time title="Modified: 2018-06-20 12:38:50" itemprop="dateModified" datetime="2018-06-20T12:38:50+00:00">2018-06-20</time>
 
                       </span>
 
@@ -291,7 +309,7 @@
                           <i class="fa fa-folder-o"></i>
                         </span>
 
-                        <span class="post-meta-item-text">in</span>
+                        <span class="post-meta-item-text">In</span>
 
                         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                           <a href="/categories/技术杂项/" itemprop="url" rel="index">
@@ -307,8 +325,9 @@
                           <i class="fa fa-comment-o"></i>
                         </span>
                         <a href="/posts/服务器安装anaconda与配置jupyter反向代理/#comments" itemprop="discussionUrl">
-                          <span class="post-comments-count valine-comment-count" data-xid="/posts/服务器安装anaconda与配置jupyter反向代理/"
-                                                                                                          itemprop="commentCount"></span>
+                          <span class="post-meta-item-text">Comments: </span>
+                          <span class="post-comments-count valine-comment-count"
+                                                                                                          data-xid="/posts/服务器安装anaconda与配置jupyter反向代理/" itemprop="commentCount"></span>
                         </a>
                       </span>
 
@@ -318,20 +337,27 @@
                           <i class="fa fa-eye"></i>
                         </span>
 
-                        <span class="post-meta-item-text">read times&#58;</span>
+                        <span class="post-meta-item-text">Views: </span>
 
                         <span class="leancloud-visitors-count"></span>
                       </span>
 
-                      <div class="post-wordcount">
+                      <span class="post-meta-divider">|</span>
+                      <span class="post-meta-item-icon">
+                        <i class="fa fa-eye"></i>
+                        Views:
+                        <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+                      </span>
+
+                      <div class="post-symbolscount">
 
                         <span class="post-meta-item-icon">
                           <i class="fa fa-file-word-o"></i>
                         </span>
 
-                        <span class="post-meta-item-text">words count&#58;</span>
+                        <span class="post-meta-item-text">words: </span>
 
-                        <span title="words count">4k</span>
+                        <span title="words">4k</span>
 
                         <span class="post-meta-divider">|</span>
 
@@ -339,9 +365,9 @@
                           <i class="fa fa-clock-o"></i>
                         </span>
 
-                        <span class="post-meta-item-text">minutes to read &asymp;</span>
+                        <span class="post-meta-item-text">read times &asymp;</span>
 
-                        <span title="minutes to read">0:09</span>
+                        <span title="read times">0:09</span>
 
                       </div>
 
@@ -587,26 +613,16 @@
                   </div>
 
                   <div>
-
-                    <div>
-
-                      <div style="text-align:center;color: #ccc;font-size:14px;">---------------------------------END---------------------------------</div>
-
-                    </div>
-
-                  </div>
-
-                  <div>
                     <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
                       <div>手抖一下？</div>
                       <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-                        <span>献爱心</span>
+                        <span>Donate</span>
                       </button>
                       <div id="QR" style="display: none;">
 
                         <div id="wechat" style="display: inline-block">
-                          <img id="wechat_qr" src="/images/wx_pay1.png" alt="tankeryang WechatPay" />
-                          <p>WechatPay</p>
+                          <img id="wechat_qr" src="/images/wx_pay1.png" alt="tankeryang WeChat Pay" />
+                          <p>WeChat Pay</p>
                         </div>
 
                       </div>
@@ -618,17 +634,13 @@
 
                     <div class="post-tags">
 
-                      <a href="/tags/anaconda/" rel="tag">
-                        <i class="fa fa-tag"></i> anaconda</a>
+                      <a href="/tags/anaconda/" rel="tag"># anaconda</a>
 
-                      <a href="/tags/jupyter/" rel="tag">
-                        <i class="fa fa-tag"></i> jupyter</a>
+                      <a href="/tags/jupyter/" rel="tag"># jupyter</a>
 
-                      <a href="/tags/nginx/" rel="tag">
-                        <i class="fa fa-tag"></i> nginx</a>
+                      <a href="/tags/nginx/" rel="tag"># nginx</a>
 
-                      <a href="/tags/反向代理/" rel="tag">
-                        <i class="fa fa-tag"></i> 反向代理</a>
+                      <a href="/tags/反向代理/" rel="tag"># 反向代理</a>
 
                     </div>
 
@@ -702,10 +714,10 @@
 
             <ul class="sidebar-nav motion-element">
               <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-                文章目录
+                Table of Contents
               </li>
               <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-                站点概览
+                Overview
               </li>
             </ul>
 
@@ -713,10 +725,8 @@
               <div class="site-overview">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
-                  <a href="/" class="site-author-image" rel="start" style="border:none">
-                    <img class="site-author-image" itemprop="image" src="/uploads/my.jpg" alt="tankeryang"
-                    />
-                  </a>
+                  <img class="site-author-image" itemprop="image" src="/images/my.jpg" alt="tankeryang"
+                  />
 
                   <p class="site-author-name" itemprop="name">tankeryang</p>
                   <p class="site-description motion-element" itemprop="description">汝亦知射乎？吾射不亦精乎？</p>
@@ -729,21 +739,23 @@
                     <a href="/archives/">
 
                       <span class="site-state-item-count">13</span>
-                      <span class="site-state-item-name">日志</span>
+                      <span class="site-state-item-name">posts</span>
                     </a>
                   </div>
 
                   <div class="site-state-item site-state-categories">
                     <a href="/categories/index.html">
+
                       <span class="site-state-item-count">6</span>
-                      <span class="site-state-item-name">分类</span>
+                      <span class="site-state-item-name">categories</span>
                     </a>
                   </div>
 
                   <div class="site-state-item site-state-tags">
                     <a href="/tags/index.html">
-                      <span class="site-state-item-count">22</span>
-                      <span class="site-state-item-name">标签</span>
+
+                      <span class="site-state-item-count">21</span>
+                      <span class="site-state-item-name">tags</span>
                     </a>
                   </div>
 
@@ -753,14 +765,14 @@
 
                   <span class="links-of-author-item">
                     <a href="https://github.com/tankeryang" target="_blank" title="GitHub">
-
                       <i class="fa fa-fw fa-github"></i>GitHub</a>
+
                   </span>
 
                   <span class="links-of-author-item">
                     <a href="mailto:youngzyang@outlook.com" target="_blank" title="E-Mail">
-
                       <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+
                   </span>
 
                 </div>
@@ -896,11 +908,10 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <hr>
         <div class="copyright">&copy; 2017 &mdash;
           <span itemprop="copyrightYear">2018</span>
-          <span class="with-love">
-            <i class="fa fa-cog fa-spin fa-lg margin-bottom"></i>
+          <span class="with-love" id="animate">
+            <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
           </span>
           <span class="author" itemprop="copyrightHolder">tankeryang</span>
 
@@ -909,33 +920,36 @@
             <i class="fa fa-area-chart"></i>
           </span>
 
-          <span title="total count">97k</span>
+          <span title="Symbols count total">97k</span>
 
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa-coffee"></i>
           </span>
 
-          <span title="total time">3:36</span>
+          <span title="Reading time total">3:36</span>
 
         </div>
 
-        <div class="powered-by">Powered by —
-          <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a>
-        </div>
+        <div class="powered-by">Powered by
+          <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.4</div>
 
         <span class="post-meta-divider">|</span>
 
-        <div class="theme-info">theme &mdash;
-          <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.0.1</div>
+        <div class="theme-info">Theme &mdash;
+          <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
 
         <div class="busuanzi-count">
           <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-          <span class="site-uv">
+          <span class="site-uv" title="Total Visitors">
             <i class="fa fa-user"></i>
             <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-            visitors
+          </span>
+
+          <span class="site-pv" title="Total Views">
+            <i class="fa fa-eye"></i>
+            <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
           </span>
 
         </div>
@@ -964,22 +978,23 @@
 
   <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
-  <script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
 
   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+
   <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 
   <script type="text/javascript">
     var GUEST = ['nick', 'mail', 'link'];
     var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
+    guest = guest.split(',').filter(function(item) {
       return GUEST.indexOf(item) > -1;
     });
     new Valine({
@@ -1443,7 +1458,7 @@
     pbOptions = {};
     pbOptions.iconStyle = "box";
     pbOptions.boxForm = "horizontal";
-    pbOptions.position = "topCenter";
+    pbOptions.position = "bottomCenter";
     pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
     new needShareButton('#needsharebutton-postbottom', pbOptions);
 
@@ -1455,7 +1470,79 @@
 
   </script>
 
-  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.3.0"></script>
+
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on(
+        'click',
+        function(e) {
+          var code = $(this).parent().find('.code').find('.line').map(
+            function(i, e) {
+              return $(e).text()
+            }).toArray().join('\n')
+          var ta = document.createElement('textarea')
+          document.body.appendChild(ta)
+          ta.style.position = 'absolute'
+          ta.style.top = '0px'
+          ta.style.left = '0px'
+          ta.value = code
+          ta.select()
+          ta.focus()
+          var result = document.execCommand('copy')
+          document.body.removeChild(ta)
+          if (result) $(this).text('Copied')
+          else $(this).text('Copy failed')
+          $(this).blur()
+        })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function() {
+          $b.text('Copy')
+        }, 300)
+      }).append(e)
+    })
+
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
