@@ -25,7 +25,7 @@ install:
 - npm install hexo-tag-plantuml --save
 
 before_script:
-- cd ./themes/next
+- cd ./themes/next_v6
 - git clone https://github.com/theme-next/theme-next-fancybox3 source/lib/fancybox
 - git clone https://github.com/theme-next/theme-next-jquery-lazyload source/lib/jquery_lazyload
 - git clone https://github.com/theme-next/theme-next-needmoreshare2 source/lib/needsharebutton
