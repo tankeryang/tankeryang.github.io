@@ -86,7 +86,7 @@
   <meta property="og:site_name" content="淦">
   <meta property="og:description" content="开篇的话      大约上个月，在   Coursera上申请   Andrew Ng的   deeplearning.ai系列课程助学金通过了。想着偏偏在我复习考研的时间段里开课，又不想转换班次，于是“狠下心来”开始上课，这下负担又重了，不仅要复习，还要兼顾Coursera上两门重量级课程，虽然有做笔记和推导，但是实在没有时间再去做整理发布了。   那么为什么会有这个开篇呢？因为">
   <meta property="og:locale" content="zh-Hans">
-  <meta property="og:updated_time" content="2018-06-20T05:57:54.686Z">
+  <meta property="og:updated_time" content="2018-06-20T06:10:37.961Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="deeplearning.ai 0 (openning)">
   <meta name="twitter:description" content="开篇的话      大约上个月，在   Coursera上申请   Andrew Ng的   deeplearning.ai系列课程助学金通过了。想着偏偏在我复习考研的时间段里开课，又不想转换班次，于是“狠下心来”开始上课，这下负担又重了，不仅要复习，还要兼顾Coursera上两门重量级课程，虽然有做笔记和推导，但是实在没有时间再去做整理发布了。   那么为什么会有这个开篇呢？因为">
@@ -299,6 +299,17 @@
 
                       </span>
 
+                      <span class="post-comments-count">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-comment-o"></i>
+                        </span>
+                        <a href="/posts/deeplearning.ai 0 (openning)/#comments" itemprop="discussionUrl">
+                          <span class="post-comments-count valine-comment-count" data-xid="/posts/deeplearning.ai 0 (openning)/"
+                                                                                                          itemprop="commentCount"></span>
+                        </a>
+                      </span>
+
                       <span id="/posts/deeplearning.ai 0 (openning)/" class="leancloud_visitors" data-flag-title="deeplearning.ai 0 (openning)">
                         <span class="post-meta-divider">|</span>
                         <span class="post-meta-item-icon">
@@ -463,6 +474,9 @@
               </div>
             </div>
 
+          </div>
+
+          <div class="comments" id="comments">
           </div>
 
         </div>
@@ -700,6 +714,29 @@
   <script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+  <script type="text/javascript">
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.indexOf(item) > -1;
+    });
+    new Valine({
+      el: '#comments',
+      verify: true,
+      notify: true,
+      appId: 'NiFbgAF3vRyR2BayGJOswb21-gzGzoHsz',
+      appKey: 'xGF7qavyOOQGtVACk06SnLrW',
+      placeholder: 'Just go go',
+      avatar: 'retro',
+      guest_info: guest,
+      pageSize: '10' || 10,
+    });
+
+  </script>
 
   <script type="text/javascript">
     // Popup Window;
