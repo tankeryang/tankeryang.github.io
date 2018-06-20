@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next_v630
+theme: next
 #plugins: hexo-math
 #plugins: hexo-generate-feed
 
