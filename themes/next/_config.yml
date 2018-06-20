@@ -64,7 +64,7 @@ footer:
   # Icon between year and copyright info.
   icon: cog
   # spiner icon
-  rotate: fa-spin fa-lg margin-bottom
+  rotate: fa-spin fa-1x fa-fw
   #rotate_plus : fa-plus fa-lg margin-bottom
 
   # If not defined, will be used `author` from Hexo main config.
