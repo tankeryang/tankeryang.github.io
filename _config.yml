@@ -7,7 +7,7 @@ title: 淦
 subtitle: n*m*lg(b)
 description: 汝亦知射乎？吾射不亦精乎？
 author: tankeryang
-language: zh-Hans
+language: en
 timezone: 
 
 # URL
@@ -73,7 +73,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: next_v630
 #plugins: hexo-math
 #plugins: hexo-generate-feed
 
@@ -126,3 +126,10 @@ symbols_count_time:
   time: true
   total_symbols: true
   total_time: true
+
+leancloud_counter_security:
+  enable_sync: false
+  app_id: kSu3rAgl8k4nY1FzwSFTObim-gzGzoHsz
+  app_key: o9KSyT3W3IRtBuNkvd2gRycc
+  username:
+  password:
