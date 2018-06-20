@@ -1115,7 +1115,7 @@ travis encrypt-file travis_rsa -add
 * 先将`.travis`下的`travis_rsa`，`travis_rsa.pub`删掉。__请记住一定要删掉！！！只保留加密文件__
 
 * 按照下面配置`.travis.yml`:
-{% codeblock lang:yaml .travis.yml %}
+```yaml .travis.yml
 language: node_js
 node_js: stable
 
@@ -1125,7 +1125,8 @@ branches:
 
 before_install:
 # 解密SSH
-- openssl aes-256-cbc -K $encrypted_fe7db267074f_key -iv $encrypted_fe7db267074f_iv
+# encrypted_key和encrypted_id可以在travis里setting查看，具体位置参考下图
+- openssl aes-256-cbc -K ${你的encrypted_xxxx_key} -iv ${你的encrypted_xxxx_iv}
   -in .travis/travis_rsa.enc -out ~/.ssh/travis_rsa -d
 - chmod 600 ~/.ssh/travis_rsa
 - mv -fv .travis/config ~/.ssh/config
@@ -1176,7 +1177,9 @@ after_script:
 - git push -u origin master -f
 - git push -u coding master -f
 - git push -u gitee master -f
-{% endcodeblock %}
+```
+
+{% asset_img pic8.jpeg %}
 
 ## 最后，将你的本地博客目录与远程github博客项目关联
 * 先初始化本地博客目录用git管理
@@ -1188,6 +1191,7 @@ git add .
 git commit -m "first commit"
 git push -u origin dev 
 ```
+
 
 * 上[travis](https://www.travis-ci.org/)检查构建流程，看看是否有问题，有问题再根据日志进行`.travis.yml`的修改
 
