@@ -509,29 +509,6 @@
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
 
-  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
-
-  <script type="text/javascript">
-    var GUEST = ['nick', 'mail', 'link'];
-    var guest = 'nick,mail,link';
-    guest = guest.split(',').filter(item => {
-      return GUEST.indexOf(item) > -1;
-    });
-    new Valine({
-      el: '#comments',
-      verify: true,
-      notify: true,
-      appId: 'NiFbgAF3vRyR2BayGJOswb21-gzGzoHsz',
-      appKey: 'xGF7qavyOOQGtVACk06SnLrW',
-      placeholder: 'Just go go',
-      avatar: 'retro',
-      guest_info: guest,
-      pageSize: '10' || 10,
-    });
-
-  </script>
-
   <script type="text/javascript">
     // Popup Window;
     var isfetched = false;
