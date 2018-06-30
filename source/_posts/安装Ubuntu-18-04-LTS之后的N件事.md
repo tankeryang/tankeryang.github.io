@@ -9,6 +9,7 @@ comments: true
 
 {% asset_img pic0.jpeg %}
 
+这两天装机，记录下装完系统后的一些后续事项
 <!-- more -->
 
 # 软件和更新
