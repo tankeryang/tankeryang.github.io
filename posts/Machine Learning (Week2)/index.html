@@ -92,7 +92,7 @@
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week2)/pic3.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week2)/pic4.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week2)/pic5.png">
-  <meta property="og:updated_time" content="2018-10-17T16:50:20.394Z">
+  <meta property="og:updated_time" content="2018-10-17T17:17:06.466Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Machine Learning (Week2)">
   <meta name="twitter:description" content="在第二周的课程里，主要讲了   多变量线性回归以及相应的   梯度下降实践，一些梯度下降的技巧如   学习速率的选择，   Feature Scaling - 特征缩放等，最后介绍了   Polynomial Regression - 多项式回归和   Normal Equation - 正规方程。">
@@ -1005,6 +1005,20 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css(
         'text-align', 'center');
+      // ref: https://github.com/ForbesLindesay/unescape-html
+      var unescapeHtml = function(html) {
+        return String(html)
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, '\'')
+          .replace(/&#x3A;/g, ':')
+          // replace all the other &#x; chars
+          .replace(/&#(\d+);/g, function(m, p) {
+            return String.fromCharCode(p);
+          })
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, '&');
+      };
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -1039,6 +1053,7 @@
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(
                   /<[^>]+>/g, "");
+                content = unescapeHtml(content);
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -1179,7 +1194,7 @@
                     }
                   });
                   // select top N slices in content
-                  var upperBound = parseInt('1');
+                  var upperBound = parseInt('-1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0,
                       upperBound);

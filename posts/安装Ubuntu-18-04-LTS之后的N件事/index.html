@@ -101,7 +101,7 @@
   <meta property="og:image" content="https://tankeryang.github.io/posts/安装Ubuntu-18-04-LTS之后的N件事/pic12.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/安装Ubuntu-18-04-LTS之后的N件事/pic13.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/安装Ubuntu-18-04-LTS之后的N件事/pic14.png">
-  <meta property="og:updated_time" content="2018-10-17T16:50:20.434Z">
+  <meta property="og:updated_time" content="2018-10-17T17:17:06.506Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="安装Ubuntu 18.04 LTS之后的N件事">
   <meta name="twitter:description" content="这两天装机，记录下装完系统后的一些后续事项">
@@ -1912,6 +1912,20 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css(
         'text-align', 'center');
+      // ref: https://github.com/ForbesLindesay/unescape-html
+      var unescapeHtml = function(html) {
+        return String(html)
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, '\'')
+          .replace(/&#x3A;/g, ':')
+          // replace all the other &#x; chars
+          .replace(/&#(\d+);/g, function(m, p) {
+            return String.fromCharCode(p);
+          })
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, '&');
+      };
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -1946,6 +1960,7 @@
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(
                   /<[^>]+>/g, "");
+                content = unescapeHtml(content);
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -2086,7 +2101,7 @@
                     }
                   });
                   // select top N slices in content
-                  var upperBound = parseInt('1');
+                  var upperBound = parseInt('-1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0,
                       upperBound);

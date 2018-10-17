@@ -88,7 +88,7 @@
   <meta property="og:locale" content="zh-Hans">
   <meta property="og:image" content="http://www.plantuml.com/plantuml/svg/qqWqDDHKqBLJq4WqDDBaqa1mZL2vna0ka6-4gje8LRKHccfZLDN6gAgDaLG30000">
   <meta property="og:image" content="http://www.plantuml.com/plantuml/svg/POv12iCm30Jl-mfz81y8mM0xBoYKdesZWod4gQ8M-ljQJY65NdJGxixkbaHBBbjQbQux2s2N1aT-fBdUgjoHifPNKYOFU9F2IDD4MRWzB_nuygxatEaBG31V_4T4H1eEX0bpNHbBoqjzDyrYH_KN6tl7qYo_y3x2TXg_0yw97m00">
-  <meta property="og:updated_time" content="2018-10-17T16:50:20.434Z">
+  <meta property="og:updated_time" content="2018-10-17T17:17:06.506Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="发布测试">
   <meta name="twitter:description" content="博客发布测试    2级标题                         123                       from bs4 import BeautifulSoupdef func(args):    return args                    Content (md partial supported)      Content (md parti">
@@ -875,6 +875,20 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css(
         'text-align', 'center');
+      // ref: https://github.com/ForbesLindesay/unescape-html
+      var unescapeHtml = function(html) {
+        return String(html)
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, '\'')
+          .replace(/&#x3A;/g, ':')
+          // replace all the other &#x; chars
+          .replace(/&#(\d+);/g, function(m, p) {
+            return String.fromCharCode(p);
+          })
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, '&');
+      };
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -909,6 +923,7 @@
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(
                   /<[^>]+>/g, "");
+                content = unescapeHtml(content);
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -1049,7 +1064,7 @@
                     }
                   });
                   // select top N slices in content
-                  var upperBound = parseInt('1');
+                  var upperBound = parseInt('-1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0,
                       upperBound);

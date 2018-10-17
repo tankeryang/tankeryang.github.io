@@ -107,7 +107,7 @@
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic18.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic19.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Machine%20Learning%20(Week1)/pic20.png">
-  <meta property="og:updated_time" content="2018-10-17T16:50:20.374Z">
+  <meta property="og:updated_time" content="2018-10-17T17:17:06.450Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Machine Learning (Week1)">
   <meta name="twitter:description" content="在第一周的课程里简要介绍了   什么是机器学习，   Model - 模型和   Cost Function - 代价函数的概念，以及一些必要的   线性代数的知识。          特别声明：这里不会对线性代数基础进行记录，有需要了解的请自行学习。        敬请留意">
@@ -1539,6 +1539,20 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css(
         'text-align', 'center');
+      // ref: https://github.com/ForbesLindesay/unescape-html
+      var unescapeHtml = function(html) {
+        return String(html)
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, '\'')
+          .replace(/&#x3A;/g, ':')
+          // replace all the other &#x; chars
+          .replace(/&#(\d+);/g, function(m, p) {
+            return String.fromCharCode(p);
+          })
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, '&');
+      };
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -1573,6 +1587,7 @@
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(
                   /<[^>]+>/g, "");
+                content = unescapeHtml(content);
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -1713,7 +1728,7 @@
                     }
                   });
                   // select top N slices in content
-                  var upperBound = parseInt('1');
+                  var upperBound = parseInt('-1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0,
                       upperBound);

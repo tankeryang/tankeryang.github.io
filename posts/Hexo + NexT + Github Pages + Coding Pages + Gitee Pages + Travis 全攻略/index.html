@@ -93,7 +93,7 @@
   <meta property="og:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic6.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic7.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic8.jpeg">
-  <meta property="og:updated_time" content="2018-10-17T16:50:20.370Z">
+  <meta property="og:updated_time" content="2018-10-17T17:17:06.442Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hexo+NexT+GithubPages+CodingPages+GiteePages+Travis全攻略">
   <meta name="twitter:image" content="https://tankeryang.github.io/posts/Hexo%20+%20NexT%20+%20Github%20Pages%20+%20Coding%20Pages%20+%20Gitee%20Pages%20+%20Travis%20全攻略/pic1.png">
@@ -2510,6 +2510,20 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css(
         'text-align', 'center');
+      // ref: https://github.com/ForbesLindesay/unescape-html
+      var unescapeHtml = function(html) {
+        return String(html)
+          .replace(/&quot;/g, '"')
+          .replace(/&#39;/g, '\'')
+          .replace(/&#x3A;/g, ':')
+          // replace all the other &#x; chars
+          .replace(/&#(\d+);/g, function(m, p) {
+            return String.fromCharCode(p);
+          })
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&amp;/g, '&');
+      };
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -2544,6 +2558,7 @@
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(
                   /<[^>]+>/g, "");
+                content = unescapeHtml(content);
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -2684,7 +2699,7 @@
                     }
                   });
                   // select top N slices in content
-                  var upperBound = parseInt('1');
+                  var upperBound = parseInt('-1');
                   if (upperBound >= 0) {
                     slicesOfContent = slicesOfContent.slice(0,
                       upperBound);
