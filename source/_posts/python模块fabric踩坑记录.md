@@ -1,7 +1,7 @@
 ---
 title: python模块fabric踩坑记录
 date: 2018-06-11 16:50:41
-categories: [python, 技术杂项]
+categories: python
 tags: [python, fabric, 远程部署]
 mathjax: false
 comments:

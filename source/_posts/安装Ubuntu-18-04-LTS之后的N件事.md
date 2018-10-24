@@ -1,8 +1,8 @@
 ---
 title: 安装Ubuntu 18.04 LTS之后的N件事
 date: 2018-06-24 23:51:06
-categories: ['技术杂项', 'Linux', 'Ubuntu']
-tags: ['linux', 'ubuntu']
+categories: Ubuntu
+tags: [linux, ubuntu]
 mathjax: false
 comments: true
 ---
