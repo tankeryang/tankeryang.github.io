@@ -76,20 +76,23 @@
   <link rel="stylesheet" href="mermaid.min.css">
   <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="docker,portainer," />
 
-  <meta name="description" content="汝亦知射乎？吾射不亦精乎？">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="淦">
-  <meta property="og:url" content="https://tankeryang.github.io/tags/jupyter/index.html">
+  <meta name="keywords" content="docker,portainer">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="docker配置TLS认证开启远程访问">
+  <meta property="og:url" content="https://tankeryang.github.io/posts/docker配置TLS认证开启远程访问/index.html">
   <meta property="og:site_name" content="淦">
-  <meta property="og:description" content="汝亦知射乎？吾射不亦精乎？">
   <meta property="og:locale" content="zh-Hans">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/docker配置TLS认证开启远程访问/pic0.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/docker配置TLS认证开启远程访问/pic1.png">
+  <meta property="og:image" content="https://tankeryang.github.io/posts/docker配置TLS认证开启远程访问/pic2.png">
+  <meta property="og:updated_time" content="2018-10-24T19:56:13.080Z">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="淦">
-  <meta name="twitter:description" content="汝亦知射乎？吾射不亦精乎？">
+  <meta name="twitter:title" content="docker配置TLS认证开启远程访问">
+  <meta name="twitter:image" content="https://tankeryang.github.io/posts/docker配置TLS认证开启远程访问/pic0.png">
 
-  <title>标签: jupyter | 淦</title>
+  <title>docker配置TLS认证开启远程访问 | 淦</title>
 
   <noscript>
     <style type="text/css">
@@ -129,7 +132,7 @@
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -243,42 +246,461 @@
         <div class="content-wrap">
           <div id="content" class="content">
 
-            <div class="post-block tag">
+            <div id="posts" class="posts-expand">
 
-              <div id="posts" class="posts-collapse">
-                <div class="collection-title">
-                  <h1>jupyter
-                    <small>标签</small>
-                  </h1>
-                </div>
+              <div class="reading-progress-bar"></div>
 
-                <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+              <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+
+                <div class="post-block">
+                  <link itemprop="mainEntityOfPage" href="https://tankeryang.github.io/posts/docker配置TLS认证开启远程访问/">
+
+                  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+                    <meta itemprop="name" content="tankeryang">
+                    <meta itemprop="description" content="">
+                    <meta itemprop="image" content="/uploads/my.jpg">
+                  </span>
+
+                  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+                    <meta itemprop="name" content="淦">
+                  </span>
+
                   <header class="post-header">
 
-                    <h2 class="post-title">
-
-                      <a class="post-title-link" href="/posts/服务器安装anaconda与配置jupyter反向代理/" itemprop="url">
-
-                        <span itemprop="name">服务器安装anaconda与配置jupyter反向代理</span>
-
-                      </a>
-
-                    </h2>
+                    <h1 class="post-title" itemprop="name headline">docker配置TLS认证开启远程访问</h1>
 
                     <div class="post-meta">
-                      <time class="post-time" itemprop="dateCreated" datetime="2018-05-23T23:54:26+00:00"
-                                                                                                      content="2018-05-23">
-                        05-23
-                      </time>
+                      <span class="post-time">
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-calendar-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">posted on</span>
+
+                        <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-24T15:36:27+00:00">2018-10-24</time>
+
+                      </span>
+
+                      <span class="post-category">
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-folder-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">in</span>
+
+                        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                          <a href="/categories/docker/" itemprop="url" rel="index">
+                            <span itemprop="name">docker</span>
+                          </a>
+                        </span>
+
+                      </span>
+
+                      <span class="post-comments-count">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-comment-o"></i>
+                        </span>
+                        <a href="/posts/docker配置TLS认证开启远程访问/#comments" itemprop="discussionUrl">
+                          <span class="post-comments-count valine-comment-count" data-xid="/posts/docker配置TLS认证开启远程访问/"
+                                                                                                          itemprop="commentCount"></span>
+                        </a>
+                      </span>
+
+                      <span id="/posts/docker配置TLS认证开启远程访问/" class="leancloud_visitors" data-flag-title="docker配置TLS认证开启远程访问">
+                        <span class="post-meta-divider">|</span>
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-eye"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">read times&#58;</span>
+
+                        <span class="leancloud-visitors-count"></span>
+                      </span>
+
+                      <div class="post-wordcount">
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-file-word-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">words count&#58;</span>
+
+                        <span title="words count">5k</span>
+
+                        <span class="post-meta-divider">|</span>
+
+                        <span class="post-meta-item-icon">
+                          <i class="fa fa-clock-o"></i>
+                        </span>
+
+                        <span class="post-meta-item-text">minutes to read &asymp;</span>
+
+                        <span title="minutes to read">0:10</span>
+
+                      </div>
+
+                    </div>
+                  </header>
+
+                  <div class="post-body" itemprop="articleBody">
+
+                    <img src="/posts/docker配置TLS认证开启远程访问/pic0.png">
+                    <a id="more"></a>
+                    <h1 id="前言">
+                      <a href="#前言" class="headerlink" title="前言"></a>前言</h1>
+                    <p>docker在今天对应用开发，运维管理来说已经是必备组件了，web应用的部署，微服务搭建，CI/CD，集群管理哪都有它。关于docker使用这里就不细说了，参考
+                      <a href="https://docs.docker.com/" target="_blank" rel="noopener">官方文档</a>。</p>
+                    <p>当我们有多台服务器，每台服务器有多个docker容器，统一管理与监控docker集群就变得非常重要。轻量级的开源docker管理工具有
+                      <a href="https://www.portainer.io/" target="_blank" rel="noopener">portainer</a>，重量级的有
+                      <a href="https://www.cnrancher.com" target="_blank" rel="noopener">rancher</a>。如果服务不多，集群节点不多的话一般
+                      <strong>portainer</strong> 足以胜任。如果是大型集群的话可以考虑
+                      <strong>rancher</strong>。</p>
+                    <p>想要中心化的管理docker容器，那么就需要docker容器开启远程访问。在讲怎么开启远程访问之前，要先稍微讲一下
+                      <strong>docker容器进程</strong> 和
+                      <strong>docker守护进程</strong>：</p>
+                    <ul>
+                      <li>
+                        <p>
+                          <strong>docker容器进程</strong>
+                        </p>
+                        <p> 顾名思义，就是运行在docker容器中的应用进程，比如你用docker启动的web应用，数据库等</p>
+                      </li>
+                      <li>
+                        <p>
+                          <strong>docker守护进程</strong>
+                        </p>
+                        <p> docker的设计是
+                          <code>C/S</code>模式，docker守护进程（server/服务端）运行在宿主机上，就是你运行docker容器的服务器。当你装完docker并敲下
+                          <code>service docker start</code>时，docker守护进程就启动了，它默认监听
+                          <code>/var/run.docker.sock</code>（unix域套接字）文件, 你可以通过
+                          <code>docker</code>命令（client/客户端）来对容器进行一系列操作，因为
+                          <strong>本机</strong> 的
+                          <strong>docker客户端</strong> 是默认通过
+                          <code>/var/run.docker.sock</code>来与
+                          <strong>docker守护进程</strong> 进行通信的</p>
+                      </li>
+                    </ul>
+                    <p>稍微明白了
+                      <strong>docker容器进程</strong> 与
+                      <strong>docker守护进程</strong> 后，你会发现，只有通过docker守护进程，才能与docker容器进行交互。而docker守护进程默认只监听本地的
+                      <code>/va/run/docker.sock</code>，因此只能在本地通过
+                      <code>docker</code>命令操作容器。</p>
+                    <p>能让远程docker客户端访问容器，我们就要让docker守护进程能监听远程访问的端口。docker是采用
+                      <strong>socket</strong> 进行server和client的连接的，它提供了
+                      <code>tcp</code>和
+                      <code>fd</code>两种方式，一般采用
+                      <code>tcp</code>方式。</p>
+                    <h1 id="配置远程访问">
+                      <a href="#配置远程访问" class="headerlink" title="配置远程访问"></a>配置远程访问</h1>
+                    <h2 id="不安全的配置">
+                      <a href="#不安全的配置" class="headerlink" title="不安全的配置"></a>不安全的配置</h2>
+                    <p>直接通过
+                      <code>dockerd</code>命令配置守护进程：</p>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line"><span class="comment"># 默认监听 6379 端口</span></span><br><span class="line">&gt; $ dockerd -H 0.0.0.0</span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>这样所有ip都能通过
+                      <code>docker -H &lt;remote-dcoker-server_ip&gt;:6379 [OPTION]</code>命令与远程的docker守护进程通信，操作docker容器，生产上不提倡这种做法。</p>
+                    <h2 id="安全的配置">
+                      <a href="#安全的配置" class="headerlink" title="安全的配置"></a>安全的配置</h2>
+                    <p>通过
+                      <strong>TLS（Transport Layer Security - 安全传输层协议）</strong> 来进行远程访问（
+                      <a href="https://baike.baidu.com/item/TLS" target="_blank" rel="noopener">百度百科 - TLS</a>）。我们需要在远程docker服务器（运行docker守护进程的服务器）生成
+                      <strong>CA证书，服务器证书，服务器密钥</strong>，然后自签名，再颁发给需要连接远程docker容器的服务器。下面是具体操作：</p>
+                    <div class="note info">
+                      <p>以下操作在
+                        <code>ubuntu 16.04 server</code>上测试成功，其他系统自行参考</p>
+                    </div>
+                    <h3 id="修改openssl配置的CA部分">
+                      <a href="#修改openssl配置的CA部分" class="headerlink" title="修改openssl配置的CA部分"></a>修改
+                      <code>openssl</code>配置的CA部分</h3>
+                    <blockquote>
+                      <p>
+                        <strong>ubuntu 16.04</strong> 下
+                        <strong>openssl</strong> 配置文件位置：
+                        <code>/usr/lib/ssl/openssl.cnf</code>，其他系统可参考</p>
+                    </blockquote>
+                    <ul>
+                      <li>
+                        <p>修改如下部分：</p>
+                        <figure class="highlight plain">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">[ CA_default ]</span><br><span class="line"></span><br><span class="line">dir = &lt;填你的路径&gt;  # 下面的操作以 /etc/openssl 为例</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>创建相应文件和文件夹：</p>
+                        <figure class="highlight bash">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">&gt; $ <span class="built_in">cd</span> /etc/openssl  <span class="comment"># 没有就新建</span></span><br><span class="line">&gt; $ mkdir -p &#123;certs,private,tls,crl,newcerts&#125;</span><br><span class="line">&gt; $ <span class="built_in">echo</span> 00 &gt; serial  <span class="comment"># 注意serial要有数字，不然会报错</span></span><br><span class="line">&gt; $ touch index.txt</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                    </ul>
+                    <h3 id="生成私钥并自签证书">
+                      <a href="#生成私钥并自签证书" class="headerlink" title="生成私钥并自签证书"></a>生成私钥并自签证书</h3>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">&gt; $ openssl genrsa -out private/cakey.pem -des 1024  <span class="comment"># 生成私钥</span></span><br><span class="line">&gt; $ openssl req -new -x509 -key private/cakey.pem -days 3650 -out cacert.pem  <span class="comment"># 自签证书: 执行后会让你填写一些配置</span></span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="颁发证书">
+                      <a href="#颁发证书" class="headerlink" title="颁发证书"></a>颁发证书</h3>
+                    <ul>
+                      <li>
+                        <p>生成要颁发证书的密钥文件</p>
+                        <figure class="highlight bash">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">&gt; $ openssl genrsa -out private/test.key 1024</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>生成证书请求</p>
+                        <figure class="highlight bash">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">&gt; $ openssl req -new -key private/test.key -days 3650 -out test.csr</span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                      <li>
+                        <p>颁发证书</p>
+                        <figure class="highlight bash">
+                          <table>
+                            <tr>
+                              <td class="gutter">
+                                <pre><span class="line">1</span><br></pre>
+                              </td>
+                              <td class="code">
+                                <pre><span class="line">&gt; $ openssl ca -<span class="keyword">in</span> test.csr -out certs/test.crt -days 3650  <span class="comment"># 这里也需要填写一些配置，最好和前面自签证书的配置保持一致</span></span><br></pre>
+                              </td>
+                            </tr>
+                          </table>
+                        </figure>
+                      </li>
+                    </ul>
+                    <h3 id="配置docker守护进程使用TLS认证并监听tcp端口">
+                      <a href="#配置docker守护进程使用TLS认证并监听tcp端口" class="headerlink" title="配置docker守护进程使用TLS认证并监听tcp端口"></a>配置docker守护进程使用TLS认证并监听tcp端口</h3>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">&gt; $ service docker stop  <span class="comment"># 需先停止 docker 服务</span></span><br><span class="line">&gt; $ dockerd --tls \</span><br><span class="line">&gt; --tlscacert /etc/openssl/cacert.pem \</span><br><span class="line">&gt; --tlscert /etc/openssl/certs/test.crt \</span><br><span class="line">&gt; --tlskey /etc/openssl/private/test.key \</span><br><span class="line">&gt; -H 0.0.0.0:2375  <span class="comment"># 默认 6379 端口，可自定义</span></span><br><span class="line">&gt; $ service docker start  <span class="comment"># 重启 docker 服务</span></span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <h3 id="保存CA证书，服务器证书，服务器密钥">
+                      <a href="#保存CA证书，服务器证书，服务器密钥" class="headerlink" title="保存CA证书，服务器证书，服务器密钥"></a>保存CA证书，服务器证书，服务器密钥</h3>
+                    <p>重启docker后，你会发现在远程docker服务器上使用
+                      <code>docker</code>命令不起作用了，这是因为docker守护进程不再监听
+                      <code>var/run/docker.sock</code>文件，而是监听tcp端口了。所以如果要在远程docker服务器使用
+                      <code>docker</code>命令就要加上上面的参数
+                      <code>--tls</code>，
+                      <code>--tlscacert</code>，
+                      <code>--tlscert</code>，
+                      <code>--tlskey</code>，例如：</p>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">&gt; $ docker --tls \</span><br><span class="line">&gt; --tlscacert /etc/openssl/cacert.pem \</span><br><span class="line">&gt; --tlscert /etc/openssl/certs/test.crt \</span><br><span class="line">&gt; --tlskey /etc/openssl/private/test.key \</span><br><span class="line">&gt; -H <span class="variable">$HOSTNAME</span>:2375 ps</span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>这样就太麻烦了，所以我们用下面的做法，将证书，密钥保存到
+                      <code>~/.docker</code>文件夹，再配置环境变量：</p>
+                    <figure class="highlight bash">
+                      <table>
+                        <tr>
+                          <td class="gutter">
+                            <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
+                          </td>
+                          <td class="code">
+                            <pre><span class="line">&gt; $ <span class="built_in">cd</span> ~/.docker  <span class="comment"># 没有就新建</span></span><br><span class="line">&gt; $ cp /etc/openssl/cacert.pem ./ca.pem</span><br><span class="line">&gt; $ cp /etc/openssl/newcerts/00.pem ./cert.pem</span><br><span class="line">&gt; $ cp /etc/openssl/private/test.key ./key.pem</span><br><span class="line">&gt; $ <span class="built_in">echo</span> <span class="string">"export DOCKER_HOST=tcp://<span class="variable">$HOSTNAME</span>:2375"</span> &gt;&gt; /etc/profile</span><br><span class="line">&gt; $ <span class="built_in">echo</span> <span class="string">"export DOCKER_TLS_VERIFY=1"</span> &gt;&gt; /etc/profile</span><br><span class="line">&gt; $ <span class="built_in">source</span> /etc/profile</span><br></pre>
+                          </td>
+                        </tr>
+                      </table>
+                    </figure>
+                    <p>这时你再使用
+                      <code>docker</code>命令就没问题了。</p>
+                    <h1 id="配置portainer添加远程docker集群">
+                      <a href="#配置portainer添加远程docker集群" class="headerlink" title="配置portainer添加远程docker集群"></a>配置portainer添加远程docker集群</h1>
+                    <ul>
+                      <li>
+                        <p>添加节点</p>
+                        <img src="/posts/docker配置TLS认证开启远程访问/pic1.png">
+                      </li>
+                      <li>
+                        <p>配置节点属性</p>
+                        <img src="/posts/docker配置TLS认证开启远程访问/pic2.png">
+                        <blockquote>
+                          <p>需要上传的文件对应为（以下目录在远程docker服务器上）</p>
+                          <ul>
+                            <li>TLS CA certificate:
+                              <code>~/.docker/ca.pem</code>
+                            </li>
+                            <li>TLS certificate:
+                              <code>~/.docker/cert.pem</code>
+                            </li>
+                            <li>TLS key:
+                              <code>~/.docker/key.pem</code>
+                            </li>
+                          </ul>
+                        </blockquote>
+                      </li>
+                    </ul>
+                    <p>点击
+                      <code>Add endpoint</code>，完成添加。</p>
+                    <p>关于怎么安装
+                      <strong>portainer</strong>，这里就不介绍了，详细内容参考
+                      <a href="https://www.portainer.io/install.html" target="_blank" rel="noopener">官方文档</a>
+                    </p>
+
+                  </div>
+
+                  <div>
+
+                    <div>
+
+                      <div style="text-align:center;color: #ccc;font-size:14px;">---------------------------------END---------------------------------</div>
+
                     </div>
 
-                  </header>
-                </article>
+                  </div>
+
+                  <div>
+                    <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                      <div>手抖一下？</div>
+                      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                        <span>献爱心</span>
+                      </button>
+                      <div id="QR" style="display: none;">
+
+                        <div id="wechat" style="display: inline-block">
+                          <img id="wechat_qr" src="/images/wx_pay1.png" alt="tankeryang WechatPay" />
+                          <p>WechatPay</p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <footer class="post-footer">
+
+                    <div class="post-tags">
+
+                      <a href="/tags/docker/" rel="tag">
+                        <i class="fa fa-tag"></i> docker</a>
+
+                      <a href="/tags/portainer/" rel="tag">
+                        <i class="fa fa-tag"></i> portainer</a>
+
+                    </div>
+
+                    <div class="post-widgets">
+
+                      <div id="needsharebutton-postbottom">
+                        <span class="btn">
+                          <i class="fa fa-share-alt" aria-hidden="true"></i>
+                        </span>
+                      </div>
+
+                    </div>
+
+                    <div class="post-nav">
+                      <div class="post-nav-next post-nav-item">
+
+                        <a href="/posts/安装Ubuntu-18-04-LTS之后的N件事/" rel="next" title="安装Ubuntu 18.04 LTS之后的N件事">
+                          <i class="fa fa-chevron-left"></i> 安装Ubuntu 18.04 LTS之后的N件事
+                        </a>
+
+                      </div>
+
+                      <span class="post-nav-divider"></span>
+
+                      <div class="post-nav-prev post-nav-item">
+
+                      </div>
+                    </div>
+
+                  </footer>
+                </div>
+
+              </article>
+
+              <div class="post-spread">
+
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox">
+                  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59b14058bcac3b78"
+                                                                                                  async="async"></script>
+                </div>
 
               </div>
-
             </div>
 
+          </div>
+
+          <div class="comments" id="comments">
           </div>
 
         </div>
@@ -297,7 +719,16 @@
 
           <div class="sidebar-inner">
 
-            <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+            <ul class="sidebar-nav motion-element">
+              <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+                文章目录
+              </li>
+              <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+                站点概览
+              </li>
+            </ul>
+
+            <section class="site-overview-wrap sidebar-panel">
               <div class="site-overview">
                 <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
 
@@ -396,6 +827,94 @@
               </div>
             </section>
 
+            <!--noindex-->
+            <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+              <div class="post-toc">
+
+                <div class="post-toc-content">
+                  <ol class="nav">
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#前言">
+                        <span class="nav-number">1.</span>
+                        <span class="nav-text">
+                          前言</span>
+                      </a>
+                    </li>
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#配置远程访问">
+                        <span class="nav-number">2.</span>
+                        <span class="nav-text">
+                          配置远程访问</span>
+                      </a>
+                      <ol class="nav-child">
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#不安全的配置">
+                            <span class="nav-number">2.1.</span>
+                            <span class="nav-text">
+                              不安全的配置</span>
+                          </a>
+                        </li>
+                        <li class="nav-item nav-level-2">
+                          <a class="nav-link" href="#安全的配置">
+                            <span class="nav-number">2.2.</span>
+                            <span class="nav-text">
+                              安全的配置</span>
+                          </a>
+                          <ol class="nav-child">
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#修改openssl配置的CA部分">
+                                <span class="nav-number">2.2.1.</span>
+                                <span class="nav-text">
+                                  修改 openssl配置的CA部分
+                                </span>
+                              </a>
+                            </li>
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#生成私钥并自签证书">
+                                <span class="nav-number">2.2.2.</span>
+                                <span class="nav-text">
+                                  生成私钥并自签证书</span>
+                              </a>
+                            </li>
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#颁发证书">
+                                <span class="nav-number">2.2.3.</span>
+                                <span class="nav-text">
+                                  颁发证书</span>
+                              </a>
+                            </li>
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#配置docker守护进程使用TLS认证并监听tcp端口">
+                                <span class="nav-number">2.2.4.</span>
+                                <span class="nav-text">
+                                  配置docker守护进程使用TLS认证并监听tcp端口</span>
+                              </a>
+                            </li>
+                            <li class="nav-item nav-level-3">
+                              <a class="nav-link" href="#保存CA证书，服务器证书，服务器密钥">
+                                <span class="nav-number">2.2.5.</span>
+                                <span class="nav-text">
+                                  保存CA证书，服务器证书，服务器密钥</span>
+                              </a>
+                            </li>
+                          </ol>
+                        </li>
+                      </ol>
+                    </li>
+                    <li class="nav-item nav-level-1">
+                      <a class="nav-link" href="#配置portainer添加远程docker集群">
+                        <span class="nav-number">3.</span>
+                        <span class="nav-text">
+                          配置portainer添加远程docker集群</span>
+                      </a>
+                    </li>
+                  </ol>
+                </div>
+
+              </div>
+            </section>
+            <!--/noindex-->
+
             <div class="back-to-top">
               <i class="fa fa-arrow-up"></i>
 
@@ -483,6 +1002,9 @@
   <script type="text/javascript" src="/js/src/utils.js?v=6.0.1"></script>
 
   <script type="text/javascript" src="/js/src/motion.js?v=6.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.1"></script>
+  <script type="text/javascript" src="/js/src/post-details.js?v=6.0.1"></script>
 
   <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.1"></script>
 
@@ -965,37 +1487,25 @@
 
   </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({ tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ], processEscapes:
-    true, skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
-    });
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    pbOptions = {};
+    pbOptions.iconStyle = "box";
+    pbOptions.boxForm = "horizontal";
+    pbOptions.position = "topCenter";
+    pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+    new needShareButton('#needsharebutton-postbottom', pbOptions);
+
   </script>
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for (i=0; i
-    < all.length; i +=1 ) { all[i].SourceElement().parentNode.className +=' has-jax'
-                                                                                    ; } }); </script>
-      <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
+  <script type="text/javascript">
+    pangu.spacingPage();
 
-      <script src="/lib/needsharebutton/needsharebutton.js"></script>
+  </script>
 
-      <script>
-        pbOptions = {};
-        pbOptions.iconStyle = "box";
-        pbOptions.boxForm = "horizontal";
-        pbOptions.position = "topCenter";
-        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
-        new needShareButton('#needsharebutton-postbottom', pbOptions);
-
-      </script>
-
-      <script src="/lib/pangu/dist/pangu.min.js?v=3.3"></script>
-      <script type="text/javascript">
-        pangu.spacingPage();
-
-      </script>
-
-      <script type="text/javascript" src="/js/src/exturl.js?v=6.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script type="text/javascript" src="/js/src/exturl.js?v=6.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>

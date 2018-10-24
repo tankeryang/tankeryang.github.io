@@ -101,7 +101,7 @@
   <meta property="og:image" content="https://tankeryang.github.io/posts/安装Ubuntu-18-04-LTS之后的N件事/pic12.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/安装Ubuntu-18-04-LTS之后的N件事/pic13.png">
   <meta property="og:image" content="https://tankeryang.github.io/posts/安装Ubuntu-18-04-LTS之后的N件事/pic14.png">
-  <meta property="og:updated_time" content="2018-10-17T17:17:06.506Z">
+  <meta property="og:updated_time" content="2018-10-24T19:56:13.092Z">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="安装Ubuntu 18.04 LTS之后的N件事">
   <meta name="twitter:description" content="这两天装机，记录下装完系统后的一些后续事项">
@@ -194,7 +194,7 @@
               <a href="/archives/" rel="section">
                 <i class="menu-item-icon fa fa-fw fa-archive"></i>
                 <br />archives
-                <span class="badge">14</span>
+                <span class="badge">15</span>
               </a>
             </li>
 
@@ -440,7 +440,7 @@
                             <pre><span class="line">1</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">%</span>sudo ALL=(ALL:ALL) ALL</span><br></pre>
+                            <pre><span class="line"><span class="meta">%</span><span class="bash">sudo ALL=(ALL:ALL) ALL</span></span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -453,7 +453,7 @@
                             <pre><span class="line">1</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">%</span>sudo ALL=(ALL:ALL) NOPASSWD:ALL</span><br></pre>
+                            <pre><span class="line"><span class="meta">%</span><span class="bash">sudo ALL=(ALL:ALL) NOPASSWD:ALL</span></span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -724,7 +724,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> wget</span><br><span class="line">sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> curl</span><br><span class="line">sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> wget</span></span><br><span class="line">sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> curl</span></span><br><span class="line">sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -744,7 +744,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> 安装pip2</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install python-pip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 查看版本</span><br><span class="line">pip --verion</span><br><span class="line"><span class="meta">#</span> 输出: pip 9.0.1 from /usr/lib/python2.7/dist-packages (python 2.7)</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> 安装pip2</span></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install python-pip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看版本</span></span><br><span class="line">pip --verion</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出: pip 9.0.1 from /usr/lib/python2.7/dist-packages (python 2.7)</span></span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -760,7 +760,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> 安装pip3</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install python3-pip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 查看版本</span><br><span class="line">pip3 --verion</span><br><span class="line"><span class="meta">#</span> 输出: pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> 安装pip3</span></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install python3-pip</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看版本</span></span><br><span class="line">pip3 --verion</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出: pip 9.0.1 from /usr/lib/python3/dist-packages (python 3.6)</span></span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -838,7 +838,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> 先新建scripts文件夹</span><br><span class="line">mkdir ~/.local/lib/python2.7/site-packages/scripts</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 拷贝脚本到scripts下</span><br><span class="line">cp ~/.local/bin/powerline* ~/.local/lib/python2.7/site-packages/scripts</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> 先新建scripts文件夹</span></span><br><span class="line">mkdir ~/.local/lib/python2.7/site-packages/scripts</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 拷贝脚本到scripts下</span></span><br><span class="line">cp ~/.local/bin/powerline* ~/.local/lib/python2.7/site-packages/scripts</span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -854,7 +854,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> clone</span><br><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> install</span><br><span class="line">cd fonts</span><br><span class="line">./install.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> clean-up a bit</span><br><span class="line">cd ..</span><br><span class="line">rm -rf fonts</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">clone</span></span></span><br><span class="line">git clone https://github.com/powerline/fonts.git --depth=1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> install</span></span><br><span class="line">cd fonts</span><br><span class="line">./install.sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> clean-up a bit</span></span><br><span class="line">cd ..</span><br><span class="line">rm -rf fonts</span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -875,7 +875,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> 开头添加</span><br><span class="line">. /home/$&#123;填你的用户名&#125;/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> 开头添加</span></span><br><span class="line">. /home/$&#123;填你的用户名&#125;/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh</span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -923,7 +923,7 @@
                             <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">#</span> clone</span><br><span class="line">git clone git@github.com:tankeryang/dotfile.git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 切换分支</span><br><span class="line">git checkout -b ubuntu-18.04 origin/ubuntu-18.04</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 复制配置文件</span><br><span class="line">cd dotfile</span><br><span class="line">cp .zshrc .vimrc .tmux.conf ~/</span><br><span class="line">cp .ssh/config ~/.ssh/</span><br></pre>
+                            <pre><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">clone</span></span></span><br><span class="line">git clone git@github.com:tankeryang/dotfile.git</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 切换分支</span></span><br><span class="line">git checkout -b ubuntu-18.04 origin/ubuntu-18.04</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 复制配置文件</span></span><br><span class="line">cd dotfile</span><br><span class="line">cp .zshrc .vimrc .tmux.conf ~/</span><br><span class="line">cp .ssh/config ~/.ssh/</span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -974,7 +974,7 @@
                             <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">#</span> 提权</span><br><span class="line">chmod a+x $&#123;你的下载路径&#125;/Shadowsocks-Qt5-3.0.1-x86_64.AppImage</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 将可执行程序放到/opt/ShadowSocks-Qt5</span><br><span class="line">sudo mkdir /opt/ShadowSocks-Qt5</span><br><span class="line">mv $&#123;你的下载路径&#125;/Shadowsocks-Qt5-3.0.1-x86_64.AppImage /opt/ShadowSocks-Qt5</span><br><span class="line">mv $&#123;你的下载路径&#125;/shaodwsocks.png /opt/ShadowSocks-Qt5</span><br></pre>
+                            <pre><span class="line"><span class="meta">#</span><span class="bash"> 提权</span></span><br><span class="line">chmod a+x $&#123;你的下载路径&#125;/Shadowsocks-Qt5-3.0.1-x86_64.AppImage</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将可执行程序放到/opt/ShadowSocks-Qt5</span></span><br><span class="line">sudo mkdir /opt/ShadowSocks-Qt5</span><br><span class="line">mv $&#123;你的下载路径&#125;/Shadowsocks-Qt5-3.0.1-x86_64.AppImage /opt/ShadowSocks-Qt5</span><br><span class="line">mv $&#123;你的下载路径&#125;/shaodwsocks.png /opt/ShadowSocks-Qt5</span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -987,7 +987,7 @@
                             <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">#</span> 进入启动器文件夹</span><br><span class="line">cd /usr/share/applications</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 新建desktop文件</span><br><span class="line">sudo vim ShadowSocks.desktop</span><br></pre>
+                            <pre><span class="line"><span class="meta">#</span><span class="bash"> 进入启动器文件夹</span></span><br><span class="line">cd /usr/share/applications</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建desktop文件</span></span><br><span class="line">sudo vim ShadowSocks.desktop</span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -1132,7 +1132,7 @@
                             <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">#</span> 进入启动器文件夹</span><br><span class="line">cd /usr/share/applications</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 新建desktop文件</span><br><span class="line">sudo vim wechat.desktop</span><br></pre>
+                            <pre><span class="line"><span class="meta">#</span><span class="bash"> 进入启动器文件夹</span></span><br><span class="line">cd /usr/share/applications</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 新建desktop文件</span></span><br><span class="line">sudo vim wechat.desktop</span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -1197,7 +1197,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> java8</span><br><span class="line">sudo apt install oracle-java8-set-default</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>java9</span><br><span class="line">sudo apt install oracle-java9-set-default</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> java8</span></span><br><span class="line">sudo apt install oracle-java8-set-default</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">java9</span></span><br><span class="line">sudo apt install oracle-java9-set-default</span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -1212,7 +1212,7 @@
                                 <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre>
                               </td>
                               <td class="code">
-                                <pre><span class="line"><span class="meta">#</span> java</span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> javac</span><br><span class="line">sudo update-alternatives --config javac</span><br></pre>
+                                <pre><span class="line"><span class="meta">#</span><span class="bash"> java</span></span><br><span class="line">sudo update-alternatives --config java</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> javac</span></span><br><span class="line">sudo update-alternatives --config javac</span><br></pre>
                               </td>
                             </tr>
                           </table>
@@ -1312,7 +1312,7 @@
                             <pre><span class="line">1</span><br><span class="line">2</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">#</span> Anaconda3-5.2.0-Linux-x86_64.sh</span><br><span class="line">wget https://mirrors4.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.2.0-Linux-x86_64.sh</span><br></pre>
+                            <pre><span class="line"><span class="meta">#</span><span class="bash"> Anaconda3-5.2.0-Linux-x86_64.sh</span></span><br><span class="line">wget https://mirrors4.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-5.2.0-Linux-x86_64.sh</span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -1330,7 +1330,7 @@
                             <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre>
                           </td>
                           <td class="code">
-                            <pre><span class="line"><span class="meta">#</span> conda</span><br><span class="line">sudo ln -s /opt/anaconda3/bin/conda /usr/local/bin/conda</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> python</span><br><span class="line">sudo ln -s /opt/anaconda3/bin/python /usr/local/bin/python36  # 命名python36是为了不与系统python冲突</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> jupyter</span><br><span class="line">sudo ln -s /opt/anaconda3/bin/jupyter /usr/local/bin/jupyter</span><br></pre>
+                            <pre><span class="line"><span class="meta">#</span><span class="bash"> conda</span></span><br><span class="line">sudo ln -s /opt/anaconda3/bin/conda /usr/local/bin/conda</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> python</span></span><br><span class="line">sudo ln -s /opt/anaconda3/bin/python /usr/local/bin/python36  # 命名python36是为了不与系统python冲突</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> jupyter</span></span><br><span class="line">sudo ln -s /opt/anaconda3/bin/jupyter /usr/local/bin/jupyter</span><br></pre>
                           </td>
                         </tr>
                       </table>
@@ -1409,6 +1409,11 @@
 
                       <div class="post-nav-prev post-nav-item">
 
+                        <a href="/posts/docker配置TLS认证开启远程访问/" rel="prev" title="docker配置TLS认证开启远程访问">
+                          docker配置TLS认证开启远程访问
+                          <i class="fa fa-chevron-right"></i>
+                        </a>
+
                       </div>
                     </div>
 
@@ -1477,21 +1482,21 @@
 
                     <a href="/archives/">
 
-                      <span class="site-state-item-count">14</span>
+                      <span class="site-state-item-count">15</span>
                       <span class="site-state-item-name">日志</span>
                     </a>
                   </div>
 
                   <div class="site-state-item site-state-categories">
                     <a href="/categories/index.html">
-                      <span class="site-state-item-count">8</span>
+                      <span class="site-state-item-count">9</span>
                       <span class="site-state-item-name">分类</span>
                     </a>
                   </div>
 
                   <div class="site-state-item site-state-tags">
                     <a href="/tags/index.html">
-                      <span class="site-state-item-count">24</span>
+                      <span class="site-state-item-count">26</span>
                       <span class="site-state-item-name">标签</span>
                     </a>
                   </div>
@@ -1778,14 +1783,14 @@
             <i class="fa fa-area-chart"></i>
           </span>
 
-          <span title="total count">111k</span>
+          <span title="total count">115k</span>
 
           <span class="post-meta-divider">|</span>
           <span class="post-meta-item-icon">
             <i class="fa fa-coffee"></i>
           </span>
 
-          <span title="total time">4:06</span>
+          <span title="total time">4:16</span>
 
         </div>
 
