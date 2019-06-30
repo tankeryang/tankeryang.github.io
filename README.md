@@ -3,10 +3,11 @@
 [![Travis](https://www.travis-ci.org/tankeryang/tankeryang.github.io.svg?branch=master)](https://tankeryang.github.io)
 
 ## 如何克隆
-* 设置 git http代理[(点我)](https://www.zhihu.com/question/27159393)
+
+* 设置 git http代理[(点我)](https://www.jianshu.com/p/1a1c764661ed)
 ```
-git config --global http.https://github.com.proxy https://127.0.0.1:1080
-git config --global https.https://github.com.proxy https://127.0.0.1:1080
+git config --global http.proxy 'socks5://127.0.0.1:1086'
+git config --global https.proxy 'socks5://127.0.0.1:1086'
 ```
 
 * 克隆
@@ -18,6 +19,8 @@ git clone https://github.com/tankeryang/tankeryang.github.io.git
 ```
 git config --global --unset http.proxy
 git config --global --unset https.proxy
+
+# 或者修改 ～/.gitconfig 文件
 ```
 
 * 更改```~/.git```下的```config```
@@ -41,4 +44,4 @@ git checkout -b dev origin/dev
 ```
 
 ## 安装npm包
-按照```.travis.yml```的安装列表进行安装
+按照```.travis.yml```的安装列表进行安装(`install` & `before_script`)
