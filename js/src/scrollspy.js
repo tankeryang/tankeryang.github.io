@@ -33,8 +33,8 @@
     offset: 10
   }
   ScrollSpy.prototype.getScrollHeight = function () {
-    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight,
-      document.documentElement.scrollHeight)
+    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0]
+      .scrollHeight, document.documentElement.scrollHeight)
   }
   ScrollSpy.prototype.refresh = function () {
     var that = this
@@ -52,7 +52,8 @@
       .map(function () {
         var $el = $(this)
         var href = $el.data('target') || $el.attr('href')
-        var $href = /^#./.test(href) && $(NexT.utils.escapeSelector(href)) // Need to escape selector.
+        var $href = /^#./.test(href) && $(NexT.utils.escapeSelector(
+          href)) // Need to escape selector.
         return ($href &&
           $href.length &&
           $href.is(':visible') &&
@@ -69,7 +70,8 @@
   ScrollSpy.prototype.process = function () {
     var scrollTop = this.$scrollElement.scrollTop() + this.options.offset
     var scrollHeight = this.getScrollHeight()
-    var maxScroll = this.options.offset + scrollHeight - this.$scrollElement.height()
+    var maxScroll = this.options.offset + scrollHeight - this.$scrollElement
+      .height()
     var offsets = this.offsets
     var targets = this.targets
     var activeTarget = this.activeTarget
@@ -78,8 +80,8 @@
       this.refresh()
     }
     if (scrollTop >= maxScroll) {
-      return activeTarget != (i = targets[targets.length - 1]) && this.activate(
-        i)
+      return activeTarget != (i = targets[targets.length - 1]) && this
+        .activate(i)
     }
     if (activeTarget && scrollTop < offsets[0]) {
       $(this.selector).trigger('clear.bs.scrollspy') // Add a custom event.

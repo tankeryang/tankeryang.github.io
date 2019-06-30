@@ -61,6 +61,7 @@
     -webkit-transform: none;
     transform: none
   }
+
   100% {
     -webkit-transform: translate(-32px, 0);
     transform: translate(-32px, 0)
@@ -72,6 +73,7 @@
     -moz-transform: none;
     transform: none
   }
+
   100% {
     -moz-transform: translate(-32px, 0);
     transform: translate(-32px, 0)
@@ -83,6 +85,7 @@
     -o-transform: none;
     transform: none
   }
+
   100% {
     -o-transform: translate(-32px, 0);
     transform: translate(-32px, 0)
@@ -94,6 +97,7 @@
     -ms-transform: none;
     transform: none
   }
+
   100% {
     -ms-transform: translate(-32px, 0);
     transform: translate(-32px, 0)
@@ -104,6 +108,7 @@
   0% {
     transform: none
   }
+
   100% {
     transform: translate(-32px, 0)
   }

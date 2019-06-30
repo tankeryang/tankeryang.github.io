@@ -12,8 +12,8 @@ NexT.utils = NexT.$u = {
         var imageTitle = $image.attr('title');
         var $imageWrapLink = $image.parent('a');
         if ($imageWrapLink.size() < 1) {
-          var imageLink = ($image.attr('data-original')) ? this.getAttribute(
-            'data-original') : this.getAttribute('src');
+          var imageLink = ($image.attr('data-original')) ? this
+            .getAttribute('data-original') : this.getAttribute('src');
           $imageWrapLink = $image.wrap('<a href="' + imageLink + '"></a>')
             .parent('a');
         }
@@ -68,8 +68,8 @@ NexT.utils = NexT.$u = {
         $(tActive).addClass('active').siblings().removeClass('active');
         // Clear location hash in browser if #permalink exists.
         if (location.hash !== '') {
-          history.pushState('', document.title, window.location.pathname +
-            window.location.search);
+          history.pushState('', document.title, window.location
+            .pathname + window.location.search);
         }
       }
     });
@@ -89,9 +89,11 @@ NexT.utils = NexT.$u = {
     var THRESHOLD = 50;
     var $top = $('.back-to-top');
     $(window).on('scroll', function () {
-      $top.toggleClass('back-to-top-on', window.pageYOffset > THRESHOLD);
+      $top.toggleClass('back-to-top-on', window.pageYOffset >
+      THRESHOLD);
       var scrollTop = $(window).scrollTop();
-      var contentVisibilityHeight = NexT.utils.getContentVisibilityHeight();
+      var contentVisibilityHeight = NexT.utils
+        .getContentVisibilityHeight();
       var scrollPercent = (scrollTop) / (contentVisibilityHeight);
       var scrollPercentRounded = Math.round(scrollPercent * 100);
       var scrollPercentMaxed = (scrollPercentRounded > 100) ? 100 :
@@ -124,8 +126,8 @@ NexT.utils = NexT.$u = {
       var newDimension;
       if (this.src.search(pattern) > 0) {
         // Calculate the video ratio based on the iframe's w/h dimensions
-        var videoRatio = getAspectRadio(oldDimension.width,
-          oldDimension.height);
+        var videoRatio = getAspectRadio(oldDimension.width, oldDimension
+          .height);
         // Replace the iframe's dimensions and position the iframe absolute
         // This is the trick to emulate the video ratio
         $iframe.width('100%').height('100%')
@@ -193,7 +195,8 @@ NexT.utils = NexT.$u = {
     return pa.test(ua);
   },
   isTablet: function () {
-    return window.screen.width < 992 && window.screen.width > 767 && this.hasMobileUA();
+    return window.screen.width < 992 && window.screen.width > 767 && this
+      .hasMobileUA();
   },
   isMobile: function () {
     return window.screen.width < 767 && this.hasMobileUA();
@@ -241,8 +244,8 @@ NexT.utils = NexT.$u = {
   },
   getSidebarb2tHeight: function () {
     //var sidebarb2tHeight = (CONFIG.sidebar.b2t) ? document.getElementsByClassName('back-to-top')[0].clientHeight : 0;
-    var sidebarb2tHeight = (CONFIG.sidebar.b2t) ? $('.back-to-top').height() :
-      0;
+    var sidebarb2tHeight = (CONFIG.sidebar.b2t) ? $('.back-to-top')
+    .height() : 0;
     //var sidebarb2tHeight = (CONFIG.sidebar.b2t) ? 24 : 0;
     return sidebarb2tHeight;
   },
@@ -252,8 +255,8 @@ NexT.utils = NexT.$u = {
       sidebarInner = $('.sidebar-inner'),
       sidebarPadding = sidebarInner.innerWidth() - sidebarInner.width(),
       sidebarSchemePadding = this.isPisces() || this.isGemini() ?
-      ((sidebarPadding * 2) + sidebarNavHeight + (CONFIG.sidebar.offset * 2) +
-        this.getSidebarb2tHeight()) :
+      ((sidebarPadding * 2) + sidebarNavHeight + (CONFIG.sidebar.offset *
+        2) + this.getSidebarb2tHeight()) :
       ((sidebarPadding * 2) + (sidebarNavHeight / 2));
     return sidebarSchemePadding;
   }
@@ -275,10 +278,11 @@ $(document).ready(function () {
   function initSidebarDimension() {
     var updateSidebarHeightTimer;
     $(window).on('resize', function () {
-      updateSidebarHeightTimer && clearTimeout(updateSidebarHeightTimer);
+      updateSidebarHeightTimer && clearTimeout(
+      updateSidebarHeightTimer);
       updateSidebarHeightTimer = setTimeout(function () {
-        var sidebarWrapperHeight = document.body.clientHeight -
-          NexT.utils.getSidebarSchemePadding();
+        var sidebarWrapperHeight = document.body.clientHeight - NexT
+          .utils.getSidebarSchemePadding();
         updateSidebarHeight(sidebarWrapperHeight);
       }, 0);
     });
@@ -289,12 +293,13 @@ $(document).ready(function () {
       $('.site-overview').css('width', 'calc(100% + ' + scrollbarWidth +
         'px)');
     }
-    if ($('.post-toc-wrap').height() > (document.body.clientHeight - NexT.utils
-        .getSidebarSchemePadding())) {
+    if ($('.post-toc-wrap').height() > (document.body.clientHeight - NexT
+        .utils.getSidebarSchemePadding())) {
       $('.post-toc').css('width', 'calc(100% + ' + scrollbarWidth + 'px)');
     }
     // Initialize Sidebar & TOC Height.
-    updateSidebarHeight(document.body.clientHeight - NexT.utils.getSidebarSchemePadding());
+    updateSidebarHeight(document.body.clientHeight - NexT.utils
+      .getSidebarSchemePadding());
   }
 
   function updateSidebarHeight(height) {

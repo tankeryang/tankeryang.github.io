@@ -104,18 +104,20 @@ $(document).ready(function () {
       this.dimmerEl.on('click', this.clickHandler.bind(this));
       this.toggleEl.on('mouseenter', this.mouseEnterHandler.bind(this));
       this.toggleEl.on('mouseleave', this.mouseLeaveHandler.bind(this));
-      this.sidebarEl.on('touchstart', this.touchstartHandler.bind(this));
+      this.sidebarEl.on('touchstart', this.touchstartHandler.bind(
+      this));
       this.sidebarEl.on('touchend', this.touchendHandler.bind(this));
       this.sidebarEl.on('touchmove', function (e) {
         e.preventDefault();
       });
       $(document)
         .on('sidebar.isShowing', function () {
-          NexT.utils.isDesktop() && $('body').velocity('stop').velocity({
-              paddingRight: SIDEBAR_WIDTH
-            },
-            SIDEBAR_DISPLAY_DURATION
-          );
+          NexT.utils.isDesktop() && $('body').velocity('stop')
+            .velocity({
+                paddingRight: SIDEBAR_WIDTH
+              },
+              SIDEBAR_DISPLAY_DURATION
+            );
         })
         .on('sidebar.isHiding', function () {});
     },
@@ -231,7 +233,8 @@ $(document).ready(function () {
           duration: 200
         }
       });
-      NexT.utils.isMist() && hasElement([$logoLineTop, $logoLineBottom]) &&
+      NexT.utils.isMist() && hasElement([$logoLineTop,
+        $logoLineBottom]) &&
         sequence.push(
           getMistLineSettings($logoLineTop, '100%'),
           getMistLineSettings($logoLineBottom, '-100%')
@@ -329,8 +332,8 @@ $(document).ready(function () {
         };
         postMotionOptions.complete = function () {
           // After motion complete need to remove transform from sidebar to let affix work on Pisces | Gemini.
-          if (CONFIG.motion.transition.sidebar && (NexT.utils.isPisces() ||
-              NexT.utils.isGemini())) {
+          if (CONFIG.motion.transition.sidebar && (NexT.utils
+              .isPisces() || NexT.utils.isGemini())) {
             $sidebarAffix.css({
               'transform': 'initial'
             });
@@ -355,8 +358,8 @@ $(document).ready(function () {
             postMotionOptions);
         }
         // Only for Pisces | Gemini.
-        if (CONFIG.motion.transition.sidebar && (NexT.utils.isPisces() ||
-            NexT.utils.isGemini())) {
+        if (CONFIG.motion.transition.sidebar && (NexT.utils
+          .isPisces() || NexT.utils.isGemini())) {
           $sidebarAffix.velocity('transition.' +
             $sidebarAffixTransition, postMotionOptions);
         }

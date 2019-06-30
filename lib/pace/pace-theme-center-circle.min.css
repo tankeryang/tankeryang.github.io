@@ -60,6 +60,7 @@
   from {
     -webkit-transform: rotateY(0)
   }
+
   to {
     -webkit-transform: rotateY(360deg)
   }
@@ -69,6 +70,7 @@
   from {
     -moz-transform: rotateY(0)
   }
+
   to {
     -moz-transform: rotateY(360deg)
   }
@@ -78,6 +80,7 @@
   from {
     -ms-transform: rotateY(0)
   }
+
   to {
     -ms-transform: rotateY(360deg)
   }
@@ -87,6 +90,7 @@
   from {
     -o-transform: rotateY(0)
   }
+
   to {
     -o-transform: rotateY(360deg)
   }
@@ -96,6 +100,7 @@
   from {
     transform: rotateY(0)
   }
+
   to {
     transform: rotateY(360deg)
   }

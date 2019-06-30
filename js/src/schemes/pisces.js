@@ -6,7 +6,8 @@ $(document).ready(function () {
   function initAffix() {
     var headerOffset = getHeaderOffset(),
       footerOffset = getFooterOffset(),
-      sidebarHeight = $('#sidebar').height() + NexT.utils.getSidebarb2tHeight(),
+      sidebarHeight = $('#sidebar').height() + NexT.utils
+      .getSidebarb2tHeight(),
       contentHeight = $('#content').height();
     // Not affix if sidebar taller then content (to prevent bottom jumping).
     if (headerOffset + sidebarHeight < contentHeight) {
@@ -37,7 +38,8 @@ $(document).ready(function () {
 
   function getFooterOffset() {
     var footerInner = $('.footer-inner'),
-      footerMargin = footerInner.outerHeight(true) - footerInner.outerHeight(),
+      footerMargin = footerInner.outerHeight(true) - footerInner
+      .outerHeight(),
       footerOffset = footerInner.outerHeight(true) + footerMargin;
     return footerOffset;
   }

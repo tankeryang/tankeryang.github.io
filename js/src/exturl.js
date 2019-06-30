@@ -21,8 +21,8 @@ $(document).ready(function () {
         } else if (isNaN(i)) {
           a = 64
         }
-        t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this._keyStr
-          .charAt(u) + this._keyStr.charAt(a)
+        t = t + this._keyStr.charAt(s) + this._keyStr.charAt(o) + this
+          ._keyStr.charAt(u) + this._keyStr.charAt(a)
       }
       return t
     },
@@ -85,8 +85,8 @@ $(document).ready(function () {
         } else {
           c2 = e.charCodeAt(n + 1);
           c3 = e.charCodeAt(n + 2);
-          t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 | c3 &
-            63);
+          t += String.fromCharCode((r & 15) << 12 | (c2 & 63) << 6 |
+            c3 & 63);
           n += 3
         }
       }

@@ -44,8 +44,8 @@
     var colliderTop = initializing ? scrollTop : position.top
     var colliderHeight = initializing ? targetHeight : height
     if (offsetTop != null && scrollTop <= offsetTop) return 'top'
-    if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight -
-        offsetBottom)) return 'bottom'
+    if (offsetBottom != null && (colliderTop + colliderHeight >=
+        scrollHeight - offsetBottom)) return 'bottom'
     return false
   }
   Affix.prototype.getPinnedOffset = function () {
@@ -64,10 +64,12 @@
     var offset = this.options.offset
     var offsetTop = offset.top
     var offsetBottom = offset.bottom
-    var scrollHeight = Math.max($(document).height(), $(document.body).height())
+    var scrollHeight = Math.max($(document).height(), $(document.body)
+    .height())
     if (typeof offset != 'object') offsetBottom = offsetTop = offset
     if (typeof offsetTop == 'function') offsetTop = offset.top(this.$element)
-    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this.$element)
+    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this
+      .$element)
     var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom)
     if (this.affixed != affix) {
       if (this.unpin != null) this.$element.css('top', '')
@@ -115,7 +117,8 @@
       var $spy = $(this)
       var data = $spy.data()
       data.offset = data.offset || {}
-      if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
+      if (data.offsetBottom != null) data.offset.bottom = data
+        .offsetBottom
       if (data.offsetTop != null) data.offset.top = data.offsetTop
       Plugin.call($spy, data)
     })
