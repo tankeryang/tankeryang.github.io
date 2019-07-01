@@ -112,11 +112,13 @@ math:
 passage_end_tag:
   enabled: true
 
+# hexo-generator-search
 search:
   path: search.xml
   field: post
-  format: html
-  limit: 10000
+  content: true
+  # format: html
+  # limit: 10000
 
 tag_plantuml:
   type: static
