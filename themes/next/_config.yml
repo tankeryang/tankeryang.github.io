@@ -449,7 +449,7 @@ valine:
   enable: true
   appid: NiFbgAF3vRyR2BayGJOswb21-gzGzoHsz # your leancloud application appid
   appkey: xGF7qavyOOQGtVACk06SnLrW # your leancloud application appkey
-  notify: true # mail notifier , https://github.com/xCss/Valine/wiki
+  notify: false # mail notifier , https://github.com/xCss/Valine/wiki
   verify: true # Verification code
   placeholder: 填上邮箱可以收到回复的邮件提醒哦～ # comment box placeholder
   avatar: retro # gravatar style
