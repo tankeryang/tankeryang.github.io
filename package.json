@@ -26,7 +26,7 @@
     "hexo-renderer-stylus": "^0.3.1",
     "hexo-server": "^0.2.0",
     "hexo-symbols-count-time": "^0.2.0",
-    "hexo-tag-gantt": "https://github.com/threeq/hexo-tag-mermaid.git",
+    "hexo-tag-gantt": "https://github.com/tankeryang/hexo-tag-mermaid.git",
     "hexo-tag-mermaid": "^1.0.0",
     "hexo-tag-plantuml": "^1.0.0",
     "hexo-wordcount": "^3.0.2",
