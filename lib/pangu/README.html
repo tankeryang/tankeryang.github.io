@@ -1,29 +1,84 @@
-<h1 align="center"><a href="https://github.com/vinta/pangu.js">pangu.js</a> for
-  <a href="https://github.com/theme-next">NexT</a></h1>
-
-<h1 align="center">Installation</h1>
-
-<h2 align="center">Step 1 &rarr; Go to NexT dir</h2>
-
-<p>Change dir to <strong>NexT</strong> directory. There must be
-  <code>layout</code>, <code>source</code>, <code>languages</code> and other
-  directories:</p>
-<pre><code class="sh">$ <span class="built_in">cd</span> themes/next
-$ ls
-bower.json  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  package.json  README.md  scripts  <span class="built_in">source</span>  <span class="built_in">test</span>
+<h1 id="hexo-generator-searchdb"><a href="#hexo-generator-searchdb" class="headerlink"
+                                                                                  title="hexo-generator-searchdb"></a>hexo-generator-searchdb
+</h1>
+<p><a href="https://www.npmjs.com/package/hexo-generator-searchdb"><img src="https://img.shields.io/npm/v/hexo-generator-searchdb?style=flat-square"
+                                                                                    alt="npm"></a><br><a
+                                                                                  href="https://www.npmjs.com/package/hexo-generator-searchdb"><img
+                                                                                    src="https://img.shields.io/npm/dm/hexo-generator-searchdb?style=flat-square"
+                                                                                    alt="npm"></a><br><a
+                                                                                  href="https://www.npmjs.com/package/hexo-generator-searchdb"><img
+                                                                                    src="https://img.shields.io/npm/dt/hexo-generator-searchdb?style=flat-square"
+                                                                                    alt="npm"></a>
+</p>
+<p>Generate search data for Hexo 3.0. This plugin is used for generating a
+  search index file, which contains all the neccessary data of your articles
+  that you can use to write a local search engine for your blog. Supports both
+  XML and JSON format output.</p>
+<h2 id="Install"><a href="#Install" class="headerlink"
+                                                                                  title="Install"></a>Install
+</h2>
+<pre><code class="bash">$ npm install hexo-generator-searchdb --save
 </code></pre>
-<h2 align="center">Step 2 &rarr; Get module</h2>
-
-<p>Install module to <code>source/lib</code> directory:</p>
-<pre><code class="sh">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-pangu.git <span class="built_in">source</span>/lib/pangu
+<h2 id="Options"><a href="#Options" class="headerlink"
+                                                                                  title="Options"></a>Options
+</h2>
+<p>You can configure this plugin in your root <code>_config.yml</code>. All the
+  arguments are optional.</p>
+<pre><code class="yaml"><span class="attr">search:</span>
+<span class="attr">  path:</span> <span class="string">search.xml</span>
+<span class="attr">  field:</span> <span class="string">post</span>
+<span class="attr">  content:</span> <span class="literal">true</span>
+<span class="attr">  format:</span> <span class="string">html</span>
 </code></pre>
-<h2 align="center">Step 3 &rarr; Set it up</h2>
-
-<p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file:</p>
-<pre><code class="yml"><span class="attr">pangu:</span> <span class="literal">true</span>
+<ul>
+  <li><strong>path</strong> - file path. By default is <code>search.xml</code> .
+    If the file extension is <code>.json</code>, the output format will be JSON.
+    Otherwise XML format file will be exported.</li>
+  <li><strong>field</strong> - the search scope you want to search, you can
+    chose:<ul>
+      <li><strong>post</strong> - (Default) will only covers all the posts of
+        your blog.</li>
+      <li><strong>page</strong> - will only covers all the pages of your blog.
+      </li>
+      <li><strong>all</strong> - will covers all the posts and pages of your
+        blog.</li>
+    </ul>
+  </li>
+  <li><strong>content</strong> - whether contains the whole content of each
+    article. If <code>false</code>, the generated results only cover title and
+    other meta info without mainbody. By default is <code>true</code>.</li>
+  <li><strong>format</strong> - the form of the page contents, options are:<ul>
+      <li><strong>html</strong> (Default) - original html string being minified.
+      </li>
+      <li><strong>raw</strong> - markdown text of each posts or pages.</li>
+    </ul>
+  </li>
+</ul>
+<h2 id="Exclude-indexing"><a href="#Exclude-indexing" class="headerlink"
+                                                                                  title="Exclude indexing"></a>Exclude
+  indexing</h2>
+<p>To exclude a certain post or page from being indexed, you can simply insert
+  <code>indexing: false</code> setting at the top of its front-matter,
+  <em>e.g.</em>:</p>
+<pre><code>title: &quot;Code Highlight&quot;
+date: &quot;2014-03-15 20:17:16&quot;
+tags: highlight
+categories: Demo
+description: &quot;A collection of Hello World applications from helloworld.org.&quot;
+toc: true
+indexing: false
+---
 </code></pre>
-<h1 align="center">Update</h1>
-
-<pre><code class="sh">$ <span class="built_in">cd</span> themes/next/<span class="built_in">source</span>/lib/pangu
-$ git pull
-</code></pre>
+<p>Then the generated result will not contain this post or page.</p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2>
+<h3 id="What’s-this-plugin-supposed-to-do"><a href="#What’s-this-plugin-supposed-to-do"
+                                                                                  class="headerlink"
+                                                                                  title="What’s this plugin supposed to do?"></a>What’s
+  this plugin supposed to do?</h3>
+<p>This plugin is used for generating a xml / json file from your Hexo blog that
+  provides data for searching.</p>
+<h3 id="Where’s-this-file-saved-to"><a href="#Where’s-this-file-saved-to" class="headerlink"
+                                                                                  title="Where’s this file saved to?"></a>Where’s
+  this file saved to?</h3>
+<p>After executing <code>hexo g</code> you will get the generated result at your
+  public folder.</p>

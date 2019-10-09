@@ -12,6 +12,9 @@
 
 <pre><code class="bash">$ rm -rf themes/next/<span class="built_in">source</span>/lib/fancybox
 </code></pre>
+<h2>If you want to use the CDN instead of clone this repo, please jump to the
+  Step 3.</h2>
+
 <h2 align="center">Step 1 &rarr; Go to NexT dir</h2>
 
 <p>Change dir to <strong>NexT</strong> directory. There must be
@@ -30,6 +33,12 @@ bower.json  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  p
 
 <p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file:</p>
 <pre><code class="yml"><span class="attr">fancybox:</span> <span class="literal">true</span>
+</code></pre>
+<p><strong>And, if you wants to use the CDN, then need to set:</strong></p>
+<pre><code class="yml"><span class="attr">vendors:</span>
+  <span class="string">...</span>
+<span class="attr">  fancybox:</span> <span class="string">//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js</span>
+<span class="attr">  fancybox_css:</span> <span class="string">//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css</span>
 </code></pre>
 <h1 align="center">Update</h1>
 
